@@ -1,0 +1,82 @@
+---
+title: Traitement des résultats (ODBC) | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: native-client
+ms.topic: reference
+helpviewer_keywords:
+- result sets [ODBC], about result sets
+- SQLRowCount function
+- SQL Server Native Client ODBC driver, result sets
+- ODBC applications, result sets
+- COMPUTE clause
+- result sets [ODBC]
+- COMPUTE BY clause
+ms.assetid: 61a8db19-6571-47dd-84e8-fcc97cb60b45
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 72c0d15231b07a23f10a03b0fca270d1d014891c
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87709331"
+---
+# <a name="processing-results-odbc"></a><span data-ttu-id="50946-102">Traitement des résultats (ODBC)</span><span class="sxs-lookup"><span data-stu-id="50946-102">Processing Results (ODBC)</span></span>
+  <span data-ttu-id="50946-103">Après qu'une application a soumis une instruction SQL, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] retourne les données obtenues sous forme d'un ou plusieurs jeux de résultats.</span><span class="sxs-lookup"><span data-stu-id="50946-103">After an application submits a SQL statement, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] returns any resulting data as one or more result sets.</span></span> <span data-ttu-id="50946-104">Un jeu de résultats est un ensemble de lignes et colonnes qui correspondent aux critères de la requête.</span><span class="sxs-lookup"><span data-stu-id="50946-104">A result set is a set of rows and columns that match the criteria of the query.</span></span> <span data-ttu-id="50946-105">Les instructions SELECT, les fonctions de catalogue et certaines procédures stockées produisent un jeu de résultats sous forme de tableau, accessible par une application.</span><span class="sxs-lookup"><span data-stu-id="50946-105">SELECT statements, catalog functions, and some stored procedures produce a result set made available to an application in tabular form.</span></span> <span data-ttu-id="50946-106">Si l'instruction SQL exécutée est une procédure stockée, un lot contenant plusieurs commandes ou une instruction SELECT avec des mots clés, il y aura plusieurs jeux de résultats à traiter.</span><span class="sxs-lookup"><span data-stu-id="50946-106">If the executed SQL statement is a stored procedure, a batch containing multiple commands, or a SELECT statement containing keywords, there will be multiple result sets to process.</span></span>  
+  
+ <span data-ttu-id="50946-107">Les fonctions de catalogue ODBC peuvent aussi récupérer les données.</span><span class="sxs-lookup"><span data-stu-id="50946-107">ODBC catalog functions also can retrieve data.</span></span> <span data-ttu-id="50946-108">Par exemple, [SQLColumns](../native-client-odbc-api/sqlcolumns.md) récupère les données relatives aux colonnes dans la source de données.</span><span class="sxs-lookup"><span data-stu-id="50946-108">For example, [SQLColumns](../native-client-odbc-api/sqlcolumns.md) retrieves data about columns in the data source.</span></span> <span data-ttu-id="50946-109">Ces jeux de résultats peuvent contenir zéro ou plusieurs lignes.</span><span class="sxs-lookup"><span data-stu-id="50946-109">These result sets can contain zero or more rows.</span></span>  
+  
+ <span data-ttu-id="50946-110">D'autres instructions SQL, telles que GRANT ou REVOKE, ne retournent pas de jeux de résultats.</span><span class="sxs-lookup"><span data-stu-id="50946-110">Other SQL statements, such as GRANT or REVOKE, do not return result sets.</span></span> <span data-ttu-id="50946-111">Pour ces instructions, le code de retour de **SQLExecute** ou **SQLExecDirect** est généralement la seule indication que l’instruction a réussi.</span><span class="sxs-lookup"><span data-stu-id="50946-111">For these statements, the return code from **SQLExecute** or **SQLExecDirect** is usually the only indication the statement was successful.</span></span>  
+  
+ <span data-ttu-id="50946-112">Chaque instruction INSERT, UPDATE et DELETE retourne un jeu de résultats qui contient uniquement le nombre de lignes concernées par la modification.</span><span class="sxs-lookup"><span data-stu-id="50946-112">Each INSERT, UPDATE, and DELETE statement returns a result set containing only the number of rows affected by the modification.</span></span> <span data-ttu-id="50946-113">Ce nombre est rendu disponible quand l’application appelle [SQLRowCount](../native-client-odbc-api/sqlrowcount.md).</span><span class="sxs-lookup"><span data-stu-id="50946-113">This count is made available when application calls [SQLRowCount](../native-client-odbc-api/sqlrowcount.md).</span></span> <span data-ttu-id="50946-114">ODBC 3. *x* doivent appeler **SQLRowCount** pour récupérer le jeu de résultats ou [SQLMoreResults](../native-client-odbc-api/sqlmoreresults.md) pour l’annuler.</span><span class="sxs-lookup"><span data-stu-id="50946-114">ODBC 3.*x* applications must either call **SQLRowCount** to retrieve the result set or [SQLMoreResults](../native-client-odbc-api/sqlmoreresults.md) to cancel it.</span></span> <span data-ttu-id="50946-115">Lorsqu’une application exécute un traitement ou une procédure stockée contenant plusieurs instructions INSERT, UPDATE ou DELETE, le jeu de résultats de chaque instruction de modification doit être traité à l’aide de **SQLRowCount** ou annulé à l’aide de **SQLMoreResults**.</span><span class="sxs-lookup"><span data-stu-id="50946-115">When an application executes a batch or stored procedure containing multiple INSERT, UPDATE, or DELETE statements, the result set from each modification statement must be processed using **SQLRowCount** or cancelled using **SQLMoreResults**.</span></span> <span data-ttu-id="50946-116">Ces nombres peuvent être annulés en incluant une instruction SET NOCOUNT ON dans le lot ou la procédure stockée.</span><span class="sxs-lookup"><span data-stu-id="50946-116">These counts can be cancelled by including a SET NOCOUNT ON statement in the batch or stored procedure.</span></span>  
+  
+ <span data-ttu-id="50946-117">Transact-SQL inclut l'instruction SET NOCOUNT.</span><span class="sxs-lookup"><span data-stu-id="50946-117">Transact-SQL includes the SET NOCOUNT statement.</span></span> <span data-ttu-id="50946-118">Lorsque l’option NOCOUNT est activée, SQL Server ne retourne pas le nombre de lignes affectées par une instruction et **SQLRowCount** retourne 0.</span><span class="sxs-lookup"><span data-stu-id="50946-118">When the NOCOUNT option is set on, SQL Server does not return the counts of the rows affected by a statement and **SQLRowCount** returns 0.</span></span> <span data-ttu-id="50946-119">La [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] version du pilote ODBC Native Client introduit une option [SQLGetStmtAttr](../native-client-odbc-api/sqlgetstmtattr.md) spécifique au pilote, SQL_SOPT_SS_NOCOUNT_STATUS, pour indiquer si l’option NOCOUNT est activée ou désactivée.</span><span class="sxs-lookup"><span data-stu-id="50946-119">The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client ODBC driver version introduces a driver-specific [SQLGetStmtAttr](../native-client-odbc-api/sqlgetstmtattr.md) option, SQL_SOPT_SS_NOCOUNT_STATUS, to report on whether the NOCOUNT option is on or off.</span></span> <span data-ttu-id="50946-120">Chaque fois que **SQLRowCount** retourne 0, l’application doit tester SQL_SOPT_SS_NOCOUNT_STATUS.</span><span class="sxs-lookup"><span data-stu-id="50946-120">Anytime **SQLRowCount** returns 0, the application should test SQL_SOPT_SS_NOCOUNT_STATUS.</span></span> <span data-ttu-id="50946-121">Si SQL_NC_ON est retourné, la valeur 0 de **SQLRowCount** indique uniquement que SQL Server n’a pas retourné de nombre de lignes.</span><span class="sxs-lookup"><span data-stu-id="50946-121">If SQL_NC_ON is returned, the value of 0 from **SQLRowCount** only indicates that SQL Server has not returned a row count.</span></span> <span data-ttu-id="50946-122">Si SQL_NC_OFF est retourné, cela signifie que NOCOUNT est désactivé et la valeur 0 de **SQLRowCount** indique que l’instruction n’a affecté aucune ligne.</span><span class="sxs-lookup"><span data-stu-id="50946-122">If SQL_NC_OFF is returned, it means that NOCOUNT is off and the value of 0 from **SQLRowCount** indicates that the statement did not affect any rows.</span></span> <span data-ttu-id="50946-123">Les applications ne doivent pas afficher la valeur de **SQLRowCount** lorsque SQL_SOPT_SS_NOCOUNT_STATUS est SQL_NC_OFF.</span><span class="sxs-lookup"><span data-stu-id="50946-123">Applications should not display the value of **SQLRowCount** when SQL_SOPT_SS_NOCOUNT_STATUS is SQL_NC_OFF.</span></span> <span data-ttu-id="50946-124">Comme les lots ou procédures stockées importants peuvent contenir plusieurs instructions SET NOCOUNT, les programmeurs ne peuvent pas en déduire que SQL_SOPT_SS_NOCOUNT_STATUS demeure constant.</span><span class="sxs-lookup"><span data-stu-id="50946-124">Large batches or stored procedures may contain multiple SET NOCOUNT statements so programmers cannot assume SQL_SOPT_SS_NOCOUNT_STATUS remains constant.</span></span> <span data-ttu-id="50946-125">L’option doit être testée à chaque fois que **SQLRowCount** retourne 0.</span><span class="sxs-lookup"><span data-stu-id="50946-125">The option should be tested each time **SQLRowCount** returns 0.</span></span>  
+  
+ <span data-ttu-id="50946-126">Plusieurs autres instructions Transact-SQL retournent leurs données dans des messages plutôt que dans des jeux de résultats.</span><span class="sxs-lookup"><span data-stu-id="50946-126">Several other Transact-SQL statements return their data in messages rather than result sets.</span></span> <span data-ttu-id="50946-127">Lorsque le [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] pilote ODBC native client reçoit ces messages, il retourne SQL_SUCCESS_WITH_INFO pour permettre à l’application de savoir que des messages d’information sont disponibles.</span><span class="sxs-lookup"><span data-stu-id="50946-127">When the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client ODBC driver receives these messages, it returns SQL_SUCCESS_WITH_INFO to let the application know that informational messages are available.</span></span> <span data-ttu-id="50946-128">L’application peut alors appeler **SQLGetDiagRec** pour extraire ces messages.</span><span class="sxs-lookup"><span data-stu-id="50946-128">The application can then call **SQLGetDiagRec** to retrieve these messages.</span></span> <span data-ttu-id="50946-129">Les instructions [!INCLUDE[tsql](../../includes/tsql-md.md)] qui fonctionnent ainsi sont :</span><span class="sxs-lookup"><span data-stu-id="50946-129">The [!INCLUDE[tsql](../../includes/tsql-md.md)] statements that work this way are:</span></span>  
+  
+-   <span data-ttu-id="50946-130">DBCC</span><span class="sxs-lookup"><span data-stu-id="50946-130">DBCC</span></span>  
+  
+-   <span data-ttu-id="50946-131">SET SHOWPLAN (disponible avec les versions antérieures de SQL Server)</span><span class="sxs-lookup"><span data-stu-id="50946-131">SET SHOWPLAN (available with earlier versions of SQL Server)</span></span>  
+  
+-   <span data-ttu-id="50946-132">SET STATISTICS</span><span class="sxs-lookup"><span data-stu-id="50946-132">SET STATISTICS</span></span>  
+  
+-   <span data-ttu-id="50946-133">PRINT</span><span class="sxs-lookup"><span data-stu-id="50946-133">PRINT</span></span>  
+  
+-   <span data-ttu-id="50946-134">RAISERROR</span><span class="sxs-lookup"><span data-stu-id="50946-134">RAISERROR</span></span>  
+  
+ <span data-ttu-id="50946-135">Le [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] pilote ODBC Native Client retourne SQL_ERROR sur une instruction RAISERROR dont le niveau de gravité est supérieur ou égal à 11.</span><span class="sxs-lookup"><span data-stu-id="50946-135">The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client ODBC driver returns SQL_ERROR on a RAISERROR with a severity of 11 or higher.</span></span> <span data-ttu-id="50946-136">Si la gravité de RAISERROR est supérieure ou égale à 19, la connexion est également abandonnée.</span><span class="sxs-lookup"><span data-stu-id="50946-136">If the severity of the RAISERROR is 19 or higher, the connection is also dropped.</span></span>  
+  
+ <span data-ttu-id="50946-137">Pour traiter les jeux de résultats d'une instruction SQL, l'application :</span><span class="sxs-lookup"><span data-stu-id="50946-137">To process the result sets from an SQL statement, the application:</span></span>  
+  
+-   <span data-ttu-id="50946-138">détermine les caractéristiques du jeu de résultats ;</span><span class="sxs-lookup"><span data-stu-id="50946-138">Determines the characteristics of the result set.</span></span>  
+  
+-   <span data-ttu-id="50946-139">lie les colonnes aux variables de programme ;</span><span class="sxs-lookup"><span data-stu-id="50946-139">Binds the columns to program variables.</span></span>  
+  
+-   <span data-ttu-id="50946-140">extrait une valeur unique, une ligne entière de valeurs ou plusieurs lignes de valeurs ;</span><span class="sxs-lookup"><span data-stu-id="50946-140">Retrieves a single value, an entire row of values, or multiple rows of values.</span></span>  
+  
+-   <span data-ttu-id="50946-141">effectue un test pour voir s'il y a plusieurs jeux de résultats, et si tel est le cas, effectue une nouvelle boucle pour déterminer les caractéristiques du nouveau jeu de résultats.</span><span class="sxs-lookup"><span data-stu-id="50946-141">Tests to see if there are more result sets, and if so, loops back to determining the characteristics of the new result set.</span></span>  
+  
+ <span data-ttu-id="50946-142">Le processus de récupération des lignes de la source de données et leur renvoi à l'application est appelé extraction.</span><span class="sxs-lookup"><span data-stu-id="50946-142">The process of retrieving rows from the data source and returning them to the application is called fetching.</span></span>  
+  
+## <a name="in-this-section"></a><span data-ttu-id="50946-143">Dans cette section</span><span class="sxs-lookup"><span data-stu-id="50946-143">In This Section</span></span>  
+  
+-   [<span data-ttu-id="50946-144">Détermination des caractéristiques d’un jeu de résultats &#40;ODBC&#41;</span><span class="sxs-lookup"><span data-stu-id="50946-144">Determining the Characteristics of a Result Set &#40;ODBC&#41;</span></span>](determining-the-characteristics-of-a-result-set-odbc.md)  
+  
+-   [<span data-ttu-id="50946-145">Assignation du stockage</span><span class="sxs-lookup"><span data-stu-id="50946-145">Assigning Storage</span></span>](assigning-storage.md)  
+  
+-   [<span data-ttu-id="50946-146">Extraction des données de résultat</span><span class="sxs-lookup"><span data-stu-id="50946-146">Fetching Result Data</span></span>](fetching-result-data.md)  
+  
+-   [<span data-ttu-id="50946-147">Mappage de types de données &#40;ODBC&#41;</span><span class="sxs-lookup"><span data-stu-id="50946-147">Mapping Data Types &#40;ODBC&#41;</span></span>](mapping-data-types-odbc.md)  
+  
+-   [<span data-ttu-id="50946-148">Utilisation des types de données</span><span class="sxs-lookup"><span data-stu-id="50946-148">Data Type Usage</span></span>](data-type-usage.md)  
+  
+-   [<span data-ttu-id="50946-149">Traduction automatique de données caractères</span><span class="sxs-lookup"><span data-stu-id="50946-149">Autotranslation of Character Data</span></span>](autotranslation-of-character-data.md)  
+  
+## <a name="see-also"></a><span data-ttu-id="50946-150">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="50946-150">See Also</span></span>  
+ <span data-ttu-id="50946-151">[SQL Server Native Client &#40;&#41;ODBC](../native-client/odbc/sql-server-native-client-odbc.md) </span><span class="sxs-lookup"><span data-stu-id="50946-151">[SQL Server Native Client &#40;ODBC&#41;](../native-client/odbc/sql-server-native-client-odbc.md) </span></span>  
+ [<span data-ttu-id="50946-152">Rubriques de procédures relatives au traitement des résultats &#40;ODBC&#41;</span><span class="sxs-lookup"><span data-stu-id="50946-152">Processing Results How-to Topics &#40;ODBC&#41;</span></span>](../../database-engine/dev-guide/processing-results-how-to-topics-odbc.md)  
+  
+  

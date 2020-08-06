@@ -1,0 +1,66 @@
+---
+title: Composants du serveur du moteur OLAP | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: reference
+helpviewer_keywords:
+- Analysis Services, architecture
+- ports [Analysis Services]
+- XML/A listener
+- server architecture [Analysis Services]
+ms.assetid: 5193c976-9dcd-459c-abba-8c3c44e7a7f2
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: b60d721a69213ad52536830b49b40d6bb82a3811
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87707939"
+---
+# <a name="olap-engine-server-components"></a><span data-ttu-id="70f52-102">Composants serveur du moteur OLAP</span><span class="sxs-lookup"><span data-stu-id="70f52-102">OLAP Engine Server Components</span></span>
+  <span data-ttu-id="70f52-103">Le composant serveur de [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] est l’application **msmdsrv.exe** , qui s’exécute en tant que service Windows.</span><span class="sxs-lookup"><span data-stu-id="70f52-103">The server component of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] is the **msmdsrv.exe** application, which runs as a Windows service.</span></span> <span data-ttu-id="70f52-104">Cette application intègre des composants de sécurité, un composant d'écoute XMLA (XML for Analysis), un composant processeur de requêtes et de nombreux autres composants internes qui permettent d'effectuer les actions suivantes :</span><span class="sxs-lookup"><span data-stu-id="70f52-104">This application consists of security components, an XML for Analysis (XMLA) listener component, a query processor component and numerous other internal components that perform the following functions:</span></span>
+
+-   <span data-ttu-id="70f52-105">Analyser des instructions reçues des clients</span><span class="sxs-lookup"><span data-stu-id="70f52-105">Parsing statements received from clients</span></span>
+
+-   <span data-ttu-id="70f52-106">Gérer des métadonnées</span><span class="sxs-lookup"><span data-stu-id="70f52-106">Managing metadata</span></span>
+
+-   <span data-ttu-id="70f52-107">Gérer des transactions</span><span class="sxs-lookup"><span data-stu-id="70f52-107">Handling transactions</span></span>
+
+-   <span data-ttu-id="70f52-108">Effectuer des calculs</span><span class="sxs-lookup"><span data-stu-id="70f52-108">Processing calculations</span></span>
+
+-   <span data-ttu-id="70f52-109">Stocker des données de dimension et de cellule</span><span class="sxs-lookup"><span data-stu-id="70f52-109">Storing dimension and cell data</span></span>
+
+-   <span data-ttu-id="70f52-110">Créer des agrégations</span><span class="sxs-lookup"><span data-stu-id="70f52-110">Creating aggregations</span></span>
+
+-   <span data-ttu-id="70f52-111">Planifier des requêtes</span><span class="sxs-lookup"><span data-stu-id="70f52-111">Scheduling queries</span></span>
+
+-   <span data-ttu-id="70f52-112">Mettre des objets en cache</span><span class="sxs-lookup"><span data-stu-id="70f52-112">Caching objects</span></span>
+
+-   <span data-ttu-id="70f52-113">Gérer des ressources du serveur</span><span class="sxs-lookup"><span data-stu-id="70f52-113">Managing server resources</span></span>
+
+## <a name="architectural-diagram"></a><span data-ttu-id="70f52-114">Diagramme architectural</span><span class="sxs-lookup"><span data-stu-id="70f52-114">Architectural Diagram</span></span>
+ <span data-ttu-id="70f52-115">Une instance [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] s’exécute comme un service autonome et la communication avec le service s’effectue via XML for Analysis (XMLA), à l’aide de HTTP ou de TCP.</span><span class="sxs-lookup"><span data-stu-id="70f52-115">An [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] instance runs as a stand-alone service and communication with the service occurs through XML for Analysis (XMLA), by using either HTTP or TCP.</span></span> <span data-ttu-id="70f52-116">AMO est une couche entre l'application utilisateur et l'instance [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="70f52-116">AMO is a layer between the user application and the [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] instance.</span></span> <span data-ttu-id="70f52-117">Cette couche donne accès aux objets d'administration [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="70f52-117">This layer provides access to [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] administrative objects.</span></span> <span data-ttu-id="70f52-118">AMO est une bibliothèque de classes qui prend des commandes d’une application cliente et convertit ces commandes en messages XMLA pour l’instance [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="70f52-118">AMO is a class library that takes commands from a client application and converts those commands into XMLA messages for the [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] instance.</span></span> <span data-ttu-id="70f52-119">AMO présente les objets d'instance [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] en tant que classes à l'application de l'utilisateur final, avec des membres de méthode qui exécutent des commandes et des membres de propriété qui contiennent les données des objets [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="70f52-119">AMO presents [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] instance objects as classes to the end user application, with method members that run commands and property members that hold the data for the [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] objects.</span></span>
+
+ <span data-ttu-id="70f52-120">L'illustration suivante présente l'architecture des composants [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)], y compris tous les éléments majeurs s'exécutant dans l'instance [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] et tous les composants utilisateur qui interagissent avec l'instance.</span><span class="sxs-lookup"><span data-stu-id="70f52-120">The following illustration shows the [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] components architecture, including all major elements running within the [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] instance and all user components that interact with the instance.</span></span> <span data-ttu-id="70f52-121">L'illustration montre également que la seule façon d'accéder à l'instance est d'utiliser le composant d'écoute XMLA (XML for Analysis), à l'aide de HTTP ou TCP.</span><span class="sxs-lookup"><span data-stu-id="70f52-121">The illustration also shows that the only way to access the instance is by using the XML for Analysis (XMLA) Listener, either by using HTTP or TCP.</span></span>
+
+ <span data-ttu-id="70f52-122">![Schéma de l'architecture système Analysis Services](../../../analysis-services/dev-guide/media/analysisservicessystemarchitecture.gif "Schéma de l'architecture système Analysis Services")</span><span class="sxs-lookup"><span data-stu-id="70f52-122">![Analysis Services System Architecture Diagram](../../../analysis-services/dev-guide/media/analysisservicessystemarchitecture.gif "Analysis Services System Architecture Diagram")</span></span>
+
+## <a name="xmla-listener"></a><span data-ttu-id="70f52-123">Écouteur XMLA</span><span class="sxs-lookup"><span data-stu-id="70f52-123">XMLA Listener</span></span>
+ <span data-ttu-id="70f52-124">Le composant écouteur XMLA gère toutes les communications XMLA entre [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] et ses clients.</span><span class="sxs-lookup"><span data-stu-id="70f52-124">The XMLA listener component handles all XMLA communications between [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] and its clients.</span></span> <span data-ttu-id="70f52-125">Le [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] `Port` paramètre de configuration dans le fichier msmdsrv.ini peut être utilisé pour spécifier un port sur lequel une [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] instance écoute.</span><span class="sxs-lookup"><span data-stu-id="70f52-125">The [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] `Port` configuration setting in the msmdsrv.ini file can be used to specify a port on which an [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] instance listens.</span></span> <span data-ttu-id="70f52-126">La valeur 0 dans ce fichier indique qu' [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] écoute sur le port par défaut.</span><span class="sxs-lookup"><span data-stu-id="70f52-126">A value of 0 in this file indicates that [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] listen on the default port.</span></span> <span data-ttu-id="70f52-127">Sauf spécification contraire, [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] utilise par défaut les ports TCP suivants :</span><span class="sxs-lookup"><span data-stu-id="70f52-127">Unless otherwise specified, [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] uses the following default TCP ports:</span></span>
+
+|<span data-ttu-id="70f52-128">Port</span><span class="sxs-lookup"><span data-stu-id="70f52-128">Port</span></span>|<span data-ttu-id="70f52-129">Description</span><span class="sxs-lookup"><span data-stu-id="70f52-129">Description</span></span>|
+|----------|-----------------|
+|<span data-ttu-id="70f52-130">2383</span><span class="sxs-lookup"><span data-stu-id="70f52-130">2383</span></span>|<span data-ttu-id="70f52-131">Instance par défaut de [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="70f52-131">Default instance of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)].</span></span>|
+|<span data-ttu-id="70f52-132">2382</span><span class="sxs-lookup"><span data-stu-id="70f52-132">2382</span></span>|<span data-ttu-id="70f52-133">Redirecteur pour d’autres instances de [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="70f52-133">Redirector for other instances of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)].</span></span>|
+|<span data-ttu-id="70f52-134">Affectation dynamique au démarrage du serveur</span><span class="sxs-lookup"><span data-stu-id="70f52-134">Dynamically assigned at server startup</span></span>|<span data-ttu-id="70f52-135">Instance nommée de [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="70f52-135">Named instance of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)].</span></span>|
+
+ <span data-ttu-id="70f52-136">Pour plus d’informations, consultez [configurer le pare-feu Windows pour autoriser l’accès à la Analysis Services](../../instances/configure-the-windows-firewall-to-allow-analysis-services-access.md) .</span><span class="sxs-lookup"><span data-stu-id="70f52-136">See [Configure the Windows Firewall to Allow Analysis Services Access](../../instances/configure-the-windows-firewall-to-allow-analysis-services-access.md) for more details.</span></span>
+
+## <a name="see-also"></a><span data-ttu-id="70f52-137">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="70f52-137">See Also</span></span>
+ <span data-ttu-id="70f52-138">[Règles d’affectation des noms d’objets &#40;Analysis Services](object-naming-rules-analysis-services.md) [architecture physique&#41;&#40;Analysis Services-données multidimensionnelles&#41;](understanding-microsoft-olap-physical-architecture.md) [architecture logique &#40;Analysis Services-données multidimensionnelles&#41;](../olap-logical/understanding-microsoft-olap-logical-architecture.md)</span><span class="sxs-lookup"><span data-stu-id="70f52-138">[Object Naming Rules &#40;Analysis Services&#41;](object-naming-rules-analysis-services.md) [Physical Architecture &#40;Analysis Services - Multidimensional Data&#41;](understanding-microsoft-olap-physical-architecture.md) [Logical Architecture &#40;Analysis Services - Multidimensional Data&#41;](../olap-logical/understanding-microsoft-olap-logical-architecture.md)</span></span>
+
+
