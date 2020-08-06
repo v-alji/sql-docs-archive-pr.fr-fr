@@ -1,0 +1,41 @@
+---
+title: Construction d’une base de connaissances | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: data-quality-services
+ms.topic: conceptual
+ms.assetid: 51eff161-6ecd-4ee4-8187-1dd8ef4814bd
+author: lrtoyou1223
+ms.author: lle
+ms.openlocfilehash: 03c9fc6c3a9168a66e8293c61db21a87fadc260f
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87601720"
+---
+# <a name="building-a-knowledge-base"></a><span data-ttu-id="48847-102">Construction d'une base de connaissances</span><span class="sxs-lookup"><span data-stu-id="48847-102">Building a Knowledge Base</span></span>
+  <span data-ttu-id="48847-103">Une base de connaissances dans [!INCLUDE[ssDQSnoversion](../includes/ssdqsnoversion-md.md)] (DQS) est un référentiel de connaissances sur vos données qui vous permet de comprendre vos données et de préserver leur intégrité.</span><span class="sxs-lookup"><span data-stu-id="48847-103">A knowledge base in [!INCLUDE[ssDQSnoversion](../includes/ssdqsnoversion-md.md)] (DQS) is a repository of knowledge about your data that enables you to understand your data and maintain its integrity.</span></span> <span data-ttu-id="48847-104">Une base de connaissances comprend des domaines, chacun représentant les données dans un champ de données.</span><span class="sxs-lookup"><span data-stu-id="48847-104">A knowledge base consists of domains, each of which represents the data in a data field.</span></span> <span data-ttu-id="48847-105">La base de connaissances est utilisée par DQS pour effectuer le nettoyage et la duplication de données sur une base de données.</span><span class="sxs-lookup"><span data-stu-id="48847-105">The knowledge base is used by DQS to perform data cleansing and deduplication on a database.</span></span> <span data-ttu-id="48847-106">Pour préparer la base de connaissances au nettoyage de données, vous pouvez exécuter une analyse assistée par ordinateur d'un exemple de données, et gérer de manière interactive les valeurs dans les domaines.</span><span class="sxs-lookup"><span data-stu-id="48847-106">To prepare the knowledge base for data cleansing, you can run a computer-assisted analysis of a data sample, and interactively manage values in the domains.</span></span> <span data-ttu-id="48847-107">DQS vous permet d'importer des connaissances, de créer des règles et des relations, de modifier directement les valeurs des données et d'exploiter une base de données par défaut.</span><span class="sxs-lookup"><span data-stu-id="48847-107">DQS enables you to import knowledge, create rules and relationships, change data values directly, and leverage a default database.</span></span>  
+  
+## <a name="in-this-section"></a><span data-ttu-id="48847-108">Dans cette section</span><span class="sxs-lookup"><span data-stu-id="48847-108">In This Section</span></span>  
+ <span data-ttu-id="48847-109">Vous pouvez effectuer les opérations suivantes sur une base de connaissances :</span><span class="sxs-lookup"><span data-stu-id="48847-109">You can perform the following operations on a knowledge base:</span></span>  
+  
+|||  
+|-|-|  
+|<span data-ttu-id="48847-110">Créer une nouvelle base de connaissances en partant de zéro, d'une base de connaissances existante ou d'un fichier de données .dqs.</span><span class="sxs-lookup"><span data-stu-id="48847-110">Create a new knowledge base from scratch, from an existing knowledge base, or from a .dqs data file.</span></span>|[<span data-ttu-id="48847-111">Créer une base de connaissances</span><span class="sxs-lookup"><span data-stu-id="48847-111">Create a Knowledge Base</span></span>](../../2014/data-quality-services/create-a-knowledge-base.md)|  
+|<span data-ttu-id="48847-112">Ouvrir une base de connaissances existante afin d'effectuer une découverte des connaissances ou une gestion des domaines, ou d'ajouter une politique de correspondance.</span><span class="sxs-lookup"><span data-stu-id="48847-112">Open an existing knowledge base to perform knowledge discovery, domain management, or add a matching policy.</span></span>|[<span data-ttu-id="48847-113">Ouvrir une base de connaissances</span><span class="sxs-lookup"><span data-stu-id="48847-113">Open a Knowledge Base</span></span>](../../2014/data-quality-services/open-a-knowledge-base.md)|  
+|<span data-ttu-id="48847-114">Effectuez les actions de gestion sur une base de connaissances, comme l'ouvrir, la déverrouiller, ignorer votre travail, la renommer, la supprimer ou afficher ses propriétés.</span><span class="sxs-lookup"><span data-stu-id="48847-114">Perform management actions on a knowledge base, including opening it, unlocking it, discarding your work on it, renaming it, deleting it, or viewing its properties.</span></span>|[<span data-ttu-id="48847-115">Gérer une base de connaissances</span><span class="sxs-lookup"><span data-stu-id="48847-115">Manage a Knowledge Base</span></span>](../../2014/data-quality-services/manage-a-knowledge-base.md)|  
+|<span data-ttu-id="48847-116">Ajouter des connaissances à une base de connaissances via la découverte des connaissances, la gestion des valeurs de domaine, l'ajout d'une stratégie de correspondance, l'importation de connaissances, de domaines ou de valeurs, ou l'utilisation de la base de connaissances par défaut, DQS Data.</span><span class="sxs-lookup"><span data-stu-id="48847-116">Add knowledge to a knowledge base through knowledge discovery; domain value management; adding a matching policy; importing a knowledge, domain, or values; or using the default knowledge base, DQS Data.</span></span>|[<span data-ttu-id="48847-117">Ajout de connaissances à une base de connaissances</span><span class="sxs-lookup"><span data-stu-id="48847-117">Adding Knowledge to a Knowledge Base</span></span>](../../2014/data-quality-services/adding-knowledge-to-a-knowledge-base.md)|  
+|<span data-ttu-id="48847-118">Analyser un exemple de données pour les critères de qualité des données.</span><span class="sxs-lookup"><span data-stu-id="48847-118">Analyze a data sample for data quality criteria.</span></span>|[<span data-ttu-id="48847-119">Effectuer une découverte des connaissances</span><span class="sxs-lookup"><span data-stu-id="48847-119">Perform Knowledge Discovery</span></span>](../../2014/data-quality-services/perform-knowledge-discovery.md)|  
+  
+## <a name="related-tasks"></a><span data-ttu-id="48847-120">Tâches associées</span><span class="sxs-lookup"><span data-stu-id="48847-120">Related Tasks</span></span>  
+  
+|<span data-ttu-id="48847-121">Description de la tâche</span><span class="sxs-lookup"><span data-stu-id="48847-121">Task Description</span></span>|<span data-ttu-id="48847-122">Rubrique</span><span class="sxs-lookup"><span data-stu-id="48847-122">Topic</span></span>|  
+|----------------------|-----------|  
+|<span data-ttu-id="48847-123">Importation ou exportation de la connaissance depuis ou vers une base de connaissances.</span><span class="sxs-lookup"><span data-stu-id="48847-123">Importing knowledge into, or exporting it from, a knowledge base.</span></span>|[<span data-ttu-id="48847-124">Importation et exportation de connaissances</span><span class="sxs-lookup"><span data-stu-id="48847-124">Importing and Exporting Knowledge</span></span>](../../2014/data-quality-services/importing-and-exporting-knowledge.md)|  
+|<span data-ttu-id="48847-125">Création d'un seul domaine et ajout de connaissances au domaine.</span><span class="sxs-lookup"><span data-stu-id="48847-125">Creating a single domain, and adding knowledge to the domain.</span></span>|[<span data-ttu-id="48847-126">Gestion d'un domaine</span><span class="sxs-lookup"><span data-stu-id="48847-126">Managing a Domain</span></span>](../../2014/data-quality-services/managing-a-domain.md)|  
+|<span data-ttu-id="48847-127">Création d'un domaine composite et ajout de connaissances au domaine.</span><span class="sxs-lookup"><span data-stu-id="48847-127">Creating a composite domain, and adding knowledge to the domain.</span></span>|[<span data-ttu-id="48847-128">Gestion d'un domaine composite</span><span class="sxs-lookup"><span data-stu-id="48847-128">Managing a Composite Domain</span></span>](../../2014/data-quality-services/managing-a-composite-domain.md)|  
+  
+  
