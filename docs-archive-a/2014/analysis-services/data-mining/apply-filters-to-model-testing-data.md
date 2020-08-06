@@ -1,0 +1,96 @@
+---
+title: Appliquer des filtres aux données de test du modèle | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+helpviewer_keywords:
+- input row filtering [SQL Server]
+- filtering input rows [Analysis Services]
+- Mining Accuracy Chart [Analysis Services], filtering input rows
+ms.assetid: 9ccc9a23-5597-4b35-a05f-2fc8eb885147
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: d1fd2b643ae4f7d831cab980ca45b7d43d8b58f5
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87601181"
+---
+# <a name="apply-filters-to-model-testing-data"></a><span data-ttu-id="cd675-102">Appliquer des filtres aux données de test du modèle</span><span class="sxs-lookup"><span data-stu-id="cd675-102">Apply Filters to Model Testing Data</span></span>
+  <span data-ttu-id="cd675-103">Quand vous spécifiez une source de données externe à utiliser pour tester un modèle, vous pouvez éventuellement appliquer un filtre pour restreindre les données d’entrée.</span><span class="sxs-lookup"><span data-stu-id="cd675-103">When you specify an external data source to use in testing a model, you can optionally apply a filter to restrict the input data.</span></span> <span data-ttu-id="cd675-104">Par exemple, vous pouvez tester le modèle spécifiquement pour les prédictions sur des clients dans une certaine plage de revenus.</span><span class="sxs-lookup"><span data-stu-id="cd675-104">For example, you might want to test the model specifically for predictions on customers in a certain income range.</span></span>  
+  
+ <span data-ttu-id="cd675-105">Par exemple, dans le scénario de publipostage ciblé AdventureWorks, vous pouvez créer une expression de filtre comme celle qui suit sur ProspectiveBuyer, qui est la table qui contient les données de test et limiter les cas de test par plage de revenus :</span><span class="sxs-lookup"><span data-stu-id="cd675-105">For example, in the AdventureWorks targeted mailing scenario, you can create a filter expression like the following one on ProspectiveBuyer, which is the table that contains the testing data, and restrict testing cases by income range:</span></span>  
+  
+ `[YearlyIncome] = '50000'`  
+  
+ <span data-ttu-id="cd675-106">Le comportement des filtres est légèrement différent, selon que vous filtrez les données d'apprentissage du modèle ou un jeu de données de test :</span><span class="sxs-lookup"><span data-stu-id="cd675-106">The behavior of filters is slightly different, depending on whether you are filtering model training data or a testing data set:</span></span>  
+  
+-   <span data-ttu-id="cd675-107">Lorsque vous définissez un filtre sur un jeu de données de test, vous créez une clause WHERE sur les données entrantes.</span><span class="sxs-lookup"><span data-stu-id="cd675-107">When you define a filter on a testing data set, you create a WHERE clause on the incoming data.</span></span> <span data-ttu-id="cd675-108">Si vous filtrez un jeu de données d'entrée utilisé pour évaluer un modèle, l'expression de filtre est traduite en instruction Transact-SQL et appliquée à la table d'entrée lorsque le graphique est créé.</span><span class="sxs-lookup"><span data-stu-id="cd675-108">If you are filtering an input data set used for evaluating a model, the filter expression is translated to a Transact-SQL statement and applied to the input table when the chart is created.</span></span> <span data-ttu-id="cd675-109">En conséquence, le nombre de scénarios de test peut être réduit de façon significative.</span><span class="sxs-lookup"><span data-stu-id="cd675-109">As a result, the number of test cases can be greatly reduced.</span></span>  
+  
+-   <span data-ttu-id="cd675-110">Lorsque vous appliquez un filtre à un modèle d'exploration de données, l'expression de filtre que vous créez est traduite en instruction DMX (Data Mining Extensions) et appliquée au modèle individuel.</span><span class="sxs-lookup"><span data-stu-id="cd675-110">When you apply a filter to a mining model, the filter expression that you create is translated to a Data Mining Extensions (DMX) statement, and applied to the individual model.</span></span> <span data-ttu-id="cd675-111">Par conséquent, lorsque vous appliquez un filtre à un modèle, seul un sous-ensemble des données d'origine est utilisé pour l'apprentissage du modèle.</span><span class="sxs-lookup"><span data-stu-id="cd675-111">Therefore, when you apply a filter to a model, only a subset of the original data is used to train the model.</span></span> <span data-ttu-id="cd675-112">Cela peut poser des problèmes si vous filtrez le modèle d'apprentissage avec un jeu de critères, afin que le modèle soit optimisé pour un certain ensemble de données, puis testez le modèle avec un autre jeu de critères.</span><span class="sxs-lookup"><span data-stu-id="cd675-112">This can cause problems if you filter the training model with one set of criteria, so that the model is tuned to a certain set of data, and then test the model with another set of criteria.</span></span>  
+  
+-   <span data-ttu-id="cd675-113">Si vous avez défini un jeu de données de test au moment de la création de la structure, les cas de modèles utilisés pour l’apprentissage incluent uniquement les cas qui se trouvent dans le jeu d’apprentissage de la structure d’exploration de données **et** qui remplissent les conditions du filtre.</span><span class="sxs-lookup"><span data-stu-id="cd675-113">If you defined a testing data set when you created the structure, the model cases used for training include only those cases that are in the mining structure training set **and** which meet the conditions of the filter.</span></span> <span data-ttu-id="cd675-114">Ainsi, quand vous testez un modèle et sélectionnez l’option **Utiliser des scénarios de test de modèle d’exploration de données**, les scénarios de test incluent uniquement les scénarios qui se trouvent dans le jeu de test de la structure d’exploration de données et qui remplissent les conditions du filtre.</span><span class="sxs-lookup"><span data-stu-id="cd675-114">Thus, when you are testing a model and select the option **Use mining model test cases**, the testing cases will include only the cases that are in the mining structure test set and which meet the conditions of the filter.</span></span> <span data-ttu-id="cd675-115">Toutefois, si vous n'avez pas défini de jeu de données d'exclusion, les cas de modèles utilisés pour le test incluent tous les cas du jeu de données qui remplissent les conditions du filtre.</span><span class="sxs-lookup"><span data-stu-id="cd675-115">However, if you did not define a holdout data set, the model cases used for testing include all the cases in the data set that meet the filter conditions</span></span>  
+  
+-   <span data-ttu-id="cd675-116">Les conditions de filtre que vous appliquez sur un modèle affectent également les requêtes d'extraction sur les cas de modèle.</span><span class="sxs-lookup"><span data-stu-id="cd675-116">Filter conditions that you apply on a model also affect drillthrough queries on the model cases.</span></span>  
+  
+ <span data-ttu-id="cd675-117">En résumé, lorsque vous testez plusieurs modèles, même si tous les modèles sont basés sur la même structure d'exploration de données, vous devez savoir que les modèles utilisent éventuellement différents sous-ensembles de données pour l'apprentissage et le test.</span><span class="sxs-lookup"><span data-stu-id="cd675-117">In summary, when you test multiple models, even if all the models are based on the same mining structure, you must be aware that the models potentially use different subsets of data for training and testing.</span></span> <span data-ttu-id="cd675-118">Cela peut avoir les effets suivants sur les graphiques d'analyse de précision :</span><span class="sxs-lookup"><span data-stu-id="cd675-118">This can have the following effects on accuracy charts:</span></span>  
+  
+-   <span data-ttu-id="cd675-119">Le nombre total de cas dans les jeux de test peut varier entre les modèles testés.</span><span class="sxs-lookup"><span data-stu-id="cd675-119">The total number of cases in the testing sets can vary among the models being tested.</span></span>  
+  
+-   <span data-ttu-id="cd675-120">Les pourcentages pour chaque modèle peuvent ne pas s'aligner dans le graphique, si les modèles utilisent différents sous-ensembles de données d'apprentissage ou de données de test.</span><span class="sxs-lookup"><span data-stu-id="cd675-120">The percentages for each model may not align in the chart, if the models use different subsets of training data or testing data.</span></span>  
+  
+ <span data-ttu-id="cd675-121">Pour déterminer si un modèle contient un filtre prédéfini qui peut affecter les résultats, vous pouvez rechercher la propriété **Filtre** dans le volet **Propriété** , ou vous pouvez interroger le modèle à l’aide des ensembles de lignes de schéma d’exploration de données.</span><span class="sxs-lookup"><span data-stu-id="cd675-121">To determine whether a model contains a predefined filter that might affect results, you can look for the **Filter** property in the **Property** pane, or you can query the model by using the data mining schema rowsets.</span></span> <span data-ttu-id="cd675-122">Par exemple, la requête suivante retourne le texte de filtre pour le modèle spécifié :</span><span class="sxs-lookup"><span data-stu-id="cd675-122">For example, the following query returns the filter text for the specified model:</span></span>  
+  
+ `SELECT [FILTER] FROM $system.DMSCHEMA_MINING_MODELS WHERE MODEL_NAME = 'name of model'`  
+  
+> [!WARNING]  
+>  <span data-ttu-id="cd675-123">Si vous souhaitez supprimer le filtre d'un modèle d'exploration de données existant, ou modifier les conditions de filtre, vous devez retraiter le modèle d'exploration de données.</span><span class="sxs-lookup"><span data-stu-id="cd675-123">If you want to remove the filter from an existing mining model, or change the filter conditions, you must reprocess the mining model.</span></span>  
+  
+ <span data-ttu-id="cd675-124">Pour plus d’informations sur les types de filtres applicables et sur l’évaluation des expressions de filtre, consultez [Syntaxe de filtre de modèle et exemples&#40;Analysis Services - Exploration de données &#41;](model-filter-syntax-and-examples-analysis-services-data-mining.md).</span><span class="sxs-lookup"><span data-stu-id="cd675-124">For more information about the kinds of filters you can apply, and how filter expressions are evaluated, see [Model Filter Syntax and Examples &#40;Analysis Services - Data Mining&#41;](model-filter-syntax-and-examples-analysis-services-data-mining.md).</span></span>  
+  
+### <a name="create-a-filter-on-external-testing-data"></a><span data-ttu-id="cd675-125">Créer un filtre sur des données de test externes</span><span class="sxs-lookup"><span data-stu-id="cd675-125">Create a filter on external testing data</span></span>  
+  
+1.  <span data-ttu-id="cd675-126">Double-cliquez sur la structure d'exploration de données qui contient le modèle à tester pour ouvrir le Concepteur d'exploration de données.</span><span class="sxs-lookup"><span data-stu-id="cd675-126">Double-click the mining structure that contains the model you want to test, to open Data Mining Designer.</span></span>  
+  
+2.  <span data-ttu-id="cd675-127">Sélectionnez l’onglet **Graphique d’analyse de précision de l’exploration de données** puis l’onglet **Sélection d’entrée** .</span><span class="sxs-lookup"><span data-stu-id="cd675-127">Select the **Mining Accuracy Chart** tab, and then select the **Input Selection** tab.</span></span>  
+  
+3.  <span data-ttu-id="cd675-128">Sous l’onglet **Sélection d’entrée** , sous **Sélectionner le jeu de données à utiliser pour le graphique d’analyse de précision**, sélectionnez l’option **Spécifier un autre jeu de données**.</span><span class="sxs-lookup"><span data-stu-id="cd675-128">On the **Input Selection** tab, under **Select data set to be used for Accuracy Chart**, select the option **Specify a different data set**.</span></span>  
+  
+4.  <span data-ttu-id="cd675-129">Cliquez sur le bouton Parcourir **(...)** pour ouvrir une boîte de dialogue et choisir le jeu de données externe.</span><span class="sxs-lookup"><span data-stu-id="cd675-129">Click the browse button **(...)** to open a dialog box and choose the external data set.</span></span>  
+  
+5.  <span data-ttu-id="cd675-130">Choisissez la table de cas, et ajoutez une table imbriquée si nécessaire.</span><span class="sxs-lookup"><span data-stu-id="cd675-130">Choose the case table, and add a nested table if necessary.</span></span> <span data-ttu-id="cd675-131">Mappez les colonnes du modèle aux colonnes du jeu de données externes selon les besoins.</span><span class="sxs-lookup"><span data-stu-id="cd675-131">Map columns in the model to columns in the external data set as necessary.</span></span> <span data-ttu-id="cd675-132">Fermez la boîte de dialogue **Spécifier le mappage des colonnes** pour enregistrer la définition de table source.</span><span class="sxs-lookup"><span data-stu-id="cd675-132">Close the **Specify Column Mapping** dialog box to save the source table definition.</span></span>  
+  
+6.  <span data-ttu-id="cd675-133">Cliquez sur **Ouvrir l’Éditeur de filtre** pour définir un filtre pour le jeu de données.</span><span class="sxs-lookup"><span data-stu-id="cd675-133">Click **Open Filter Editor** to define a filter for the data set.</span></span>  
+  
+     <span data-ttu-id="cd675-134">La boîte de dialogue **Filtre de jeu de données** s’ouvre.</span><span class="sxs-lookup"><span data-stu-id="cd675-134">The **Data Set Filter** dialog box opens.</span></span> <span data-ttu-id="cd675-135">Si la structure contient une table imbriquée, vous pouvez créer un filtre en deux parties.</span><span class="sxs-lookup"><span data-stu-id="cd675-135">If the structure contains a nested table, you can create a filter in two parts.</span></span> <span data-ttu-id="cd675-136">Tout d’abord, définissez des conditions sur la table de cas à l’aide de la boîte de dialogue **Filtre de jeu de données** , puis définissez des conditions sur les lignes imbriquées à l’aide de la boîte de dialogue **Filtre** .</span><span class="sxs-lookup"><span data-stu-id="cd675-136">First, set conditions on the case table by using the **Data Set Filter** dialog box, and then set conditions on the nested rows by using the **Filter** dialog box.</span></span>  
+  
+7.  <span data-ttu-id="cd675-137">Dans la boîte de dialogue **Filtre de jeu de données** , cliquez sur la ligne supérieure dans la grille, sous **Colonne de la structure d’exploration de données**, puis sélectionnez une table ou une colonne dans la liste.</span><span class="sxs-lookup"><span data-stu-id="cd675-137">In the **Data Set Filter** dialog box, click the top row in the grid, under **Mining Structure Column**, and select a table or column from the list.</span></span>  
+  
+     <span data-ttu-id="cd675-138">Si la vue de source de données contient plusieurs tables ou une table imbriquée, vous devez d'abord sélectionner le nom de la table.</span><span class="sxs-lookup"><span data-stu-id="cd675-138">If the data source view contains multiple tables, or a nested table, you must first select the table name.</span></span> <span data-ttu-id="cd675-139">Autrement, vous pouvez sélectionner directement des colonnes de la table de cas.</span><span class="sxs-lookup"><span data-stu-id="cd675-139">Otherwise, you can select columns from the case table directly.</span></span>  
+  
+     <span data-ttu-id="cd675-140">Ajoutez une nouvelle ligne pour chaque colonne que vous souhaitez filtrer.</span><span class="sxs-lookup"><span data-stu-id="cd675-140">Add a new row for each column that you want to filter.</span></span>  
+  
+8.  <span data-ttu-id="cd675-141">Utilisez les colonnes **Opérateur**et **Valeur** pour définir comment la colonne est filtrée.</span><span class="sxs-lookup"><span data-stu-id="cd675-141">Use **Operator**, and **Value** columns to define how the column is filtered.</span></span>  
+  
+     <span data-ttu-id="cd675-142">**Remarque** Tapez les valeurs sans utiliser de guillemets.</span><span class="sxs-lookup"><span data-stu-id="cd675-142">**Note** Type values without using quotation marks.</span></span>  
+  
+9. <span data-ttu-id="cd675-143">Cliquez sur la zone de texte **et/ou** et sélectionnez un opérateur logique pour définir la manière dont les conditions multiples sont combinées.</span><span class="sxs-lookup"><span data-stu-id="cd675-143">Click the **And/Or** text box and select a logical operator to define how multiple conditions are combine.</span></span>  
+  
+10. <span data-ttu-id="cd675-144">Si vous le souhaitez, cliquez sur le bouton Parcourir **(...)** à droite de la zone de texte **valeur** pour ouvrir la boîte de dialogue **filtre** et définir des conditions sur la table imbriquée ou sur les colonnes de table de cas individuelles.</span><span class="sxs-lookup"><span data-stu-id="cd675-144">Optionally, click the browse button **(...)** at the right of the **Value** text box to open the **Filter** dialog box and set conditions on the nested table or on the individual case table columns.</span></span>  
+  
+11. <span data-ttu-id="cd675-145">Vérifiez que les conditions de filtrage complétées sont correctes en affichant le texte dans le volet **Expression** .</span><span class="sxs-lookup"><span data-stu-id="cd675-145">Verify that the completed filter conditions are correct by viewing the text in the **Expression** pane.</span></span>  
+  
+12. [!INCLUDE[clickOK](../../includes/clickok-md.md)]  
+  
+     <span data-ttu-id="cd675-146">La condition de filtre est appliquée à la source de données lorsque vous créez le graphique d'analyse de précision.</span><span class="sxs-lookup"><span data-stu-id="cd675-146">The filter condition is applied to the data source when you create the accuracy chart.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="cd675-147">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="cd675-147">See Also</span></span>  
+ <span data-ttu-id="cd675-148">[Choisir et mapper les données de test du modèle](choose-and-map-model-testing-data.md) </span><span class="sxs-lookup"><span data-stu-id="cd675-148">[Choose and Map Model Testing Data](choose-and-map-model-testing-data.md) </span></span>  
+ <span data-ttu-id="cd675-149">[Utilisation des données de table imbriquée comme entrée pour un graphique d’exactitude](using-nested-table-data-as-an-input-for-an-accuracy-chart.md) </span><span class="sxs-lookup"><span data-stu-id="cd675-149">[Using Nested Table Data as an Input for an Accuracy Chart](using-nested-table-data-as-an-input-for-an-accuracy-chart.md) </span></span>  
+ [<span data-ttu-id="cd675-150">Choisir un type de graphique d'analyse de précision et définir des options de graphique</span><span class="sxs-lookup"><span data-stu-id="cd675-150">Choose an Accuracy Chart Type and Set Chart Options</span></span>](choose-an-accuracy-chart-type-and-set-chart-options.md)  
+  
+  

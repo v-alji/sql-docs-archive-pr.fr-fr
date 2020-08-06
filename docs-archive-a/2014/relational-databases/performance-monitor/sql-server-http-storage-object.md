@@ -1,0 +1,42 @@
+---
+title: SQL Server, HTTP_STORAGE_OBJECT | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: performance
+ms.topic: conceptual
+ms.assetid: ae849f79-c581-42a5-a5cc-0a9ebea171b9
+author: MikeRayMSFT
+ms.author: mikeray
+ms.openlocfilehash: 62cd5b8422213624cfd8609027c477760f682239
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87602084"
+---
+# <a name="sql-server-http_storage_object"></a><span data-ttu-id="9705c-102">SQL Server, HTTP_STORAGE_OBJECT</span><span class="sxs-lookup"><span data-stu-id="9705c-102">SQL Server, HTTP_STORAGE_OBJECT</span></span>
+  <span data-ttu-id="9705c-103">L’objet de performance **SqlServer : HTTP_STORAGE_OBJECT** est constitué de compteurs de performances qui surveillent le compte de stockage Azure.</span><span class="sxs-lookup"><span data-stu-id="9705c-103">The **SQLServer:HTTP_STORAGE_OBJECT** performance object consists of performance counters that monitor Azure Storage account.</span></span> <span data-ttu-id="9705c-104">À l’aide [des fichiers de données SQL Server dans Azure](../databases/sql-server-data-files-in-microsoft-azure.md) , vous pouvez stocker des fichiers de base de données dans des objets BLOB de stockage Azure.</span><span class="sxs-lookup"><span data-stu-id="9705c-104">Using [SQL Server Data Files in Azure](../databases/sql-server-data-files-in-microsoft-azure.md) feature, you can store database files in Azure Storage Blobs.</span></span> <span data-ttu-id="9705c-105">Cet objet de performance traite chaque compte de stockage Azure en tant que lecteur différent.</span><span class="sxs-lookup"><span data-stu-id="9705c-105">This performance object treats each Azure Storage account as a different drive.</span></span>  
+  
+|<span data-ttu-id="9705c-106">Nom de compteur</span><span class="sxs-lookup"><span data-stu-id="9705c-106">Counter Name</span></span>|<span data-ttu-id="9705c-107">Description</span><span class="sxs-lookup"><span data-stu-id="9705c-107">Description</span></span>|  
+|------------------|-----------------|  
+|<span data-ttu-id="9705c-108">**Octets lus/s**</span><span class="sxs-lookup"><span data-stu-id="9705c-108">**Read Bytes/sec**</span></span>|<span data-ttu-id="9705c-109">Quantité de données transférées du stockage HTTP par seconde pendant des opérations de lecture.</span><span class="sxs-lookup"><span data-stu-id="9705c-109">Amount of data being transferred from the HTTP storage per second during read operations.</span></span>|  
+|<span data-ttu-id="9705c-110">**Octets écrits/s**</span><span class="sxs-lookup"><span data-stu-id="9705c-110">**Write Bytes/sec**</span></span>|<span data-ttu-id="9705c-111">Quantité de données transférées du stockage HTTP par seconde pendant des opérations d'écriture.</span><span class="sxs-lookup"><span data-stu-id="9705c-111">Amount of data being transferred from the HTTP storage per second during write operations.</span></span>|  
+|<span data-ttu-id="9705c-112">**Octets totaux/s**</span><span class="sxs-lookup"><span data-stu-id="9705c-112">**Total Bytes/sec**</span></span>|<span data-ttu-id="9705c-113">Quantité de données transférées du stockage HTTP par seconde pendant des opérations de lecture et d'écriture.</span><span class="sxs-lookup"><span data-stu-id="9705c-113">Amount of data being transferred from the HTTP storage per second during read or write operations.</span></span>|  
+|<span data-ttu-id="9705c-114">**Lectures/s**</span><span class="sxs-lookup"><span data-stu-id="9705c-114">**Reads/sec**</span></span>|<span data-ttu-id="9705c-115">Nombre de lectures par seconde sur le stockage HTTP.</span><span class="sxs-lookup"><span data-stu-id="9705c-115">Number of reads per second on the HTTP storage.</span></span>|  
+|<span data-ttu-id="9705c-116">**logiques/s**</span><span class="sxs-lookup"><span data-stu-id="9705c-116">**Writes/sec**</span></span>|<span data-ttu-id="9705c-117">Nombre d'écritures par seconde sur le stockage HTTP.</span><span class="sxs-lookup"><span data-stu-id="9705c-117">Number of writer per second on the HTTP storage.</span></span>|  
+|<span data-ttu-id="9705c-118">**Transferts/s**</span><span class="sxs-lookup"><span data-stu-id="9705c-118">**Transfers/sec**</span></span>|<span data-ttu-id="9705c-119">Nombre d'opérations de lecture et d'écriture par seconde sur le stockage HTTP.</span><span class="sxs-lookup"><span data-stu-id="9705c-119">Number of read and write operations per second on the HTTP storage.</span></span>|  
+|<span data-ttu-id="9705c-120">**Durée octets/lecture**</span><span class="sxs-lookup"><span data-stu-id="9705c-120">**Avg. Bytes/Read**</span></span>|<span data-ttu-id="9705c-121">Nombre moyen d'octets transférés du stockage HTTP par lecture.</span><span class="sxs-lookup"><span data-stu-id="9705c-121">Average number of bytes transferred from the HTTP storage per read.</span></span>|  
+|<span data-ttu-id="9705c-122">**Durée octets/écriture**</span><span class="sxs-lookup"><span data-stu-id="9705c-122">**Avg. Bytes/Write**</span></span>|<span data-ttu-id="9705c-123">Nombre moyen d'octets transférés du stockage HTTP par écriture.</span><span class="sxs-lookup"><span data-stu-id="9705c-123">Average number of bytes transferred from the HTTP storage per write.</span></span>|  
+|<span data-ttu-id="9705c-124">**Durée octets/transfert**</span><span class="sxs-lookup"><span data-stu-id="9705c-124">**Avg. Bytes/Transfer**</span></span>|<span data-ttu-id="9705c-125">Nombre moyen d'octets transférés du stockage HTTP pendant des opérations de lecture ou d'écriture.</span><span class="sxs-lookup"><span data-stu-id="9705c-125">Average number of bytes transferred from the HTTP storage during read or write operations.</span></span>|  
+|<span data-ttu-id="9705c-126">**Nbre moyen microsecondes/lecture**</span><span class="sxs-lookup"><span data-stu-id="9705c-126">**Avg. microsec/Read**</span></span>|<span data-ttu-id="9705c-127">Nombre moyen de microsecondes nécessaires pour chaque lecture à partir du stockage HTTP.</span><span class="sxs-lookup"><span data-stu-id="9705c-127">The average number of microseconds it takes to do each read from the HTTP storage.</span></span>|  
+|<span data-ttu-id="9705c-128">**Nbre moyen microsecondes/écriture**</span><span class="sxs-lookup"><span data-stu-id="9705c-128">**Avg. microsec/Write**</span></span>|<span data-ttu-id="9705c-129">Nombre moyen de microsecondes nécessaires pour chaque écriture sur le stockage HTTP.</span><span class="sxs-lookup"><span data-stu-id="9705c-129">The average number of microseconds it takes to do each write to the HTTP storage.</span></span>|  
+|<span data-ttu-id="9705c-130">**Nbre moyen micros./transfert**</span><span class="sxs-lookup"><span data-stu-id="9705c-130">**Avg. microsec/Transfer**</span></span>|<span data-ttu-id="9705c-131">Nombre moyen de microsecondes nécessaires pour chaque transfert vers le stockage HTTP.</span><span class="sxs-lookup"><span data-stu-id="9705c-131">The average number of microseconds it takes to do each transfer to the HTTP storage.</span></span>|  
+|<span data-ttu-id="9705c-132">**E/S en attente vers le stockage HTTP**</span><span class="sxs-lookup"><span data-stu-id="9705c-132">**Outstanding HTTP Storage I/O**</span></span>|<span data-ttu-id="9705c-133">Nombre total d'E/S en attente vers un stockage HTTP.</span><span class="sxs-lookup"><span data-stu-id="9705c-133">The total number of outstanding I/Os towards a HTTP storage.</span></span>|  
+|<span data-ttu-id="9705c-134">**Nouvelle tentative d’e/s de stockage HTTP/s**</span><span class="sxs-lookup"><span data-stu-id="9705c-134">**HTTP Storage I/O Retry/sec**</span></span>|<span data-ttu-id="9705c-135">Nombre de demandes de nouvelle tentative envoyées au stockage HTTP par seconde.</span><span class="sxs-lookup"><span data-stu-id="9705c-135">Number of retry requests sent to the HTTP storage per second.</span></span>|  
+  
+## <a name="see-also"></a><span data-ttu-id="9705c-136">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="9705c-136">See Also</span></span>  
+ [<span data-ttu-id="9705c-137">Analyser l’utilisation des ressources &#40;Moniteur système&#41;</span><span class="sxs-lookup"><span data-stu-id="9705c-137">Monitor Resource Usage &#40;System Monitor&#41;</span></span>](monitor-resource-usage-system-monitor.md)  
+  
+  

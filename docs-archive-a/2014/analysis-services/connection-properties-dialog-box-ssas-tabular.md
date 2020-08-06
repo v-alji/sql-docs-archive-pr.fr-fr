@@ -1,0 +1,42 @@
+---
+title: Boîte de dialogue Propriétés de connexion (SSAS-tabulaire) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+f1_keywords:
+- sql12.asvs.ssmsimbi.ConnectionProperties.F1
+ms.assetid: 17bae8ae-2ba0-4978-be70-61c687f59d54
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: 2e4b0360d59f43bc932f68a846f239c4873a5aa9
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87602446"
+---
+# <a name="connection-properties-dialog-box-ssas---tabular"></a><span data-ttu-id="2e09e-102">Boîte de dialogue Propriétés de connexion (SSAS - Tabulaire)</span><span class="sxs-lookup"><span data-stu-id="2e09e-102">Connection Properties Dialog Box (SSAS - Tabular)</span></span>
+  <span data-ttu-id="2e09e-103">Utilisez cette page pour consulter ou modifier dans SQL Server Management Studio les propriétés de connexion d'une source de données utilisée par une base de données model tabulaire.</span><span class="sxs-lookup"><span data-stu-id="2e09e-103">Use this page to view or modify in SQL Server Management Studio the connection properties of a data source used by a tabular model database.</span></span>  
+  
+ <span data-ttu-id="2e09e-104">Cette boîte de dialogue fournit des horodateurs et d'autres informations descriptives, ainsi que des propriétés personnalisables qui déterminent les caractéristiques de la connexion.</span><span class="sxs-lookup"><span data-stu-id="2e09e-104">This dialog box provides timestamps and other descriptive information, plus customizable properties that determine characteristics of the connection.</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="2e09e-105">Options</span><span class="sxs-lookup"><span data-stu-id="2e09e-105">Options</span></span>  
+  
+|<span data-ttu-id="2e09e-106">Terme</span><span class="sxs-lookup"><span data-stu-id="2e09e-106">Term</span></span>|<span data-ttu-id="2e09e-107">Définition</span><span class="sxs-lookup"><span data-stu-id="2e09e-107">Definition</span></span>|  
+|----------|----------------|  
+|<span data-ttu-id="2e09e-108">**Nom**</span><span class="sxs-lookup"><span data-stu-id="2e09e-108">**Name**</span></span>|<span data-ttu-id="2e09e-109">Spécifie le nom de la source de données.</span><span class="sxs-lookup"><span data-stu-id="2e09e-109">Specifies the name of the data source.</span></span>|  
+|<span data-ttu-id="2e09e-110">**Identifiant**</span><span class="sxs-lookup"><span data-stu-id="2e09e-110">**ID**</span></span>|<span data-ttu-id="2e09e-111">Affiche l'identificateur de l'objet de source de données.</span><span class="sxs-lookup"><span data-stu-id="2e09e-111">Displays the identifier of the data source object.</span></span>|  
+|<span data-ttu-id="2e09e-112">**Description**</span><span class="sxs-lookup"><span data-stu-id="2e09e-112">**Description**</span></span>|<span data-ttu-id="2e09e-113">Affiche la description de l'objet de source de données.</span><span class="sxs-lookup"><span data-stu-id="2e09e-113">Displays the description of the data source object.</span></span>|  
+|<span data-ttu-id="2e09e-114">**Créer un horodateur**</span><span class="sxs-lookup"><span data-stu-id="2e09e-114">**Create Timestamp**</span></span>|<span data-ttu-id="2e09e-115">Affiche la date et l'heure de création de la base de données.</span><span class="sxs-lookup"><span data-stu-id="2e09e-115">Displays the date and time the database was created.</span></span>|  
+|<span data-ttu-id="2e09e-116">**Dernière mise à jour du schéma**</span><span class="sxs-lookup"><span data-stu-id="2e09e-116">**Last Schema Update**</span></span>|<span data-ttu-id="2e09e-117">Affiche la date et l'heure de la dernière mise à jour des métadonnées de la base de données.</span><span class="sxs-lookup"><span data-stu-id="2e09e-117">Displays the date and time the metadata for the database was last updated.</span></span>|  
+|<span data-ttu-id="2e09e-118">**Chaîne de connexion**</span><span class="sxs-lookup"><span data-stu-id="2e09e-118">**Connection String**</span></span>|<span data-ttu-id="2e09e-119">Affiche la chaîne de connexion utilisée pour se connecter à la source de données qui fournit des données au modèle.</span><span class="sxs-lookup"><span data-stu-id="2e09e-119">Displays the connection string used to connect to the data source that provides data to the model.</span></span>|  
+|<span data-ttu-id="2e09e-120">**Nombre maximal de connexions**</span><span class="sxs-lookup"><span data-stu-id="2e09e-120">**Maximum Number of Connections**</span></span>|<span data-ttu-id="2e09e-121">Spécifie le nombre maximal de connexions clientes à cette base de données.</span><span class="sxs-lookup"><span data-stu-id="2e09e-121">Specifies the maximum number of client connections to this database.</span></span>|  
+|<span data-ttu-id="2e09e-122">**Isolement**</span><span class="sxs-lookup"><span data-stu-id="2e09e-122">**Isolation**</span></span>|<span data-ttu-id="2e09e-123">Les valeurs valides sont ReadCommitted ou Snapshot.</span><span class="sxs-lookup"><span data-stu-id="2e09e-123">Valid values are ReadCommitted or Snapshot.</span></span> <span data-ttu-id="2e09e-124">Pour plus d’informations, consultez [Isolation, élément &#40;ASSL&#41;](https://docs.microsoft.com/bi-reference/assl/properties/isolation-element-assl).</span><span class="sxs-lookup"><span data-stu-id="2e09e-124">For more information, see [Isolation Element &#40;ASSL&#41;](https://docs.microsoft.com/bi-reference/assl/properties/isolation-element-assl).</span></span>|  
+|<span data-ttu-id="2e09e-125">**Délai d’expiration de la requête**</span><span class="sxs-lookup"><span data-stu-id="2e09e-125">**Query Timeout**</span></span>|<span data-ttu-id="2e09e-126">Spécifie le temps (en secondes) après lequel une tentative de récupération des données expire.</span><span class="sxs-lookup"><span data-stu-id="2e09e-126">Specifies the time, in seconds, after which an attempt to retrieve data is timed out.</span></span>|  
+|<span data-ttu-id="2e09e-127">**Fournisseur managé**</span><span class="sxs-lookup"><span data-stu-id="2e09e-127">**Managed Provider**</span></span>|<span data-ttu-id="2e09e-128">Spécifie le nom du fournisseur managé.</span><span class="sxs-lookup"><span data-stu-id="2e09e-128">Specifies the name of the managed provider.</span></span> <span data-ttu-id="2e09e-129">Si la connexion à la source de données utilise un fournisseur OLE DB natif, cette valeur est vide.</span><span class="sxs-lookup"><span data-stu-id="2e09e-129">If the data source connection uses a native OLE DB provider, this value is empty.</span></span>|  
+|<span data-ttu-id="2e09e-130">**Informations d'emprunt d'identité**</span><span class="sxs-lookup"><span data-stu-id="2e09e-130">**Impersonation Info**</span></span>|<span data-ttu-id="2e09e-131">Spécifie le compte d'emprunt d'identité utilisé pour les connexions de base de données lors du traitement ou de l'actualisation des données, les requêtes qui s'exécutent sur une banque de données relationnelle (via DirectQuery), les liaisons hors ligne, les partitions distantes et la synchronisation de la cible vers la source.</span><span class="sxs-lookup"><span data-stu-id="2e09e-131">Specifies the impersonation account used for database connections when processing or refreshing data, queries that run against a relational data store (via DirectQuery), out-of-line bindings, remote partitions, and database synchronization from target to source.</span></span><br /><br /> <span data-ttu-id="2e09e-132">Les valeurs valides incluent le compte de service Analysis Services ou un jeu d'informations d'identification Windows spécifique.</span><span class="sxs-lookup"><span data-stu-id="2e09e-132">Valid values include the Analysis Services service account or a specific set of Windows credentials.</span></span> <span data-ttu-id="2e09e-133">Ne spécifiez pas **Utiliser les infos d'identification de l'utilisateur actuel** ou **Hériter**.</span><span class="sxs-lookup"><span data-stu-id="2e09e-133">Do not specify **Use the credentials of the current user** or **Inherit**.</span></span> <span data-ttu-id="2e09e-134">Ces options d'identification ne sont pas prises en charge pour une base de données model tabulaire.</span><span class="sxs-lookup"><span data-stu-id="2e09e-134">Those credential options are not supported for a tabular model database.</span></span>|  
+  
+  
