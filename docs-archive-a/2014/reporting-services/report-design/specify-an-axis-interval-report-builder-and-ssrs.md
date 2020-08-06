@@ -1,0 +1,62 @@
+---
+title: Spécifier un intervalle d’axe (Générateur de rapports et SSRS) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+ms.assetid: ae46712d-a5bf-44c0-9929-e30ccc1e7e33
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 70b64b824933753a8482360f193ca4ccf71e8d52
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87600518"
+---
+# <a name="specify-an-axis-interval-report-builder-and-ssrs"></a><span data-ttu-id="702db-102">Spécifier un intervalle d'axe (Générateur de rapports et SSRS)</span><span class="sxs-lookup"><span data-stu-id="702db-102">Specify an Axis Interval (Report Builder and SSRS)</span></span>
+  <span data-ttu-id="702db-103">L'intervalle d'axe définit le nombre d'étiquettes et de graduations associées sur un axe.</span><span class="sxs-lookup"><span data-stu-id="702db-103">The axis interval defines the number of labels and accompanying tick marks on an axis.</span></span> <span data-ttu-id="702db-104">Sur l'axe des ordonnées, les intervalles de l'axe fournissent une mesure cohérente des points de données sur le graphique.</span><span class="sxs-lookup"><span data-stu-id="702db-104">On the value axis, axis intervals provide a consistent measure of the data points on the chart.</span></span> <span data-ttu-id="702db-105">Toutefois, sur l'axe des abscisses, cette fonctionnalité peut entraîner l'affichage des catégories sans étiquettes d'axe.</span><span class="sxs-lookup"><span data-stu-id="702db-105">However, on the category axis, this functionality can cause categories to appear without axis labels.</span></span> <span data-ttu-id="702db-106">Vous pouvez spécifier le nombre d’intervalles souhaité dans la propriété Intervalle de l’axe.</span><span class="sxs-lookup"><span data-stu-id="702db-106">You can specify the number of intervals you want in the axis Interval property.</span></span> [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] <span data-ttu-id="702db-107">calcule le nombre d'intervalles au moment de l'exécution en fonction des données contenues dans le jeu de résultats.</span><span class="sxs-lookup"><span data-stu-id="702db-107">calculates the number of intervals at run time, based on the data in the result set.</span></span> <span data-ttu-id="702db-108">Pour plus d’informations sur le calcul des intervalles de l’axe, consultez [Mise en forme des étiquettes des axes sur un graphique &#40;Générateur de rapports et SSRS&#41;](formatting-axis-labels-on-a-chart-report-builder-and-ssrs.md).</span><span class="sxs-lookup"><span data-stu-id="702db-108">For more information about how axis intervals are calculated, see [Formatting Axis Labels on a Chart &#40;Report Builder and SSRS&#41;](formatting-axis-labels-on-a-chart-report-builder-and-ssrs.md).</span></span>  
+  
+ <span data-ttu-id="702db-109">Cette rubrique n'est pas applicable pour les valeurs de date ou d'heure sur l'axe des abscisses.</span><span class="sxs-lookup"><span data-stu-id="702db-109">This topic is not applicable for date or time values on the category axis.</span></span> <span data-ttu-id="702db-110">Par défaut, les valeurs `DateTime` apparaissent sous la forme de jours.</span><span class="sxs-lookup"><span data-stu-id="702db-110">Be default, `DateTime` values appear as days.</span></span> <span data-ttu-id="702db-111">Pour spécifier un intervalle de date ou d'heure différent, tel qu'un mois ou intervalle de temps, vous devez mettre en forme les étiquettes de l'axe et configurer l'axe pour afficher des instances de types `DateTime` au lieu de types `String`.</span><span class="sxs-lookup"><span data-stu-id="702db-111">To specify a different date or time interval, such as a month or time interval, you must format the axis labels and set the axis to display instances of `DateTime` types instead of `String` types.</span></span> <span data-ttu-id="702db-112">En outre, vous devez définir la propriété Intervalle.</span><span class="sxs-lookup"><span data-stu-id="702db-112">In addition, you must set the Interval property.</span></span> <span data-ttu-id="702db-113">Pour plus d’informations, consultez [Mettre en forme les étiquettes des axes en tant que dates ou devises &#40;Générateur de rapports et SSRS&#41;](format-axis-labels-as-dates-or-currencies-report-builder-and-ssrs.md).</span><span class="sxs-lookup"><span data-stu-id="702db-113">For more information, see [Format Axis Labels as Dates or Currencies &#40;Report Builder and SSRS&#41;](format-axis-labels-as-dates-or-currencies-report-builder-and-ssrs.md).</span></span>  
+  
+ <span data-ttu-id="702db-114">Cette rubrique ne s'applique pas aux graphiques à secteurs, en anneau, en entonnoir ni en pyramide, qui n'ont pas d'axes.</span><span class="sxs-lookup"><span data-stu-id="702db-114">This topic does not apply to pie, doughnut, funnel or pyramid charts, which do not have axes.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="702db-115">L'axe des abscisses est généralement l'axe horizontal, ou axe des X.</span><span class="sxs-lookup"><span data-stu-id="702db-115">The category axis is usually the horizontal or x-axis.</span></span> <span data-ttu-id="702db-116">Toutefois, pour les graphiques à barres, l'axe des abscisses est l'axe vertical, ou axe des Y.</span><span class="sxs-lookup"><span data-stu-id="702db-116">However, for bar charts, the category axis is the vertical or y-axis.</span></span>  
+  
+ <span data-ttu-id="702db-117">Un exemple de graphique spécifiant des intervalles d'axe différents est disponible sous la forme d'un exemple de rapport.</span><span class="sxs-lookup"><span data-stu-id="702db-117">An example of a chart specifying different axis intervals is available as a sample report.</span></span> <span data-ttu-id="702db-118">Pour plus d'informations sur le téléchargement de cet exemple de rapport et d'autres rapports, consultez [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)][Exemples de rapports du Générateur de rapports et du Concepteur de rapports](https://go.microsoft.com/fwlink/?LinkId=198283).</span><span class="sxs-lookup"><span data-stu-id="702db-118">For more information about downloading this sample report and others, see [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)][Report Builder and Report Designer sample reports](https://go.microsoft.com/fwlink/?LinkId=198283).</span></span>  
+  
+> [!NOTE]  
+>  [!INCLUDE[ssRBRDDup](../../includes/ssrbrddup-md.md)]  
+  
+### <a name="to-show-all-category-labels-on-the-x-axis"></a><span data-ttu-id="702db-119">Pour afficher toutes les étiquettes de catégories sur l'axe des abscisses</span><span class="sxs-lookup"><span data-stu-id="702db-119">To show all category labels on the x-axis</span></span>  
+  
+1.  <span data-ttu-id="702db-120">Cliquez avec le bouton droit sur l'axe des abscisses, puis cliquez sur **Propriétés de l'axe**.</span><span class="sxs-lookup"><span data-stu-id="702db-120">Right-click the category axis and click **Axis Properties**.</span></span> <span data-ttu-id="702db-121">La boîte de dialogue **Propriétés de l'axe** s'ouvre.</span><span class="sxs-lookup"><span data-stu-id="702db-121">The **Axis Properties** dialog box opens.</span></span>  
+  
+2.  <span data-ttu-id="702db-122">Dans **options**de l’axe, affectez à la valeur `Interval` **1**.</span><span class="sxs-lookup"><span data-stu-id="702db-122">In **Axis Options**, set `Interval` to **1**.</span></span> <span data-ttu-id="702db-123">Chaque étiquette de groupe de catégories est affichée.</span><span class="sxs-lookup"><span data-stu-id="702db-123">Every category group label is displayed.</span></span> <span data-ttu-id="702db-124">Si vous souhaitez afficher une étiquette de groupe de catégories sur deux sur l'axe des abscisses, tapez **2**.</span><span class="sxs-lookup"><span data-stu-id="702db-124">If you want to show every other category group label on the x-axis, type **2**.</span></span>  
+  
+3.  [!INCLUDE[clickOK](../../includes/clickok-md.md)]  
+  
+    > [!NOTE]  
+    >  <span data-ttu-id="702db-125">Lorsqu'un intervalle d'axe est défini, tout l'étiquetage automatique est désactivé.</span><span class="sxs-lookup"><span data-stu-id="702db-125">When an axis interval is set, all automatic labeling is disabled.</span></span> <span data-ttu-id="702db-126">Si vous spécifiez une valeur pour l'intervalle d'axe, vous pouvez rencontrer un comportement d'étiquetage imprévisible en fonction du nombre de catégories sur l'axe des abscisses.</span><span class="sxs-lookup"><span data-stu-id="702db-126">If you specify a value for the axis interval, you may experience unpredictable labeling behavior depending on how many categories are on the category axis.</span></span>  
+  
+### <a name="to-enable-a-variable-interval-calculation-on-an-axis"></a><span data-ttu-id="702db-127">Pour activer un calcul d'intervalle variable sur un axe</span><span class="sxs-lookup"><span data-stu-id="702db-127">To enable a variable interval calculation on an axis</span></span>  
+  
+1.  <span data-ttu-id="702db-128">Cliquez avec le bouton droit sur l’axe de graphique à modifier, puis cliquez sur **Propriétés de l’axe**.</span><span class="sxs-lookup"><span data-stu-id="702db-128">Right-click the chart axis that you want to change, and then click **Axis Properties**.</span></span> <span data-ttu-id="702db-129">La boîte de dialogue **Propriétés de l'axe** s'ouvre.</span><span class="sxs-lookup"><span data-stu-id="702db-129">The **Axis Properties** dialog box opens.</span></span>  
+  
+2.  <span data-ttu-id="702db-130">Dans **options**de l’axe, définissez `Interval` sur **auto**. Le graphique affiche le nombre optimal d’étiquettes de catégorie qui peuvent s’ajuster le long de l’axe.</span><span class="sxs-lookup"><span data-stu-id="702db-130">In **Axis Options**, set `Interval` to **Auto**. The chart will display the optimal number of category labels that can fit along the axis.</span></span>  
+  
+3.  [!INCLUDE[clickOK](../../includes/clickok-md.md)]  
+  
+## <a name="see-also"></a><span data-ttu-id="702db-131">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="702db-131">See Also</span></span>  
+ <span data-ttu-id="702db-132">[Mise en forme d’un graphique &#40;Générateur de rapports et SSRS&#41;](formatting-a-chart-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="702db-132">[Formatting a Chart &#40;Report Builder and SSRS&#41;](formatting-a-chart-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="702db-133">[Mise en forme des points de données sur un graphique &#40;Générateur de rapports et SSRS&#41;](formatting-data-points-on-a-chart-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="702db-133">[Formatting Data Points on a Chart &#40;Report Builder and SSRS&#41;](formatting-data-points-on-a-chart-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="702db-134">[Trier des données dans une région de données &#40;Générateur de rapports et SSRS&#41;](sort-data-in-a-data-region-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="702db-134">[Sort Data in a Data Region &#40;Report Builder and SSRS&#41;](sort-data-in-a-data-region-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="702db-135">[Boîte de dialogue Propriétés de l’axe, options de l’axe &#40;Générateur de rapports et SSRS&#41;](../axis-properties-dialog-box-axis-options-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="702db-135">[Axis Properties Dialog Box, Axis Options &#40;Report Builder and SSRS&#41;](../axis-properties-dialog-box-axis-options-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="702db-136">[Spécifier une échelle logarithmique &#40;Générateur de rapports et SSRS&#41;](specify-a-logarithmic-scale-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="702db-136">[Specify a Logarithmic Scale &#40;Report Builder and SSRS&#41;](specify-a-logarithmic-scale-report-builder-and-ssrs.md) </span></span>  
+ [<span data-ttu-id="702db-137">Tracer des données sur un axe secondaire &#40;Générateur de rapports et SSRS&#41;</span><span class="sxs-lookup"><span data-stu-id="702db-137">Plot Data on a Secondary Axis &#40;Report Builder and SSRS&#41;</span></span>](plot-data-on-a-secondary-axis-report-builder-and-ssrs.md)  
+  
+  

@@ -1,0 +1,50 @@
+---
+title: Accès aux fichiers utilisés par les packages | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: integration-services
+ms.topic: conceptual
+helpviewer_keywords:
+- SSIS packages, security
+- packages [Integration Services], security
+- configuration files [Integration Services]
+- checkpoint files
+- Integration Services packages, security
+- logs [Integration Services], security
+- files [Integration Services], security
+- SQL Server Integration Services packages, security
+ms.assetid: 2e3ddea9-5289-4289-a70e-11c018f34977
+author: chugugrace
+ms.author: chugu
+ms.openlocfilehash: 8db9511c91c9f229b7002f5b16cf077910a4ccf0
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87602278"
+---
+# <a name="access-to-files-used-by-packages"></a><span data-ttu-id="9789d-102">Accéder aux fichiers utilisés par des packages</span><span class="sxs-lookup"><span data-stu-id="9789d-102">Access to Files Used by Packages</span></span>
+  <span data-ttu-id="9789d-103">Le niveau de protection de package ne protège pas les fichiers stockés en dehors du package.</span><span class="sxs-lookup"><span data-stu-id="9789d-103">The package protection level does not protect files that are stored outside the package.</span></span> <span data-ttu-id="9789d-104">Il s'agit des fichiers suivants :</span><span class="sxs-lookup"><span data-stu-id="9789d-104">These files include the following:</span></span>  
+  
+-   <span data-ttu-id="9789d-105">Fichiers de configuration</span><span class="sxs-lookup"><span data-stu-id="9789d-105">Configuration files</span></span>  
+  
+-   <span data-ttu-id="9789d-106">fichiers de point de contrôle</span><span class="sxs-lookup"><span data-stu-id="9789d-106">Checkpoint files</span></span>  
+  
+-   <span data-ttu-id="9789d-107">Fichiers journaux</span><span class="sxs-lookup"><span data-stu-id="9789d-107">Log files</span></span>  
+  
+ <span data-ttu-id="9789d-108">Ces fichiers doivent être protégés séparément, notamment s'ils contiennent des informations sensibles.</span><span class="sxs-lookup"><span data-stu-id="9789d-108">These files must be protected separately, especially if they include sensitive information.</span></span>  
+  
+## <a name="configuration-files"></a><span data-ttu-id="9789d-109">Fichiers de configuration</span><span class="sxs-lookup"><span data-stu-id="9789d-109">Configuration Files</span></span>  
+ <span data-ttu-id="9789d-110">Si une configuration contient des informations sensibles, telles que des informations de connexion et de mot de passe, vous devez penser à enregistrer la configuration dans [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], ou à utiliser une liste de contrôle d’accès pour limiter l’accès à l’emplacement ou au dossier de stockage des fichiers et pour autoriser l’accès uniquement à certains comptes.</span><span class="sxs-lookup"><span data-stu-id="9789d-110">If you have sensitive information in a configuration, such as login and password information, you should consider saving the configuration to [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], or use an access control list (ACL) to restrict access to the location or folder where you store the files and allow access only to certain accounts.</span></span> <span data-ttu-id="9789d-111">En règle générale, vous accordez l'accès aux comptes que vous autorisez à exécuter des packages et à ceux qui gèrent et résolvent les problèmes des packages, ce qui peut comprendre l'inspection du contenu des fichiers de configuration, des fichiers de point de contrôle et des fichiers journaux.</span><span class="sxs-lookup"><span data-stu-id="9789d-111">Typically, you would grant access to the accounts that you permit to run packages, and to the accounts that manage and troubleshoot packages, which may include reviewing the contents of configuration, checkpoint, and log files.</span></span> [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] <span data-ttu-id="9789d-112">fournit le stockage le plus sécurisé, car il offre une protection aux niveaux du serveur et des bases de données.</span><span class="sxs-lookup"><span data-stu-id="9789d-112">provides the more secure storage because it offers protection at the server and database levels.</span></span> <span data-ttu-id="9789d-113">Pour enregistrer des configurations dans [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], vous utilisez le type de configuration [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="9789d-113">To save configurations to [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], you use the [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] configuration type.</span></span> <span data-ttu-id="9789d-114">Pour enregistrer dans le système de fichiers, vous utilisez le type de configuration XML.</span><span class="sxs-lookup"><span data-stu-id="9789d-114">To save to the file system, you use the XML configuration type.</span></span>  
+  
+ <span data-ttu-id="9789d-115">Pour plus d’informations, consultez [Configurations de package](../../2014/integration-services/package-configurations.md), [Créer des configurations de package](../../2014/integration-services/create-package-configurations.md)et [Considérations sur la sécurité pour une installation SQL Server](../../2014/sql-server/install/security-considerations-for-a-sql-server-installation.md).</span><span class="sxs-lookup"><span data-stu-id="9789d-115">For more information, see [Package Configurations](../../2014/integration-services/package-configurations.md), [Create Package Configurations](../../2014/integration-services/create-package-configurations.md), and [Security Considerations for a SQL Server Installation](../../2014/sql-server/install/security-considerations-for-a-sql-server-installation.md).</span></span>  
+  
+## <a name="checkpoint-files"></a><span data-ttu-id="9789d-116">fichiers de point de contrôle</span><span class="sxs-lookup"><span data-stu-id="9789d-116">Checkpoint Files</span></span>  
+ <span data-ttu-id="9789d-117">De même, si le fichier de point de contrôle utilisé par le package contient des informations sensibles, vous devez utiliser une liste de contrôle d'accès pour sécuriser l'emplacement ou le dossier de stockage du fichier.</span><span class="sxs-lookup"><span data-stu-id="9789d-117">Similarly, if the checkpoint file that the package uses includes sensitive information, you should use an access control list (ACL) to secure the location or folder where you store the file.</span></span> <span data-ttu-id="9789d-118">Les fichiers de points de contrôle contiennent des informations d'état relatives à la progression du package, ainsi que les valeurs actuelles de certaines variables.</span><span class="sxs-lookup"><span data-stu-id="9789d-118">Checkpoint files save current state information on the progress of the package as well as the current values of variables.</span></span> <span data-ttu-id="9789d-119">Par exemple, le package peut inclure une variable personnalisée qui contient un numéro de téléphone.</span><span class="sxs-lookup"><span data-stu-id="9789d-119">For example, the package may include a custom variable that contains a telephone number.</span></span> <span data-ttu-id="9789d-120">Pour plus d'informations, consultez [Redémarrer des packages à l'aide de points de contrôle](packages/restart-packages-by-using-checkpoints.md).</span><span class="sxs-lookup"><span data-stu-id="9789d-120">For more information, see [Restart Packages by Using Checkpoints](packages/restart-packages-by-using-checkpoints.md).</span></span>  
+  
+## <a name="log-files"></a><span data-ttu-id="9789d-121">Fichiers journaux</span><span class="sxs-lookup"><span data-stu-id="9789d-121">Log Files</span></span>  
+ <span data-ttu-id="9789d-122">Les entrées de journaux qui sont écrites dans le système de fichiers doivent également être sécurisées au moyen d'une liste de contrôle d'accès.</span><span class="sxs-lookup"><span data-stu-id="9789d-122">Log entries that are written to the file system should also be secured using an access control list (ACL).</span></span> <span data-ttu-id="9789d-123">Elles peuvent aussi être stockées dans des tables [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] et protégées par la sécurité [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="9789d-123">Log entries can also be stored in [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] tables and protected by [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] security.</span></span> <span data-ttu-id="9789d-124">Les entrées de journaux peuvent inclure des informations sensibles. Par exemple, si le package contient une tâche d'exécution SQL qui construit une instruction SQL faisant référence à un numéro de téléphone, l'entrée de journal de l'instruction SQL inclut le numéro de téléphone.</span><span class="sxs-lookup"><span data-stu-id="9789d-124">Log entries may include sensitive information, For example, if the package contains an Execute SQL task that constructs an SQL statement that refers to a telephone number, the log entry for the SQL statement includes the telephone number.</span></span> <span data-ttu-id="9789d-125">L'instruction SQL peut également révéler des informations confidentielles relatives à des noms de tables et de colonnes dans des bases de données.</span><span class="sxs-lookup"><span data-stu-id="9789d-125">The SQL statement may also reveal private information about table and column names in databases.</span></span> <span data-ttu-id="9789d-126">Pour plus d’informations, consultez [Journalisation Integration Services &#40;SSIS&#41;](performance/integration-services-ssis-logging.md).</span><span class="sxs-lookup"><span data-stu-id="9789d-126">For more information, see [Integration Services &#40;SSIS&#41; Logging](performance/integration-services-ssis-logging.md).</span></span>  
+  
+  
