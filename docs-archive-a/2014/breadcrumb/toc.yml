@@ -1,0 +1,440 @@
+# /previous-versions/sql/2014/breadcrumb/toc.yml
+- name: Docs
+  tocHref: /
+  topicHref: /
+  items:
+    - name: Versions précédentes
+      href: /previous-versions/
+      items:
+        - name: SQL
+          tocHref: /previous-versions/sql/
+          topicHref: /previous-versions/sql/index
+          items:
+            - name: "SQL Server\_2014"
+              tocHref: /previous-versions/sql/2014/
+              topicHref: /previous-versions/sql/2014/index
+              items:
+                - name: Mise en route
+                  tocHref: /previous-versions/sql/2014/getting-started/
+                  topicHref: /previous-versions/sql/2014/getting-started/getting-started-sql-server-2014
+                - name: Moteur de base de données
+                  tocHref: /previous-versions/sql/2014/database-engine/
+                  topicHref: /previous-versions/sql/2014/database-engine/sql-server-database-engine-overview
+                  items:
+                    - name: Configurer
+                      tocHref: /previous-versions/sql/2014/database-engine/configure-windows/
+                      topicHref: /previous-versions/sql/2014/database-engine/configure-windows/configure-database-engine-instances-sql-server
+                    - name: Classements
+                      tocHref: /previous-versions/sql/2014/relational-databases/collations/
+                      topicHref: /previous-versions/sql/2014/relational-databases/collations/collation-and-unicode-support
+                    - name: Création de scripts
+                      tocHref: /previous-versions/sql/2014/relational-databases/scripting/
+                      topicHref: /previous-versions/sql/2014/relational-databases/scripting/database-engine-scripting
+                      items:
+                        - name: PowerShell
+                          tocHref: /previous-versions/sql/2014/powershell/
+                          topicHref: /previous-versions/sql/2014/powershell/sql-server-powershell
+                    - name: Plans de maintenance
+                      tocHref: /previous-versions/sql/2014/relational-databases/maintenance-plans/
+                      topicHref: /previous-versions/sql/2014/relational-databases/maintenance-plans/maintenance-plans
+                    - name: gouverneur de ressources
+                      tocHref: /previous-versions/sql/2014/relational-databases/resource-governor/
+                      topicHref: /previous-versions/sql/2014/relational-databases/resource-governor/resource-governor
+                    - name: Messagerie de base de données
+                      tocHref: /previous-versions/sql/2014/relational-databases/database-mail/
+                      topicHref: /previous-versions/sql/2014/relational-databases/database-mail/database-mail
+                    - name: Événements étendus
+                      tocHref: /previous-versions/sql/2014/relational-databases/extended-events/
+                      topicHref: /previous-versions/sql/2014/relational-databases/extended-events/extended-events
+                    - name: Trace SQL
+                      tocHref: /previous-versions/sql/2014/relational-databases/sql-trace/
+                      topicHref: /previous-versions/sql/2014/relational-databases/sql-trace/sql-trace
+                    - name: Profileur
+                      tocHref: /previous-versions/sql/2014/tools/sql-server-profiler/
+                      topicHref: /previous-versions/sql/2014/tools/sql-server-profiler/sql-server-profiler
+                    - name: Suivi des modifications
+                      tocHref: /previous-versions/sql/2014/relational-databases/track-changes/
+                      topicHref: /previous-versions/sql/2014/relational-databases/track-changes/track-data-changes-sql-server
+                    - name: Journaux d’activité
+                      tocHref: /previous-versions/sql/2014/relational-databases/logs/
+                      topicHref: /previous-versions/sql/2014/relational-databases/logs/log-file-viewer
+                    - name: Performances
+                      tocHref: /previous-versions/sql/2014/relational-databases/performance/
+                      topicHref: /previous-versions/sql/2014/relational-databases/performance/monitor-and-tune-for-performance
+                    - name: SQLXML
+                      tocHref: /previous-versions/sql/2014/relational-databases/sqlxml/
+                      topicHref: /previous-versions/sql/2014/relational-databases/sqlxml/sqlxml-4-0-programming-concepts
+                    - name: Programmation de procédures stockées étendues
+                      tocHref: /previous-versions/sql/2014/relational-databases/extended-stored-procedures-programming/
+                      topicHref: /previous-versions/sql/2014/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming
+                    - name: Messages d’erreur d’Express LocalDB
+                      tocHref: /previous-versions/sql/2014/relational-databases/express-localdb-error-messages/
+                      topicHref: /previous-versions/sql/2014/relational-databases/express-localdb-error-messages/sql-server-express-localdb-reference-error-messages
+                    - name: API d’instance d’Express LocalDB
+                      tocHref: /previous-versions/sql/2014/relational-databases/express-localdb-instance-apis/
+                      topicHref: /previous-versions/sql/2014/relational-databases/express-localdb-instance-apis/sql-server-express-localdb-reference-instance-apis
+                    - name: SMO
+                      tocHref: /previous-versions/sql/2014/relational-databases/server-management-objects-smo/
+                      topicHref: /previous-versions/sql/2014/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide
+                    - name: Fournisseur WMI
+                      tocHref: /previous-versions/sql/2014/relational-databases/wmi-provider-configuration/
+                      topicHref: /previous-versions/sql/2014/relational-databases/wmi-provider-configuration/wmi-provider-for-configuration-management
+                    - name: SSMS
+                      tocHref: /previous-versions/sql/2014/ssms/
+                      topicHref: /previous-versions/sql/2014/ssms/sql-server-management-studio-ssms
+                      items:
+                        - name: Visual Database Tools
+                          tocHref: /previous-versions/sql/2014/ssms/visual-db-tools/
+                          topicHref: /previous-versions/sql/2014/ssms/visual-db-tools/visual-database-tools
+                        - name: Menu Aide
+                          tocHref: /previous-versions/sql/2014/ssms/menu-help/
+                          topicHref: /previous-versions/sql/2014/ssms/menu-help/sql-server-management-studio-menu-help
+                        - name: Agent
+                          tocHref: /previous-versions/sql/2014/ssms/agent/
+                          topicHref: /previous-versions/sql/2014/ssms/agent/sql-server-agent
+                    - name: Gérer
+                      tocHref: /previous-versions/sql/2014/relational-databases/manage/
+                      topicHref: /previous-versions/sql/2014/relational-databases/manage/sql-server-utility-features-and-tasks
+                    - name: Gestion basée sur des stratégies
+                      tocHref: /previous-versions/sql/2014/relational-databases/policy-based-management/
+                      topicHref: /previous-versions/sql/2014/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management
+                    - name: Inscrire des serveurs
+                      tocHref: /previous-versions/sql/2014/ssms/register-servers/
+                      topicHref: /previous-versions/sql/2014/ssms/register-servers/register-servers
+                    - name: Distributed Replay
+                      tocHref: /previous-versions/sql/2014/tools/distributed-replay/
+                      topicHref: /previous-versions/sql/2014/tools/distributed-replay/sql-server-distributed-replay
+                    - name: Collecte de données
+                      tocHref: /previous-versions/sql/2014/relational-databases/data-collection/
+                      topicHref: /previous-versions/sql/2014/relational-databases/data-collection/data-collection
+                    - name: Analyseur de performances
+                      tocHref: /previous-versions/sql/2014/relational-databases/performance-monitor/
+                      topicHref: /previous-versions/sql/2014/relational-databases/performance-monitor/monitor-resource-usage-system-monitor
+                    - name: Clusters de basculement
+                      tocHref: /previous-versions/sql/2014/sql-server/failover-clusters/
+                      topicHref: /previous-versions/sql/2014/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server
+                    - name: Groupes de disponibilité Always On
+                      tocHref: /previous-versions/sql/2014/database-engine/availability-groups/windows/
+                      topicHref: /previous-versions/sql/2014/database-engine/availability-groups/windows/always-on-availability-groups-sql-server
+                    - name: Mise en miroir de bases de données
+                      tocHref: /previous-versions/sql/2014/database-engine/database-mirroring/
+                      topicHref: /previous-versions/sql/2014/database-engine/database-mirroring/the-database-mirroring-endpoint-sql-server
+                    - name: Copie des journaux de transactions
+                      tocHref: /previous-versions/sql/2014/database-engine/log-shipping/
+                      topicHref: /previous-versions/sql/2014/database-engine/log-shipping/about-log-shipping-sql-server
+                    - name: Sécurité
+                      tocHref: /previous-versions/sql/2014/relational-databases/security/
+                      topicHref: /previous-versions/sql/2014/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database
+                    - name: Informations de référence sur l’utilitaire
+                      tocHref: /previous-versions/sql/2014/tools/
+                      topicHref: /previous-versions/sql/2014/tools/command-prompt-utility-reference-database-engine
+                      items:
+                        - name: dta
+                          tocHref: /previous-versions/sql/2014/tools/dta/
+                          topicHref: /previous-versions/sql/2014/tools/dta/dta-utility
+                        - name: ssbdiagnose
+                          tocHref: /previous-versions/sql/2014/tools/ssbdiagnose/
+                          topicHref: /previous-versions/sql/2014/tools/ssbdiagnose/ssbdiagnose-utility-service-broker
+                    - name: Guide de référence des erreurs et des événements
+                      tocHref: /previous-versions/sql/2014/relational-databases/errors-events/
+                      topicHref: /previous-versions/sql/2014/relational-databases/errors-events/errors-and-events-reference-database-engine
+                      items:
+                        - name: Classes d'événements
+                          tocHref: /previous-versions/sql/2014/relational-databases/event-classes/
+                          topicHref: /previous-versions/sql/2014/relational-databases/event-classes/sql-server-event-class-reference
+                - name: Analysis Services
+                  tocHref: /previous-versions/sql/2014/analysis-services/
+                  topicHref: /previous-versions/sql/2014/analysis-services/analysis-services
+                  items:
+                    - name: Modèles tabulaires
+                      tocHref: /previous-versions/sql/2014/analysis-services/tabular-models/
+                      topicHref: /previous-versions/sql/2014/analysis-services/tabular-models/tabular-models-ssas
+                    - name: Modèles multidimensionnels
+                      tocHref: /previous-versions/sql/2014/analysis-services/multidimensional-models/
+                      topicHref: /previous-versions/sql/2014/analysis-services/multidimensional-models/multidimensional-models-ssas
+                      items:
+                        - name: MDX
+                          tocHref: /previous-versions/sql/2014/analysis-services/multidimensional-models/mdx/
+                          topicHref: /previous-versions/sql/2014/analysis-services/multidimensional-models/mdx/multidimensional-model-data-access-analysis-services-multidimensional-data
+                    - name: Exploration de données
+                      tocHref: /previous-versions/sql/2014/analysis-services/data-mining/
+                      topicHref: /previous-versions/sql/2014/analysis-services/data-mining/data-mining-ssas
+                    - name: Assistants Interface utilisateur multidimensionnelle
+                      tocHref: /previous-versions/sql/2014/analysis-services/ui-wizards-multidimensional/
+                      topicHref: /previous-versions/sql/2014/analysis-services/ui-wizards-multidimensional/ui-wizards-multidimensional
+                    - name: Boîtes de dialogue des concepteurs d’interface utilisateur multidimensionnelle
+                      tocHref: /previous-versions/sql/2014/analysis-services/ui-designers-dialog-boxes-multidimensional/
+                      topicHref: /previous-versions/sql/2014/analysis-services/ui-designers-dialog-boxes-multidimensional/ui-designers-dialog-boxes-multidimensional
+                    - name: Boîtes de dialogue des concepteurs d’interface utilisateur tabulaire
+                      tocHref: /previous-versions/sql/2014/analysis-services/ui-designers-dialog-boxes-tabular/
+                      topicHref: /previous-versions/sql/2014/analysis-services/ui-designers-dialog-boxes-tabular/ui-designers-dialog-boxes-tabular
+                    - name: Boîtes de dialogue des concepteurs d’interface utilisateur d’exploration de données
+                      tocHref: /previous-versions/sql/2014/analysis-services/ui-designers-dialog-boxes-data-mining/
+                      topicHref: /previous-versions/sql/2014/analysis-services/ui-designers-dialog-boxes-data-mining/ui-designers-dialog-boxes-data-mining
+                    - name: Assistants Interface utilisateur d’exploration de données
+                      tocHref: /previous-versions/sql/2014/analysis-services/ui-wizards-data-mining/
+                      topicHref: /previous-versions/sql/2014/analysis-services/ui-wizards-data-mining/ui-wizards-data-mining
+                - name: Integration Services
+                  tocHref: /previous-versions/sql/2014/integration-services/
+                  topicHref: /previous-versions/sql/2014/integration-services/sql-server-integration-services
+                  items:
+                    - name: Flux de contrôle
+                      tocHref: /previous-versions/sql/2014/integration-services/control-flow/
+                      topicHref: /previous-versions/sql/2014/integration-services/control-flow/control-flow
+                    - name: Data Flow
+                      tocHref: /previous-versions/sql/2014/integration-services/data-flow/
+                      topicHref: /previous-versions/sql/2014/integration-services/data-flow/data-flow
+                      items:
+                        - name: Transformations
+                          tocHref: /previous-versions/sql/2014/integration-services/data-flow/transformations/
+                          topicHref: /previous-versions/sql/2014/integration-services/data-flow/transformations/integration-services-transformations
+                    - name: Capture de données modifiées
+                      tocHref: /previous-versions/sql/2014/integration-services/change-data-capture/
+                      topicHref: /previous-versions/sql/2014/integration-services/change-data-capture/change-data-capture-ssis
+                    - name: Importation et exportation de données
+                      tocHref: /previous-versions/sql/2014/integration-services/import-export-data/
+                      topicHref: /previous-versions/sql/2014/integration-services/import-export-data/import-and-export-data-with-the-sql-server-import-and-export-wizard
+                    - name: Dépannage
+                      tocHref: /previous-versions/sql/2014/integration-services/troubleshooting/
+                      topicHref: /previous-versions/sql/2014/integration-services/troubleshooting/troubleshooting-tools-for-package-development
+                    - name: Gestionnaire de connexions
+                      tocHref: /previous-versions/sql/2014/integration-services/connection-manager/
+                      topicHref: /previous-versions/sql/2014/integration-services/connection-manager/integration-services-ssis-connections
+                    - name: Expressions
+                      tocHref: /previous-versions/sql/2014/integration-services/expressions/
+                      topicHref: /previous-versions/sql/2014/integration-services/expressions/integration-services-ssis-expressions
+                    - name: Service
+                      tocHref: /previous-versions/sql/2014/integration-services/service/
+                      topicHref: /previous-versions/sql/2014/integration-services/service/integration-services-service-ssis-service
+                    - name: Serveur et catalogue
+                      tocHref: /previous-versions/sql/2014/integration-services/catalog/
+                      topicHref: /previous-versions/sql/2014/integration-services/catalog/integration-services-ssis-server-and-catalog
+                    - name: .
+                      tocHref: /previous-versions/sql/2014/integration-services/packages/
+                      topicHref: /previous-versions/sql/2014/integration-services/packages/deploy-integration-services-ssis-projects-and-packages
+                    - name: Superviser
+                      tocHref: /previous-versions/sql/2014/integration-services/performance/
+                      topicHref: /previous-versions/sql/2014/integration-services/performance/monitor-running-packages-and-other-operations
+                    - name: Sécurité
+                      tocHref: /previous-versions/sql/2014/integration-services/security/
+                      topicHref: /previous-versions/sql/2014/integration-services/security/security-overview-integration-services
+                    - name: Étendre des packages avec des scripts
+                      tocHref: /previous-versions/sql/2014/integration-services/extending-packages-scripting/
+                      topicHref: /previous-versions/sql/2014/integration-services/extending-packages-scripting/extending-packages-with-scripting
+                - name: Data Quality Services
+                  tocHref: /previous-versions/sql/2014/data-quality-services/
+                  topicHref: /previous-versions/sql/2014/data-quality-services/data-quality-services
+                - name: Fonctionnalités des bases de données relationnelles
+                  tocHref: /previous-versions/sql/2014/relational-databases/
+                  topicHref: /previous-versions/sql/2014/relational-databases/database-features
+                  items:
+                    - name: Bases de données
+                      tocHref: /previous-versions/sql/2014/relational-databases/databases/
+                      topicHref: /previous-versions/sql/2014/relational-databases/databases/databases
+                    - name: Tables
+                      tocHref: /previous-versions/sql/2014/relational-databases/tables/
+                      topicHref: /previous-versions/sql/2014/relational-databases/tables/tables
+                    - name: OLTP en mémoire
+                      tocHref: /previous-versions/sql/2014/relational-databases/in-memory-oltp/
+                      topicHref: /previous-versions/sql/2014/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization
+                    - name: Index
+                      tocHref: /previous-versions/sql/2014/relational-databases/indexes/
+                      topicHref: /previous-versions/sql/2014/relational-databases/indexes/indexes
+                    - name: Partitions
+                      tocHref: /previous-versions/sql/2014/relational-databases/partitions/
+                      topicHref: /previous-versions/sql/2014/relational-databases/partitions/partitioned-tables-and-indexes
+                    - name: Les vues
+                      tocHref: /previous-versions/sql/2014/relational-databases/views/
+                      topicHref: /previous-versions/sql/2014/relational-databases/views/views
+                    - name: Procédures stockées et OLE
+                      tocHref: /previous-versions/sql/2014/relational-databases/stored-procedures/
+                      topicHref: /previous-versions/sql/2014/relational-databases/stored-procedures/stored-procedures-database-engine
+                    - name: Recherche
+                      tocHref: /previous-versions/sql/2014/relational-databases/search/
+                      topicHref: /previous-versions/sql/2014/relational-databases/search/full-text-search
+                    - name: Fonctions définies par l'utilisateur
+                      tocHref: /previous-versions/sql/2014/relational-databases/user-defined-functions/
+                      topicHref: /previous-versions/sql/2014/relational-databases/user-defined-functions/user-defined-functions
+                    - name: Statistiques
+                      tocHref: /previous-versions/sql/2014/relational-databases/statistics/
+                      topicHref: /previous-versions/sql/2014/relational-databases/statistics/statistics
+                    - name: Déclencheurs
+                      tocHref: /previous-versions/sql/2014/relational-databases/triggers/
+                      topicHref: /previous-versions/sql/2014/relational-databases/triggers/ddl-triggers
+                    - name: XML
+                      tocHref: /previous-versions/sql/2014/relational-databases/xml/
+                      topicHref: /previous-versions/sql/2014/relational-databases/xml/xml-data-sql-server
+                    - name: spatial
+                      tocHref: /previous-versions/sql/2014/relational-databases/spatial/
+                      topicHref: /previous-versions/sql/2014/relational-databases/spatial/spatial-data-sql-server
+                    - name: Objet blob
+                      tocHref: /previous-versions/sql/2014/relational-databases/blob/
+                      topicHref: /previous-versions/sql/2014/relational-databases/blob/binary-large-object-blob-data-sql-server
+                    - name: Applications de la couche Données
+                      tocHref: /previous-versions/sql/2014/relational-databases/data-tier-applications/
+                      topicHref: /previous-versions/sql/2014/relational-databases/data-tier-applications/data-tier-applications
+                    - name: Sauvegarde et restauration
+                      tocHref: /previous-versions/sql/2014/relational-databases/backup-restore/
+                      topicHref: /previous-versions/sql/2014/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases
+                    - name: Importation et exportation en bloc
+                      tocHref: /previous-versions/sql/2014/relational-databases/import-export/
+                      topicHref: /previous-versions/sql/2014/relational-databases/import-export/bulk-import-and-export-of-data-sql-server
+                    - name: Data Compression
+                      tocHref: /previous-versions/sql/2014/relational-databases/data-compression/
+                      topicHref: /previous-versions/sql/2014/relational-databases/data-compression/data-compression
+                    - name: Notifications d'événements
+                      tocHref: /previous-versions/sql/2014/relational-databases/service-broker/
+                      topicHref: /previous-versions/sql/2014/relational-databases/service-broker/event-notifications
+                    - name: Intégration du CLR
+                      tocHref: /previous-versions/sql/2014/relational-databases/clr-integration/
+                      topicHref: /previous-versions/sql/2014/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts
+                    - name: Réplication
+                      tocHref: /previous-versions/sql/2014/relational-databases/replication/
+                      topicHref: /previous-versions/sql/2014/relational-databases/replication/sql-server-replication
+                      items:
+                        - name: Administration
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/administration/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/administration/frequently-asked-questions-for-replication-administrators
+                        - name: Agents
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/agents/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/agents/replication-agents-overview
+                        - name: Guide du développeur - Réplication
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/concepts/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/concepts/replication-developer-documentation
+                        - name: Erreurs et événements
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/errors-events/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/errors-events/errors-events-replication
+                        - name: Fusionner
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/merge/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/merge/merge-replication
+                        - name: Superviser
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/monitor/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/monitoring-replication
+                        - name: Non-SQL
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/non-sql/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/non-sql/heterogeneous-database-replication
+                        - name: Publish
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/publish/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/publish/publish-data-and-database-objects
+                        - name: Transactionnelle
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/transactional/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/transactional/transactional-replication
+                        - name: Sécurité
+                          tocHref: /previous-versions/sql/2014/relational-databases/replication/security/
+                          topicHref: /previous-versions/sql/2014/relational-databases/replication/security/view-and-modify-replication-security-settings
+                    - name: Programmation du client natif
+                      tocHref: /previous-versions/sql/2014/relational-databases/native-client/
+                      topicHref: /previous-versions/sql/2014/relational-databases/native-client/sql-server-native-client-programming
+                      items:
+                        - name: OLE DB
+                          tocHref: /previous-versions/sql/2014/relational-databases/native-client/ole-db/
+                          topicHref: /previous-versions/sql/2014/relational-databases/native-client/ole-db/sql-server-native-client-ole-db
+                        - name: ODBC
+                          tocHref: /previous-versions/sql/2014/relational-databases/native-client/odbc/
+                          topicHref: /previous-versions/sql/2014/relational-databases/native-client/odbc/sql-server-native-client-odbc
+                          items:
+                            - name: Bulk Copy Functions
+                              tocHref: /previous-versions/sql/2014/relational-databases/native-client-odbc-extensions-bulk-copy-functions/
+                              topicHref: /previous-versions/sql/2014/relational-databases/native-client-odbc-extensions-bulk-copy-functions/sql-server-driver-extensions-bulk-copy-functions
+                            - name: API
+                              tocHref: /previous-versions/sql/2014/relational-databases/native-client-odbc-api/
+                              topicHref: /previous-versions/sql/2014/relational-databases/native-client-odbc-api/odbc-api-implementation-details
+                - name: "Reporting\_Services"
+                  tocHref: /previous-versions/sql/2014/reporting-services/
+                  topicHref: /previous-versions/sql/2014/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports
+                  items:
+                    - name: Serveur de rapports - SharePoint
+                      tocHref: /previous-versions/sql/2014/reporting-services/report-server-sharepoint/
+                      topicHref: /previous-versions/sql/2014/reporting-services/report-server-sharepoint/add-reporting-services-content-types-to-a-sharepoint-library
+                    - name: Serveur de rapports - Natif
+                      tocHref: /previous-versions/sql/2014/reporting-services/report-server/
+                      topicHref: /previous-versions/sql/2014/reporting-services/report-server/reporting-services-report-server-native-mode
+                    - name: Générateur de rapports
+                      tocHref: /previous-versions/sql/2014/reporting-services/report-builder/
+                      topicHref: /previous-versions/sql/2014/reporting-services/report-builder/finding-viewing-and-managing-reports-report-builder-and-ssrs
+                    - name: Données des rapports
+                      tocHref: /previous-versions/sql/2014/reporting-services/report-data/
+                      topicHref: /previous-versions/sql/2014/reporting-services/report-data/report-datasets-ssrs
+                    - name: Conception de rapports
+                      tocHref: /previous-versions/sql/2014/reporting-services/report-design/
+                      topicHref: /previous-versions/sql/2014/reporting-services/report-design/tables-matrices-and-lists-report-builder-and-ssrs
+                    - name: Rapports
+                      tocHref: /previous-versions/sql/2014/reporting-services/reports/
+                      topicHref: /previous-versions/sql/2014/reporting-services/reports/reporting-services-reports-ssrs
+                    - name: Abonnements et planifications
+                      tocHref: /previous-versions/sql/2014/reporting-services/subscriptions/
+                      topicHref: /previous-versions/sql/2014/reporting-services/subscriptions/subscriptions-and-delivery-reporting-services
+                    - name: Sécurité
+                      tocHref: /previous-versions/sql/2014/reporting-services/security/
+                      topicHref: /previous-versions/sql/2014/reporting-services/security/reporting-services-security-and-protection
+                    - name: Outils
+                      tocHref: /previous-versions/sql/2014/reporting-services/tools/
+                      topicHref: /previous-versions/sql/2014/reporting-services/tools/reporting-services-tools
+                    - name: Informations de référence sur le fournisseur WMI
+                      tocHref: /previous-versions/sql/2014/reporting-services/wmi-provider-library-reference/
+                      topicHref: /previous-versions/sql/2014/reporting-services/wmi-provider-library-reference/reporting-services-wmi-provider-library-reference-ssrs
+                    - name: Dépannage
+                      tocHref: /previous-versions/sql/2014/reporting-services/troubleshooting/
+                      topicHref: /previous-versions/sql/2014/reporting-services/troubleshooting/errors-and-events-reference-reporting-services
+                    - name: Intégration des applications
+                      tocHref: /previous-versions/sql/2014/reporting-services/application-integration/
+                      topicHref: /previous-versions/sql/2014/reporting-services/application-integration/integrating-reporting-services-into-applications
+                    - name: service Web Report Server
+                      tocHref: /previous-versions/sql/2014/reporting-services/report-server-web-service/
+                      topicHref: /previous-versions/sql/2014/reporting-services/report-server-web-service/report-server-web-service
+                    - name: Extensions
+                      tocHref: /previous-versions/sql/2014/reporting-services/extensions/
+                      topicHref: /previous-versions/sql/2014/reporting-services/extensions/reporting-services-extensions
+                    - name: Éléments de rapport personnalisés
+                      tocHref: /previous-versions/sql/2014/reporting-services/custom-report-items/
+                      topicHref: /previous-versions/sql/2014/reporting-services/custom-report-items/custom-report-items
+                    - name: Assemblys personnalisés
+                      tocHref: /previous-versions/sql/2014/reporting-services/custom-assemblies/
+                      topicHref: /previous-versions/sql/2014/reporting-services/custom-assemblies/using-custom-assemblies-with-reports
+                - name: Master Data Services
+                  tocHref: /previous-versions/sql/2014/master-data-services/
+                  topicHref: /previous-versions/sql/2014/master-data-services/master-data-services
+                - name: Gestionnaire de configuration
+                  tocHref: /previous-versions/sql/2014/tools/configuration-manager/
+                  topicHref: /previous-versions/sql/2014/tools/configuration-manager/sql-server-configuration-manager-help
+                - name: Guide du développeur - Analysis Services
+                  tocHref: /previous-versions/sql/2014/analysis-services/dev-guide/
+                  topicHref: /previous-versions/sql/2014/analysis-services/dev-guide/analysis-services-dev-guide
+                  items:
+                    - name: Programmation de modèle tabulaire
+                      tocHref: /previous-versions/sql/2014/analysis-services/tabular-model-programming-compatibility-levels-1050-1103
+                      topicHref: /previous-versions/sql/2014/analysis-services/tabular-model-programming-compatibility-levels-1050-1103/tabular-model-programming-for-compatibility-levels-1050-through-1103
+                    - name: Ensembles de lignes de schéma
+                      tocHref: /previous-versions/sql/2014/analysis-services/schema-rowsets/
+                      topicHref: /previous-versions/sql/2014/analysis-services/schema-rowsets/analysis-services-schema-rowsets
+                    - name: Création de scripts
+                      tocHref: 'https://docs.microsoft.com/analysis-services/assl'
+                      topicHref: 'https://docs.microsoft.com/analysis-services/assl/analysis-services-scripting-language-assl-for-xmla'
+                      items:
+                        - name: Objets
+                          tocHref: 'https://docs.microsoft.com/analysis-services/assl/objects'
+                          topicHref: 'https://docs.microsoft.com/analysis-services/assl/objects/objects-assl'
+                        - name: Collections
+                          tocHref: 'https://docs.microsoft.com/analysis-services/assl/collections'
+                          topicHref: 'https://docs.microsoft.com/analysis-services/assl/collections/collections-assl'
+                        - name: Propriétés
+                          tocHref: 'https://docs.microsoft.com/analysis-services/assl/properties'
+                          topicHref: 'https://docs.microsoft.com/analysis-services/assl/properties/properties-assl'
+                        - name: Types de données
+                          tocHref: 'https://docs.microsoft.com/analysis-services/assl/data-type'
+                          topicHref: 'https://docs.microsoft.com/analysis-services/assl/data-type/analysis-services-scripting-language-xml-data-types-assl'
+                    - name: XMLA
+                      tocHref: /previous-versions/sql/2014/analysis-services/xmla/
+                      topicHref: /previous-versions/sql/2014/analysis-services/xmla/xml-for-analysis-xmla-reference
+                - name: Installer SQL Server
+                  tocHref: /previous-versions/sql/2014/database-engine/install-windows/
+                  topicHref: /previous-versions/sql/2014/database-engine/install-windows/installation-for-sql-server
+                - name: Tutoriel T-SQL
+                  tocHref: /previous-versions/sql/2014/t-sql/
+                  topicHref: /previous-versions/sql/2014/t-sql/tutorial-writing-transact-sql-statements
+                - name: Tutoriels
+                  tocHref: /previous-versions/sql/2014/tutorials/
+                  topicHref: /previous-versions/sql/2014/tutorials/tutorials-for-sql-server-2014
+                - name: Guides
+                  tocHref: /previous-versions/sql/2014/2014-toc/
+                  topicHref: /previous-versions/sql/2014/2014-toc/developer-reference-for-sql-server-2014
