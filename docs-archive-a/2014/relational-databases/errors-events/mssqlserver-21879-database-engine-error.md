@@ -1,0 +1,60 @@
+---
+title: MSSQLSERVER_21879 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: supportability
+ms.topic: conceptual
+helpviewer_keywords:
+- 21879 (Database Engine error)
+ms.assetid: fcfab735-05ca-423a-89f1-fdee7e2ed8c0
+author: MashaMSFT
+ms.author: mathoma
+ms.openlocfilehash: 08c5d4f45faf94d555ed7acedd90cc55ec4791ec
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87702936"
+---
+# <a name="mssqlserver_21879"></a><span data-ttu-id="01b44-102">MSSQLSERVER_21879</span><span class="sxs-lookup"><span data-stu-id="01b44-102">MSSQLSERVER_21879</span></span>
+    
+## <a name="details"></a><span data-ttu-id="01b44-103">Détails</span><span class="sxs-lookup"><span data-stu-id="01b44-103">Details</span></span>  
+  
+|||  
+|-|-|  
+|<span data-ttu-id="01b44-104">Nom du produit</span><span class="sxs-lookup"><span data-stu-id="01b44-104">Product Name</span></span>|<span data-ttu-id="01b44-105">SQL Server</span><span class="sxs-lookup"><span data-stu-id="01b44-105">SQL Server</span></span>|  
+|<span data-ttu-id="01b44-106">ID de l’événement</span><span class="sxs-lookup"><span data-stu-id="01b44-106">Event ID</span></span>|<span data-ttu-id="01b44-107">21879</span><span class="sxs-lookup"><span data-stu-id="01b44-107">21879</span></span>|  
+|<span data-ttu-id="01b44-108">Source de l’événement</span><span class="sxs-lookup"><span data-stu-id="01b44-108">Event Source</span></span>|<span data-ttu-id="01b44-109">MSSQLSERVER</span><span class="sxs-lookup"><span data-stu-id="01b44-109">MSSQLSERVER</span></span>|  
+|<span data-ttu-id="01b44-110">Composant</span><span class="sxs-lookup"><span data-stu-id="01b44-110">Component</span></span>|<span data-ttu-id="01b44-111">SQLEngine</span><span class="sxs-lookup"><span data-stu-id="01b44-111">SQLEngine</span></span>|  
+|<span data-ttu-id="01b44-112">Nom symbolique</span><span class="sxs-lookup"><span data-stu-id="01b44-112">Symbolic Name</span></span>|<span data-ttu-id="01b44-113">SQLErrorNum21879</span><span class="sxs-lookup"><span data-stu-id="01b44-113">SQLErrorNum21879</span></span>|  
+|<span data-ttu-id="01b44-114">Texte du message</span><span class="sxs-lookup"><span data-stu-id="01b44-114">Message Text</span></span>|<span data-ttu-id="01b44-115">Impossible d'interroger le serveur redirigé '%s' pour le serveur de publication d'origine '%s' et la base de données du serveur de publication '%s' pour déterminer le nom du serveur distant ; erreur %d, message d'erreur '%s'.</span><span class="sxs-lookup"><span data-stu-id="01b44-115">Unable to query the redirected server '%s' for original publisher '%s' and publisher database '%s' to determine the name of the remote server; Error %d, Error message '%s'.</span></span>|  
+  
+## <a name="explanation"></a><span data-ttu-id="01b44-116">Explication</span><span class="sxs-lookup"><span data-stu-id="01b44-116">Explanation</span></span>  
+ <span data-ttu-id="01b44-117">`sp_validate_redirected_publisher` utilise un serveur lié temporaire créé pour se connecter au serveur de publication redirigé afin de découvrir le nom du serveur distant.</span><span class="sxs-lookup"><span data-stu-id="01b44-117">`sp_validate_redirected_publisher` uses a temporary linked server that it creates to connect to the redirected publisher in order to discover the name of the remote server.</span></span> <span data-ttu-id="01b44-118">L'erreur 21879 est retournée lorsque la requête de serveur lié échoue.</span><span class="sxs-lookup"><span data-stu-id="01b44-118">Error 21879 is returned when the linked server query fails.</span></span> <span data-ttu-id="01b44-119">L'appel pour demander le nom du serveur distant est généralement la première utilisation qui est faite du serveur lié temporaire, donc si des problèmes de connectivité existent, ils sont susceptibles d'apparaître d'abord lors de cet appel.</span><span class="sxs-lookup"><span data-stu-id="01b44-119">The call to request the remote server name is typically the first use of the temporary linked server, so if there are connectivity problems they are likely to appear first with this call.</span></span> <span data-ttu-id="01b44-120">Cet appel exécute simplement `@@servername` sur le serveur distant.</span><span class="sxs-lookup"><span data-stu-id="01b44-120">This remote call simply executes select `@@servername` at the remote server.</span></span>  
+  
+ <span data-ttu-id="01b44-121">Le serveur lié utilisé pour interroger le serveur de publication redirigé utilise le mode, la connexion et le mot de passe de sécurité fournis lorsque `sp_adddistpublisher` a été appelé pour le serveur de publication d'origine.</span><span class="sxs-lookup"><span data-stu-id="01b44-121">The linked server used to query the redirected publisher uses the security mode, login, and password supplied when `sp_adddistpublisher` was called for the original publisher.</span></span>  
+  
+-   <span data-ttu-id="01b44-122">Si l'authentification [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] a été utilisée (mode de sécurité 0), alors la connexion et le mot de passe spécifiés sont utilisés pour la connexion au serveur distant.</span><span class="sxs-lookup"><span data-stu-id="01b44-122">If [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] authentication was used (security mode 0) then the login and password specified are used to connect to the remote server.</span></span>  
+  
+-   <span data-ttu-id="01b44-123">Si l'authentification Windows a été utilisée (mode de sécurité 1) une connexion approuvée est utilisée pour la connexion.</span><span class="sxs-lookup"><span data-stu-id="01b44-123">If Windows authentication was used (security mode 1) a trusted connection is used for the connection.</span></span>  
+  
+    -   <span data-ttu-id="01b44-124">Si `sp_validate_redirected_publisher` est appelé explicitement par un utilisateur, la connexion Windows sous laquelle l'utilisateur s'exécute est utilisée pour la connexion.</span><span class="sxs-lookup"><span data-stu-id="01b44-124">If `sp_validate_redirected_publisher` is called explicitly by a user, the Windows login that the user is running under is used for the connection.</span></span>  
+  
+    -   <span data-ttu-id="01b44-125">Si le serveur de publication `sp_validate_redirected_` est appelé par un agent de réplication à partir de `sp_get_redirected_publisher`, la connexion Windows associée à l'agent est utilisée.</span><span class="sxs-lookup"><span data-stu-id="01b44-125">If `sp_validate_redirected_`publisher is called by a replication agent from `sp_get_redirected_publisher`, the Windows login associated with the agent is used.</span></span>  
+  
+ <span data-ttu-id="01b44-126">L'erreur 21879 peut indiquer que' `sp_validate_redirected_publisher` a été appelé à l'aide d'une connexion qui n'est pas connue sur le serveur de publication cible redirigé.</span><span class="sxs-lookup"><span data-stu-id="01b44-126">Error 21879 can indicate that `sp_validate_redirected_publisher` was called using a login that is not known at the redirected target publisher.</span></span>  
+  
+## <a name="user-action"></a><span data-ttu-id="01b44-127">Action de l'utilisateur</span><span class="sxs-lookup"><span data-stu-id="01b44-127">User Action</span></span>  
+ <span data-ttu-id="01b44-128">Assurez-vous que la connexion d'authentification [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ou la connexion via l'authentification Windows, est valide sur tous les réplicas de groupe de disponibilité et possède des autorisations suffisantes pour accéder aux tables de métadonnées d'abonnement (syssubscriptions et sysmergesubscriptions) dans la base de données du serveur de publication.</span><span class="sxs-lookup"><span data-stu-id="01b44-128">Make certain that the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] authentication login or the Windows authentication login is valid at all of the availability group replicas and has sufficient authorization to access the subscription metadata tables (syssubscriptions and sysmergesubscriptions) in the publisher database.</span></span>  
+  
+ <span data-ttu-id="01b44-129">Il existe des considérations spéciales lorsque l'erreur 21879 est retournée d'un appel à `sp_get_redirected_publisher` initié par un agent de réplication s'exécutant sur un nœud autre que le serveur de distribution ; comme un agent de fusion s'exécutant sur un abonné.</span><span class="sxs-lookup"><span data-stu-id="01b44-129">There are special considerations when error 21879 is returned from a call to `sp_get_redirected_publisher` that is initiated by a replication agent running on a node other that the distributor; such as a merge agent running at a subscriber.</span></span> <span data-ttu-id="01b44-130">Si l'authentification Windows est utilisée pour la connexion au serveur de publication redirigé, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] doit être configuré pour l'authentification Kerberos afin que connexion soit établie avec succès.</span><span class="sxs-lookup"><span data-stu-id="01b44-130">If Windows authentication is used for the connection to the redirected publisher, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] must be configured for Kerberos authentication for the connection to be successfully established.</span></span> <span data-ttu-id="01b44-131">Lorsque l'authentification Windows est utilisée et [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] n'est pas configuré pour l'authentification Kerberos, l'erreur 18456 indiquant que la connexion 'NT AUTHORITY\ANONYMOUS LOGON' a échoué est reçue par un agent de fusion s'exécutant sur un abonné.</span><span class="sxs-lookup"><span data-stu-id="01b44-131">When Windows authentication is used and [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is not configured for Kerberos authentication, error 18456 indicating that the 'NT AUTHORITY\ANONYMOUS LOGON' login failed, is received by a merge agent running at a subscriber.</span></span> <span data-ttu-id="01b44-132">Il existe trois moyens possibles de résoudre ce problème :</span><span class="sxs-lookup"><span data-stu-id="01b44-132">There are three possible ways to address this issue:</span></span>  
+  
+-   <span data-ttu-id="01b44-133">Configurez [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] pour l'authentification Kerberos.</span><span class="sxs-lookup"><span data-stu-id="01b44-133">Configure [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] for Kerberos authentication.</span></span> <span data-ttu-id="01b44-134">Consultez **Authentification Kerberos et SQL Server** dans la documentation en ligne de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="01b44-134">See **Kerberos Authentication and SQL Server** in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Books Online.</span></span>  
+  
+-   <span data-ttu-id="01b44-135">Utilisez `sp_changedistpublisher` pour modifier le mode de sécurité associé au serveur de publication d’origine dans MSdistpublishers, ainsi que pour spécifier une connexion et un mot de passe à utiliser pour la connexion.</span><span class="sxs-lookup"><span data-stu-id="01b44-135">Use `sp_changedistpublisher` to change the security mode associated with the original publisher in MSdistpublishers, as well as to specify a login and password to use for the connection.</span></span>  
+  
+-   <span data-ttu-id="01b44-136">Spécifiez le paramètre de ligne de commande *BypassPublisherValidation* sur la ligne de commande de l’agent de fusion pour ignorer la validation lorsque `sp_get_redirected_publisher` est appelé sur le serveur de distribution.</span><span class="sxs-lookup"><span data-stu-id="01b44-136">Specify the command line parameter *BypassPublisherValidation* on the merge agent command line to bypass validation when `sp_get_redirected_publisher` is called at the distributor.</span></span>  
+  
+  
