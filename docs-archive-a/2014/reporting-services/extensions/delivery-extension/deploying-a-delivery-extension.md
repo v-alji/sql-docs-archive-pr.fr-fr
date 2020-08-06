@@ -1,0 +1,145 @@
+---
+title: Déploiement d’une extension de remise | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services
+ms.topic: reference
+helpviewer_keywords:
+- delivery extensions [Reporting Services], deploying
+- Extension element
+- deploying [Reporting Services], extensions
+ms.assetid: 4436ce48-397d-42c7-9b5d-2a267e2a1b2c
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: f4a4e33266c8d3a27ce2a4ab5f568bdee349720f
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87615045"
+---
+# <a name="deploying-a-delivery-extension"></a><span data-ttu-id="4eafb-102">Déploiement d'une extension de remise</span><span class="sxs-lookup"><span data-stu-id="4eafb-102">Deploying a Delivery Extension</span></span>
+  <span data-ttu-id="4eafb-103">Les extensions de remise fournissent leurs informations de configuration sous la forme d'un fichier de configuration XML.</span><span class="sxs-lookup"><span data-stu-id="4eafb-103">Delivery extensions supply their configuration information in the form of an XML configuration file.</span></span> <span data-ttu-id="4eafb-104">Le fichier XML est conforme au schéma XML défini pour les extensions de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-104">The XML file conforms to the XML schema defined for delivery extensions.</span></span> <span data-ttu-id="4eafb-105">Les extensions de remise fournissent l'infrastructure nécessaire pour définir et modifier le fichier de configuration.</span><span class="sxs-lookup"><span data-stu-id="4eafb-105">Delivery extensions provide infrastructure for setting and modifying the configuration file.</span></span>  
+  
+ <span data-ttu-id="4eafb-106">Si une extension de remise est remplacée ou mise à niveau, tous les abonnements qui référencent cette extension restent valides.</span><span class="sxs-lookup"><span data-stu-id="4eafb-106">If a delivery extension is replaced or upgraded, all subscriptions that reference the delivery extension remain valid.</span></span>  
+  
+ <span data-ttu-id="4eafb-107">Après avoir écrit et compilé votre extension de remise [!INCLUDE[ssRSnoversion](../../../includes/ssrsnoversion-md.md)] dans une bibliothèque [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../../includes/dnprdnshort-md.md)], vous devez la copier dans le répertoire approprié et ajouter une entrée au fichier de configuration [!INCLUDE[ssRSnoversion](../../../includes/ssrsnoversion-md.md)] approprié afin que le serveur de rapports puisse la trouver.</span><span class="sxs-lookup"><span data-stu-id="4eafb-107">After you have written and compiled your [!INCLUDE[ssRSnoversion](../../../includes/ssrsnoversion-md.md)] delivery extension into a [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../../includes/dnprdnshort-md.md)] library, you must copy the extension to the appropriate directory and add an entry to the appropriate [!INCLUDE[ssRSnoversion](../../../includes/ssrsnoversion-md.md)] configuration file so the report server can locate it.</span></span>  
+  
+## <a name="configuration-file-extension-element"></a><span data-ttu-id="4eafb-108">Élément Extension du fichier de configuration</span><span class="sxs-lookup"><span data-stu-id="4eafb-108">Configuration-File Extension Element</span></span>  
+ <span data-ttu-id="4eafb-109">Les extensions de remise que vous déployez sur le serveur de rapports doivent être entrées sous la forme d'éléments `Extension` dans le fichier de configuration.</span><span class="sxs-lookup"><span data-stu-id="4eafb-109">Delivery extensions that you deploy to the report server need to be entered as `Extension` elements in the configuration file.</span></span> <span data-ttu-id="4eafb-110">Le fichier de configuration du serveur de rapports est RSReportServer.config.</span><span class="sxs-lookup"><span data-stu-id="4eafb-110">The configuration file for the report server is RSReportServer.config.</span></span>  
+  
+ <span data-ttu-id="4eafb-111">Le tableau suivant décrit les attributs de l'élément `Extension` pour les extensions de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-111">The following table describes the attributes for the `Extension` element for delivery extensions.</span></span>  
+  
+|<span data-ttu-id="4eafb-112">Attribut</span><span class="sxs-lookup"><span data-stu-id="4eafb-112">Attribute</span></span>|<span data-ttu-id="4eafb-113">Description</span><span class="sxs-lookup"><span data-stu-id="4eafb-113">Description</span></span>|  
+|---------------|-----------------|  
+|`Name`|<span data-ttu-id="4eafb-114">Nom unique de l'extension (par exemple, « Messagerie électronique du serveur de rapports » pour l'extension de remise par messagerie ou « Partage de fichiers du serveur de rapports » pour l'extension de remise par partage de fichiers).</span><span class="sxs-lookup"><span data-stu-id="4eafb-114">A unique name for the extension (for example, "Report Server E-Mail" for the e-mail delivery extension or "Report Server FileShare" for the file share delivery extension).</span></span> <span data-ttu-id="4eafb-115">La longueur maximale de l'attribut `Name` s'élève à 255 caractères.</span><span class="sxs-lookup"><span data-stu-id="4eafb-115">The maximum length for the `Name` attribute is 255 characters.</span></span> <span data-ttu-id="4eafb-116">Le nom doit être unique au sein de toutes les entrées de l'élément `Extension` d'un fichier de configuration.</span><span class="sxs-lookup"><span data-stu-id="4eafb-116">The name must be unique among all entries within the `Extension` element of a configuration file.</span></span> <span data-ttu-id="4eafb-117">Si un nom existe en double, le serveur de rapports retourne une erreur.</span><span class="sxs-lookup"><span data-stu-id="4eafb-117">If a duplicate name is present, the report server returns an error.</span></span>|  
+|`Type`|<span data-ttu-id="4eafb-118">Liste séparée par des virgules qui inclut l'espace de noms complet, ainsi que le nom de l'assembly.</span><span class="sxs-lookup"><span data-stu-id="4eafb-118">A comma-separated list that includes the fully qualified namespace along with the name of the assembly.</span></span>|  
+|`Visible`|<span data-ttu-id="4eafb-119">La valeur `false` indique que l'extension de remise ne doit pas être visible dans les interfaces utilisateur.</span><span class="sxs-lookup"><span data-stu-id="4eafb-119">A value of `false` indicates that the delivery extension should not be visible in user interfaces.</span></span> <span data-ttu-id="4eafb-120">Si cet attribut n'est pas défini, la valeur par défaut est `true`.</span><span class="sxs-lookup"><span data-stu-id="4eafb-120">If the attribute is not included, the default value is `true`.</span></span>|  
+  
+ <span data-ttu-id="4eafb-121">Pour plus d’informations sur le fichier RSReportServer.config, consultez [Fichiers de configuration de Reporting Services](../../report-server/reporting-services-configuration-files.md).</span><span class="sxs-lookup"><span data-stu-id="4eafb-121">For more information about the RSReportServer.config file, see [Reporting Services Configuration Files](../../report-server/reporting-services-configuration-files.md).</span></span>  
+  
+## <a name="deploying-the-extension-to-the-report-server"></a><span data-ttu-id="4eafb-122">Déploiement de l'extension sur le serveur de rapports</span><span class="sxs-lookup"><span data-stu-id="4eafb-122">Deploying the Extension to the Report Server</span></span>  
+ <span data-ttu-id="4eafb-123">Le serveur de rapports utilise des extensions de remise pour traiter et remettre des notifications ou des rapports.</span><span class="sxs-lookup"><span data-stu-id="4eafb-123">The report server uses delivery extensions for processing and delivering notifications or reports.</span></span> <span data-ttu-id="4eafb-124">Vous devez déployer l'assembly d'extension de remise sur le serveur de rapports sous la forme d'un assembly privé.</span><span class="sxs-lookup"><span data-stu-id="4eafb-124">You should deploy your delivery extension assembly to the report server as a private assembly.</span></span> <span data-ttu-id="4eafb-125">Vous devez également créer une entrée dans le fichier de configuration du serveur de rapports, à savoir dans le fichier dénommé RSReportServer.config.</span><span class="sxs-lookup"><span data-stu-id="4eafb-125">You also need to make an entry in the report server configuration file, RSReportServer.config.</span></span>  
+  
+#### <a name="to-deploy-a-deliver-extension-assembly-to-a-report-server"></a><span data-ttu-id="4eafb-126">Pour déployer un assembly d'extension de remise sur un serveur de rapports</span><span class="sxs-lookup"><span data-stu-id="4eafb-126">To deploy a deliver extension assembly to a report server</span></span>  
+  
+1.  <span data-ttu-id="4eafb-127">Copiez l'assembly depuis son emplacement vers le répertoire bin du serveur de rapports sur lequel l'extension de remise doit être utilisée.</span><span class="sxs-lookup"><span data-stu-id="4eafb-127">Copy your assembly from your staging location to the bin directory of the report server on which you want to use the delivery extension.</span></span> <span data-ttu-id="4eafb-128">L’emplacement par défaut du répertoire bin du serveur de rapports est%ProgramFiles%\Microsoft SQL Server \ MSRS10_50. \<InstanceName> \Reporting Services\ReportServer\bin.</span><span class="sxs-lookup"><span data-stu-id="4eafb-128">The default location of the report server bin directory is %ProgramFiles%\Microsoft SQL Server\MSRS10_50.\<InstanceName>\Reporting Services\ReportServer\bin.</span></span>  
+  
+    > [!IMPORTANT]  
+    >  <span data-ttu-id="4eafb-129">Si vous essayez de remplacer un assembly d'extension de remise existant, vous devez commencer par arrêter le service Report Server avant de copier l'assembly mis à jour.</span><span class="sxs-lookup"><span data-stu-id="4eafb-129">If you are attempting to overwrite an existing delivery extension assembly, you must first stop the Report Server service before copying the updated assembly.</span></span> <span data-ttu-id="4eafb-130">Redémarrez le service une fois l'assembly copié.</span><span class="sxs-lookup"><span data-stu-id="4eafb-130">Restart your service after the assembly is through copying.</span></span>  
+  
+2.  <span data-ttu-id="4eafb-131">Une fois le fichier correspondant à l'assembly copié, ouvrez le fichier RSReportServer.config.</span><span class="sxs-lookup"><span data-stu-id="4eafb-131">After the assembly file is copied, open the RSReportServer.config file.</span></span> <span data-ttu-id="4eafb-132">Le fichier RSReportServer.config se trouve dans le dossier%ProgramFiles%\Microsoft SQL Server \ MSRS10_50. \<InstanceName> Répertoire \Reporting Services\ReportServer.</span><span class="sxs-lookup"><span data-stu-id="4eafb-132">The RSReportServer.config file is located in the %ProgramFiles%\Microsoft SQL Server\MSRS10_50.\<InstanceName>\Reporting Services\ReportServer directory.</span></span> <span data-ttu-id="4eafb-133">Vous devez créer une entrée pour le fichier d'assembly d'extension de remise dans le fichier de configuration.</span><span class="sxs-lookup"><span data-stu-id="4eafb-133">You need to make an entry in the configuration file for your delivery extension assembly file.</span></span> <span data-ttu-id="4eafb-134">Vous pouvez ouvrir le fichier de configuration avec [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[vsprvs](../../../includes/vsprvs-md.md)] ou un éditeur de texte simple, tel que le bloc-notes.</span><span class="sxs-lookup"><span data-stu-id="4eafb-134">You can open the configuration file with [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[vsprvs](../../../includes/vsprvs-md.md)] or a simple text editor, such as Notepad.</span></span>  
+  
+3.  <span data-ttu-id="4eafb-135">Localisez l'élément `Delivery` dans le fichier RSReportServer.config.</span><span class="sxs-lookup"><span data-stu-id="4eafb-135">Locate the `Delivery` element in the RSReportServer.config file.</span></span> <span data-ttu-id="4eafb-136">Une entrée correspondant à votre nouvelle extension de remise doit être créée à l'emplacement suivant :</span><span class="sxs-lookup"><span data-stu-id="4eafb-136">An entry for your newly created delivery extension should be made in the following location:</span></span>  
+  
+    ```  
+    <Extensions>  
+       <Delivery>  
+          <Your extension configuration information goes here>  
+       </Delivery>  
+    </Extensions>  
+    ```  
+  
+4.  <span data-ttu-id="4eafb-137">Ajoutez une entrée pour votre extension de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-137">Add an entry for your delivery extension.</span></span> <span data-ttu-id="4eafb-138">Celle-ci doit comporter un élément `Extension` dont les attributs `Name` et `Type` doivent être définis. Cette entrée peut se présenter comme suit :</span><span class="sxs-lookup"><span data-stu-id="4eafb-138">Your entry should include an `Extension` element with values for `Name` and `Type`, and might look like the following:</span></span>  
+  
+    ```  
+    <Extension Name="My Delivery Extension Name" Type="CompanyName.ExtensionName.MyDeliveryExtensionClass, AssemblyName" />  
+    ```  
+  
+     <span data-ttu-id="4eafb-139">La valeur définie pour `Name` correspond au nom unique de l'extension de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-139">The value for `Name` is the unique name of the delivery extension.</span></span> <span data-ttu-id="4eafb-140">La valeur définie pour `Type` est une liste séparée par des virgules comportant une entrée pour l'espace de noms complet de la classe qui implémente l'interface <xref:Microsoft.ReportingServices.Interfaces.IDeliveryExtension>, suivie du nom de votre assembly (sans l'extension de fichier .dll).</span><span class="sxs-lookup"><span data-stu-id="4eafb-140">The value for `Type` is a comma-separated list that includes an entry for the fully qualified namespace of your class that implements the <xref:Microsoft.ReportingServices.Interfaces.IDeliveryExtension> interface, followed by the name of your assembly (not including the .dll file extension).</span></span> <span data-ttu-id="4eafb-141">Par défaut, les extensions de remise sont visibles.</span><span class="sxs-lookup"><span data-stu-id="4eafb-141">By default, delivery extensions are visible.</span></span> <span data-ttu-id="4eafb-142">Pour masquer ces extensions des interfaces utilisateur, telles que le Gestionnaires de rapports, et ne plus les afficher, ajoutez un attribut `Visible` à l'élément `Extension`, puis attribuez à cet élément la valeur `false`.</span><span class="sxs-lookup"><span data-stu-id="4eafb-142">To hide an extension from user interfaces, such as Report Manager, add a `Visible` attribute to the `Extension` element, and set it to `false`.</span></span>  
+  
+5.  <span data-ttu-id="4eafb-143">Enfin, ajoutez une groupe de codes pour votre assembly personnalisé qui octroie l'autorisation `FullTrust` à votre extension de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-143">Finally, add a code group for your custom assembly that grants `FullTrust` permission for your delivery extension.</span></span> <span data-ttu-id="4eafb-144">Pour ce faire, ajoutez le groupe de codes au fichier rssrvpolicy.config situé par défaut dans%ProgramFiles%\Microsoft SQL Server \ MSRS10_50. \<InstanceName> \Reporting Services\ReportServer.</span><span class="sxs-lookup"><span data-stu-id="4eafb-144">You do this by adding the code group to the rssrvpolicy.config file located by default in %ProgramFiles%\Microsoft SQL Server\MSRS10_50.\<InstanceName>\Reporting Services\ReportServer.</span></span> <span data-ttu-id="4eafb-145">Ce groupe de codes peut se présenter comme suit :</span><span class="sxs-lookup"><span data-stu-id="4eafb-145">Your code group might look like the following:</span></span>  
+  
+    ```  
+    <CodeGroup class="UnionCodeGroup"  
+       version="1"  
+       PermissionSetName="FullTrust"  
+       Name="MyExtensionCodeGroup"  
+       Description="Code group for my delivery extension">  
+          <IMembershipCondition class="UrlMembershipCondition"  
+             version="1"  
+             Url="C:\Program Files\Microsoft SQL Server\MSRS10_50.<InstanceName>\Reporting Services\ReportServer\bin\MyExtensionAssembly.dll"  
+           />  
+    </CodeGroup>  
+    ```  
+  
+     <span data-ttu-id="4eafb-146">L'appartenance URL n'est qu'une des nombreuses conditions d'appartenance que vous pouvez sélectionner pour l'extension de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-146">URL membership is only one of many membership conditions you might choose for your delivery extension.</span></span> <span data-ttu-id="4eafb-147">Pour plus d’informations sur la sécurité d’accès du code dans [!INCLUDE[ssRS](../../../includes/ssrs.md)], consultez [Développement sécurisé &#40;Reporting Services&#41;](../secure-development/secure-development-reporting-services.md).</span><span class="sxs-lookup"><span data-stu-id="4eafb-147">For more information about code access security in [!INCLUDE[ssRS](../../../includes/ssrs.md)], see.[Secure Development &#40;Reporting Services&#41;](../secure-development/secure-development-reporting-services.md)</span></span>  
+  
+## <a name="deploying-the-extension-to-report-manager"></a><span data-ttu-id="4eafb-148">Déploiement de l'extension dans le Gestionnaire de rapports</span><span class="sxs-lookup"><span data-stu-id="4eafb-148">Deploying the Extension to Report Manager</span></span>  
+ <span data-ttu-id="4eafb-149">Si votre extension de remise implémente l'interface <xref:Microsoft.ReportingServices.Interfaces.ISubscriptionBaseUIUserControl>, votre extension de remise peut être utilisée avec la page d'abonnement du Gestionnaire de rapports.</span><span class="sxs-lookup"><span data-stu-id="4eafb-149">If your delivery extension implements the <xref:Microsoft.ReportingServices.Interfaces.ISubscriptionBaseUIUserControl> interface, your delivery extension can be used with the Report Manager Subscription page.</span></span> <span data-ttu-id="4eafb-150">Pour que l'interface utilisateur d'abonnement soit disponible, vous devez déployer votre extension dans le Gestionnaire de rapports.</span><span class="sxs-lookup"><span data-stu-id="4eafb-150">To make the subscription user interface available, you need to deploy your extension to Report Manager.</span></span>  
+  
+#### <a name="to-deploy-a-deliver-extension-assembly-to-report-manager"></a><span data-ttu-id="4eafb-151">Pour déployer un assembly d'extension de remise dans le Gestionnaire de rapports</span><span class="sxs-lookup"><span data-stu-id="4eafb-151">To deploy a deliver extension assembly to Report Manager</span></span>  
+  
+1.  <span data-ttu-id="4eafb-152">Copiez l'assembly depuis son emplacement vers le répertoire bin du Gestionnaire de rapports.</span><span class="sxs-lookup"><span data-stu-id="4eafb-152">Copy your assembly from your staging location to the bin directory of Report Manager.</span></span> <span data-ttu-id="4eafb-153">L’emplacement par défaut du répertoire bin Gestionnaire de rapports est%ProgramFiles%\Microsoft SQL Server \ MSRS10_50. \<InstanceName> \Reporting Services\ReportManager\bin.</span><span class="sxs-lookup"><span data-stu-id="4eafb-153">The default location of the Report Manager bin directory is %ProgramFiles%\Microsoft SQL Server\MSRS10_50.\<InstanceName>\Reporting Services\ReportManager\bin.</span></span>  
+  
+2.  <span data-ttu-id="4eafb-154">Une fois le fichier correspondant à l'assembly copié, ouvrez le fichier RSReportServer.config.</span><span class="sxs-lookup"><span data-stu-id="4eafb-154">After the assembly file is copied, open the RSReportServer.config file.</span></span> <span data-ttu-id="4eafb-155">Le fichier RSReportServer.config se trouve dans le dossier%ProgramFiles%\Microsoft SQL Server \ MSRS10_50. \<InstanceName> Répertoire \Reporting Services\ReportServer.</span><span class="sxs-lookup"><span data-stu-id="4eafb-155">The RSReportServer.config file is located in the %ProgramFiles%\Microsoft SQL Server\MSRS10_50.\<InstanceName>\Reporting Services\ReportServer directory.</span></span> <span data-ttu-id="4eafb-156">Vous devez créer une entrée pour le fichier d'assembly d'extension de remise dans le fichier de configuration.</span><span class="sxs-lookup"><span data-stu-id="4eafb-156">You need to make an entry in the configuration file for your delivery extension assembly file.</span></span> <span data-ttu-id="4eafb-157">Vous pouvez ouvrir le fichier de configuration dans Visual Studio .NET ou simplement à l'aide d'un éditeur de texte, tel que le Bloc-notes.</span><span class="sxs-lookup"><span data-stu-id="4eafb-157">You can open the configuration file with Visual Studio .NET or a simple text editor, such as Notepad.</span></span>  
+  
+3.  <span data-ttu-id="4eafb-158">Localisez l'élément `DeliveryUI` dans le fichier RSReportServer.config.</span><span class="sxs-lookup"><span data-stu-id="4eafb-158">Locate the `DeliveryUI` element in the RSReportServer.config file.</span></span> <span data-ttu-id="4eafb-159">Une entrée correspondant à votre nouvelle extension de remise doit être créée à l'emplacement suivant :</span><span class="sxs-lookup"><span data-stu-id="4eafb-159">An entry for your newly created delivery extension should be made in the following location:</span></span>  
+  
+    ```  
+    <Extensions>  
+       <DeliveryUI>  
+          <Your extension configuration information goes here>  
+       </DeliveryUI>  
+    </Extensions>  
+    ```  
+  
+4.  <span data-ttu-id="4eafb-160">Ajoutez une entrée pour votre extension de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-160">Add an entry for your delivery extension.</span></span> <span data-ttu-id="4eafb-161">Cette entrée doit comporter un élément `Extension` dont les valeurs `Name` et `Type` doivent être définies. Cette entrée peut se présenter comme suit :</span><span class="sxs-lookup"><span data-stu-id="4eafb-161">Your entry should include an `Extension` element with values for `Name` and `Type` and might look like the following:</span></span>  
+  
+    ```  
+    <Extension Name="My Delivery Extension Name" Type="CompanyName.ExtensionName.MyDeliveryUIExtensionClass, AssemblyName" />  
+    ```  
+  
+     <span data-ttu-id="4eafb-162">La valeur définie pour `Name` correspond au nom unique de l'extension de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-162">The value for `Name` is the unique name of the delivery extension.</span></span> <span data-ttu-id="4eafb-163">La valeur définie pour `Type` est une liste séparée par des virgules comportant une entrée pour l'espace de noms complet de la classe qui implémente l'interface <xref:Microsoft.ReportingServices.Interfaces.ISubscriptionBaseUIUserControl>, suivie du nom de votre assembly (sans l'extension de fichier .dll).</span><span class="sxs-lookup"><span data-stu-id="4eafb-163">The value for `Type` is a comma-separated list that includes an entry for the fully qualified namespace of your class that implements the <xref:Microsoft.ReportingServices.Interfaces.ISubscriptionBaseUIUserControl> interface, followed by the name of your assembly (not including the .dll file extension).</span></span>  
+  
+    > [!IMPORTANT]  
+    >  <span data-ttu-id="4eafb-164">La valeur de l'attribut `Name` doit être identique pour les entrées du fichier de configuration du serveur de rapports et du Gestionnaire de rapports.</span><span class="sxs-lookup"><span data-stu-id="4eafb-164">The value of the `Name` attribute must be identical for both the Report Server and Report Manager configuration file entries.</span></span> <span data-ttu-id="4eafb-165">Si ces valeurs ne sont pas identiques, la configuration de votre serveur n'est pas valide.</span><span class="sxs-lookup"><span data-stu-id="4eafb-165">If they are not identical, your server configuration is not valid.</span></span>  
+  
+     <span data-ttu-id="4eafb-166">Enfin, ajoutez une groupe de codes pour votre assembly personnalisé qui octroie l'autorisation `FullTrust` à votre extension de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-166">Finally, add a code group for your custom assembly that grants `FullTrust` permission for your delivery extension.</span></span> <span data-ttu-id="4eafb-167">Pour ce faire, ajoutez le groupe de codes au fichier RSmgrpolicy.config situé par défaut dans C:\Program Files\Microsoft SQL Server \ MSRS10_50. \<InstanceName> \Reporting Services\ReportManager.</span><span class="sxs-lookup"><span data-stu-id="4eafb-167">You do this by adding the code group to the RSmgrpolicy.config file located by default in C:\Program Files\Microsoft SQL Server\MSRS10_50.\<InstanceName>\Reporting Services\ReportManager.</span></span> <span data-ttu-id="4eafb-168">Ce groupe de codes peut se présenter comme suit :</span><span class="sxs-lookup"><span data-stu-id="4eafb-168">Your code group might look like the following:</span></span>  
+  
+    ```  
+    <CodeGroup class="UnionCodeGroup"  
+       version="1"  
+       PermissionSetName="FullTrust"  
+       Name="MyExtensionCodeGroup"  
+       Description="Code group for my delivery UI extension">  
+          <IMembershipCondition class="UrlMembershipCondition"  
+             version="1"  
+             Url="C:\Program Files\Microsoft SQL Server\MSRS10_50.<InstanceName>\Reporting Services\ReportManager\bin\MyExtensionAssembly.dll"  
+           />  
+    </CodeGroup>  
+    ```  
+  
+     <span data-ttu-id="4eafb-169">L'appartenance URL n'est qu'une des nombreuses conditions d'appartenance que vous pouvez sélectionner pour l'extension de remise.</span><span class="sxs-lookup"><span data-stu-id="4eafb-169">URL membership is only one of many membership conditions you might choose for your delivery extension.</span></span> <span data-ttu-id="4eafb-170">Pour plus d’informations sur la sécurité d’accès du code dans [!INCLUDE[ssRS](../../../includes/ssrs.md)] , consultez [&#40;de développement sécurisé Reporting Services&#41;](../secure-development/secure-development-reporting-services.md)</span><span class="sxs-lookup"><span data-stu-id="4eafb-170">For more information about code access security in [!INCLUDE[ssRS](../../../includes/ssrs.md)], see [Secure Development &#40;Reporting Services&#41;](../secure-development/secure-development-reporting-services.md)</span></span>  
+  
+## <a name="verifying-the-deployment"></a><span data-ttu-id="4eafb-171">Vérification du déploiement</span><span class="sxs-lookup"><span data-stu-id="4eafb-171">Verifying the Deployment</span></span>  
+ <span data-ttu-id="4eafb-172">Vous pouvez vérifier que votre extension de remise a été correctement déployée sur le serveur de rapports en utilisant la méthode <xref:ReportService2010.ReportingService2010.ListExtensions%2A> du service Web.</span><span class="sxs-lookup"><span data-stu-id="4eafb-172">You can verify whether your delivery extension was deployed successfully to the report server by using the Web service <xref:ReportService2010.ReportingService2010.ListExtensions%2A> method.</span></span> <span data-ttu-id="4eafb-173">Vous pouvez également ouvrir le Gestionnaire de rapports et vérifier que votre extension est effectivement répertoriée dans la liste des extensions de remise disponibles pour un abonnement.</span><span class="sxs-lookup"><span data-stu-id="4eafb-173">You can also open Report Manager and verify that your extension is included in the list of available delivery extensions for a subscription.</span></span> <span data-ttu-id="4eafb-174">Pour plus d’informations sur les Gestionnaire de rapports et les abonnements, consultez [abonnements et remise &#40;Reporting Services&#41;](../../subscriptions/subscriptions-and-delivery-reporting-services.md).</span><span class="sxs-lookup"><span data-stu-id="4eafb-174">For more information about Report Manager and subscriptions, see [Subscriptions and Delivery &#40;Reporting Services&#41;](../../subscriptions/subscriptions-and-delivery-reporting-services.md).</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="4eafb-175">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="4eafb-175">See Also</span></span>  
+ <span data-ttu-id="4eafb-176">[Implémentation d’une extension de remise](implementing-a-delivery-extension.md) </span><span class="sxs-lookup"><span data-stu-id="4eafb-176">[Implementing a Delivery Extension](implementing-a-delivery-extension.md) </span></span>  
+ [<span data-ttu-id="4eafb-177">Bibliothèque d'extensions Reporting Services</span><span class="sxs-lookup"><span data-stu-id="4eafb-177">Reporting Services Extension Library</span></span>](../reporting-services-extension-library.md)  
+  
+  
