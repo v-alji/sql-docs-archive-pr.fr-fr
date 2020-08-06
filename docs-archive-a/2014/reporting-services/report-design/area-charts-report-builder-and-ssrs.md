@@ -1,0 +1,59 @@
+---
+title: Graphiques en aires (Générateur de rapports et SSRS) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+ms.assetid: 245b236d-1d55-4744-b752-80bd133502aa
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: f401efa0abd5eac8ab39e511bc6b16a4f381ebdf
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87702475"
+---
+# <a name="area-charts-report-builder-and-ssrs"></a><span data-ttu-id="1f19f-102">Graphiques en aires (Générateur de rapports et SSRS)</span><span class="sxs-lookup"><span data-stu-id="1f19f-102">Area Charts (Report Builder and SSRS)</span></span>
+  <span data-ttu-id="1f19f-103">Un graphique en aires affiche une série sous la forme d'un ensemble de points reliés par une courbe, la zone sous la courbe étant remplie.</span><span class="sxs-lookup"><span data-stu-id="1f19f-103">An area chart displays a series as a set of points connected by a line, with all the area filled in below the line.</span></span> <span data-ttu-id="1f19f-104">Pour plus d’informations sur la façon d’ajouter des données à un graphique en aires, consultez [Graphiques &#40;Générateur de rapports et SSRS&#41;](charts-report-builder-and-ssrs.md).</span><span class="sxs-lookup"><span data-stu-id="1f19f-104">For more information on how to add data to an area chart, see [Charts &#40;Report Builder and SSRS&#41;](charts-report-builder-and-ssrs.md).</span></span>  
+  
+ <span data-ttu-id="1f19f-105">L'illustration suivante montre un exemple d'un graphique en aires empilées.</span><span class="sxs-lookup"><span data-stu-id="1f19f-105">The following illustration shows an example of a stacked area chart.</span></span> <span data-ttu-id="1f19f-106">Les données conviennent à une présentation en graphique en aires empilées car le graphique peut afficher des totaux pour toute la série ainsi que la contribution de chaque série au total.</span><span class="sxs-lookup"><span data-stu-id="1f19f-106">The data is well suited for display on a stacked area chart because the chart can display totals for all series as well as the proportion that each series contributes to the total.</span></span>  
+  
+ <span data-ttu-id="1f19f-107">![Graphique en aires](../media/areachart.gif "Graphique en aires")</span><span class="sxs-lookup"><span data-stu-id="1f19f-107">![Area chart](../media/areachart.gif "Area chart")</span></span>  
+  
+> [!NOTE]  
+>  [!INCLUDE[ssRBRDDup](../../includes/ssrbrddup-md.md)]  
+  
+## <a name="variations"></a><span data-ttu-id="1f19f-108">Variantes</span><span class="sxs-lookup"><span data-stu-id="1f19f-108">Variations</span></span>  
+  
+-   <span data-ttu-id="1f19f-109">**Aires empilées**.</span><span class="sxs-lookup"><span data-stu-id="1f19f-109">**Stacked area**.</span></span> <span data-ttu-id="1f19f-110">Graphique en aires empilées où plusieurs séries sont empilées verticalement.</span><span class="sxs-lookup"><span data-stu-id="1f19f-110">An area chart where multiple series are stacked vertically.</span></span> <span data-ttu-id="1f19f-111">Si votre graphique ne représente qu'une seule série, le graphique en aires empilées affichera la même chose qu'un graphique en aires.</span><span class="sxs-lookup"><span data-stu-id="1f19f-111">If there is only one series in your chart, the stacked area chart will display the same as an area chart.</span></span>  
+  
+-   <span data-ttu-id="1f19f-112">**Aires empilées %** .</span><span class="sxs-lookup"><span data-stu-id="1f19f-112">**Percent stacked area**.</span></span> <span data-ttu-id="1f19f-113">Graphique en aires où plusieurs séries sont empilées verticalement pour occuper l'intégralité de la zone de graphique.</span><span class="sxs-lookup"><span data-stu-id="1f19f-113">An area chart where multiple series are stacked vertically to fit the entire chart area.</span></span> <span data-ttu-id="1f19f-114">Si votre graphique ne représente qu'une seule série, le graphique en aires empilées affichera la même chose qu'un graphique en aires.</span><span class="sxs-lookup"><span data-stu-id="1f19f-114">If there is only one series in your chart, the stacked area chart will display the same as an area chart.</span></span>  
+  
+-   <span data-ttu-id="1f19f-115">**Aires lissées**.</span><span class="sxs-lookup"><span data-stu-id="1f19f-115">**Smooth area**.</span></span> <span data-ttu-id="1f19f-116">Graphique en aires où les points de données sont connectés par une ligne lissée au lieu d'une ligne normale.</span><span class="sxs-lookup"><span data-stu-id="1f19f-116">An area chart where the data points are connected by a smooth line instead of a regular line.</span></span> <span data-ttu-id="1f19f-117">Utilisez un graphique en aires lissées au lieu d'un graphique en aires lorsque vous souhaitez afficher des tendances plutôt que les valeurs des points de données individuels.</span><span class="sxs-lookup"><span data-stu-id="1f19f-117">Use a smooth area chart instead of an area chart when you are more concerned with displaying trends than with displaying the values of individual data points.</span></span>  
+  
+## <a name="data-considerations-for-area-charts"></a><span data-ttu-id="1f19f-118">Considérations relatives aux données pour les graphiques en aires</span><span class="sxs-lookup"><span data-stu-id="1f19f-118">Data Considerations for Area Charts</span></span>  
+  
+-   <span data-ttu-id="1f19f-119">Tout comme le graphique en courbes, un graphique en aires est un type de graphique qui affiche les données de façon contiguë.</span><span class="sxs-lookup"><span data-stu-id="1f19f-119">Along with the line chart, the area chart is the only chart type that displays data contiguously.</span></span> <span data-ttu-id="1f19f-120">Pour cette raison, un graphique en aires est souvent utilisé pour représenter des données qui se produisent sur une période de temps continue.</span><span class="sxs-lookup"><span data-stu-id="1f19f-120">For this reason, an area chart is commonly used to represent data that occurs over a continuous period of time.</span></span>  
+  
+-   <span data-ttu-id="1f19f-121">Un graphique en aires empilées pourcent est utile pour afficher des données proportionnelles qui se produisent dans le temps.</span><span class="sxs-lookup"><span data-stu-id="1f19f-121">A percent stacked area chart is useful for showing proportional data that occurs over time.</span></span>  
+  
+-   <span data-ttu-id="1f19f-122">Dans le cas d'une seule série, un graphique en aires empilées sera dessiné comme un graphique en aires.</span><span class="sxs-lookup"><span data-stu-id="1f19f-122">If there is only one series, a stacked area chart will be drawn as an area chart.</span></span>  
+  
+-   <span data-ttu-id="1f19f-123">Dans un graphique en aires ordinaire, si les valeurs de plusieurs séries sont identiques, les aires peuvent se chevaucher, en masquant des valeurs de point de données importantes.</span><span class="sxs-lookup"><span data-stu-id="1f19f-123">In a plain area chart, if the values in multiple series are similar, the areas may overlap, obscuring important data point values.</span></span> <span data-ttu-id="1f19f-124">Vous pouvez résoudre ce problème en changeant le type de graphique en un graphique en aires empilées, conçu pour afficher plusieurs séries sur un graphique en aires.</span><span class="sxs-lookup"><span data-stu-id="1f19f-124">You can resolve this issue by changing the chart type to a stacked area chart, which is designed to show multiple series on an area chart.</span></span>  
+  
+-   <span data-ttu-id="1f19f-125">Si votre graphique en aires empilées contient des intervalles, il est possible que votre dataset comprenne des valeurs vides, qui seront affichées sous la forme d'une section vide dans un graphique en aires empilées.</span><span class="sxs-lookup"><span data-stu-id="1f19f-125">If your stacked area chart contains gaps, it is possible that your dataset includes empty values, which will be shown as a vacant section on a stacked area chart.</span></span> <span data-ttu-id="1f19f-126">Si votre dataset comprend des valeurs vides, pensez à insérer des points vides sur le graphique.</span><span class="sxs-lookup"><span data-stu-id="1f19f-126">If your dataset includes empty values, consider inserting empty points on the chart.</span></span> <span data-ttu-id="1f19f-127">L'ajout de points vides remplira les zones vides sur le graphique avec une couleur différente pour indiquer les valeurs null ou égales à zéro.</span><span class="sxs-lookup"><span data-stu-id="1f19f-127">Adding empty points will fill in the empty areas on the chart with a different color to indicate null or zero values.</span></span> <span data-ttu-id="1f19f-128">Pour plus d’informations, consultez [Ajouter des points vides au graphique &#40;générateur de rapports et SSRS&#41;](add-empty-points-to-a-chart-report-builder-and-ssrs.md).</span><span class="sxs-lookup"><span data-stu-id="1f19f-128">For more information, see [Add Empty Points to the Chart &#40;Report Builder and SSRS&#41;](add-empty-points-to-a-chart-report-builder-and-ssrs.md).</span></span>  
+  
+-   <span data-ttu-id="1f19f-129">Le comportement des types de graphiques en aires est similaire à celui des graphiques en courbes et des histogrammes.</span><span class="sxs-lookup"><span data-stu-id="1f19f-129">Area chart types are very similar to column and line charts in behavior.</span></span> <span data-ttu-id="1f19f-130">Si vous comparez plusieurs séries, pensez à utiliser un histogramme.</span><span class="sxs-lookup"><span data-stu-id="1f19f-130">If you are making a comparison between multiple series, consider using a column chart instead.</span></span> <span data-ttu-id="1f19f-131">Si vous analysez des tendances sur une période de temps, pensez à utiliser un graphique en courbes.</span><span class="sxs-lookup"><span data-stu-id="1f19f-131">If you are analyzing trends over a period of time, consider using a line chart.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="1f19f-132">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="1f19f-132">See Also</span></span>  
+ <span data-ttu-id="1f19f-133">[Graphiques &#40;Générateur de rapports et SSRS&#41;](charts-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="1f19f-133">[Charts &#40;Report Builder and SSRS&#41;](charts-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="1f19f-134">[Types de graphiques &#40;Générateur de rapports et SSRS&#41;](chart-types-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="1f19f-134">[Chart Types &#40;Report Builder and SSRS&#41;](chart-types-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="1f19f-135">[Graphiques en courbes &#40;Générateur de rapports et SSRS&#41;](line-charts-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="1f19f-135">[Line Charts &#40;Report Builder and SSRS&#41;](line-charts-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="1f19f-136">[Modifier un type de graphique &#40;Générateur de rapports et SSRS&#41;](change-a-chart-type-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="1f19f-136">[Change a Chart Type &#40;Report Builder and SSRS&#41;](change-a-chart-type-report-builder-and-ssrs.md) </span></span>  
+ [<span data-ttu-id="1f19f-137">Points de données vides et Null dans les graphiques &#40;Générateur de rapports et SSRS&#41;</span><span class="sxs-lookup"><span data-stu-id="1f19f-137">Empty and Null Data Points in Charts &#40;Report Builder and SSRS&#41;</span></span>](empty-and-null-data-points-in-charts-report-builder-and-ssrs.md)  
+  
+  

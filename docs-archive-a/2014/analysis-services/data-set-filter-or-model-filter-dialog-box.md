@@ -1,0 +1,62 @@
+---
+title: Boîte de dialogue filtre de jeu de données ou filtre de modèle | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+ms.assetid: a9602174-b7e2-4e16-8ded-dfd8eb9264d7
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: afa796cd8cb23894c059deba411b3e1d6676e3b9
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87702151"
+---
+# <a name="data-set-filter-or-model-filter-dialog-box"></a><span data-ttu-id="538eb-102">Boîte de dialogue Filtre de jeu de données ou Filtre de modèle</span><span class="sxs-lookup"><span data-stu-id="538eb-102">Data Set Filter or Model Filter Dialog Box</span></span>
+  <span data-ttu-id="538eb-103">Cette boîte de dialogue vous permet de générer les filtres que vous pouvez appliquer à un jeu de données.</span><span class="sxs-lookup"><span data-stu-id="538eb-103">This dialog box helps you build the filters that you can apply to a data set.</span></span>  <span data-ttu-id="538eb-104">Le jeu de données peut être un jeu de données externes utilisé pour le test ou il peut s'agir des données de cas d'un modèle d'exploration de données.</span><span class="sxs-lookup"><span data-stu-id="538eb-104">The data set can be an external data set used for testing, or the case data for a mining model.</span></span> <span data-ttu-id="538eb-105">Le nom de la boîte de dialogue change selon que le filtre concerne un jeu de données externes ou un modèle d'exploration de données.</span><span class="sxs-lookup"><span data-stu-id="538eb-105">The name of the dialog box changes depending on whether the filter is for an external data set or for a mining model.</span></span>  
+  
+ <span data-ttu-id="538eb-106">Si vous appliquez le filtre à un nouveau jeu de données, le modèle d'exploration de données est évalué en utilisant uniquement les cas du jeu de données qui remplissent les conditions.</span><span class="sxs-lookup"><span data-stu-id="538eb-106">If you apply the filter to a new data set, the data mining model is evaluated by using only those cases in the data set that meet the conditions.</span></span> <span data-ttu-id="538eb-107">Si vous appliquez le filtre au modèle d'exploration de données lui-même, l'apprentissage et le test du modèle seront effectués en utilisant uniquement les cas du jeu de données de test existant qui remplissent les critères de filtre.</span><span class="sxs-lookup"><span data-stu-id="538eb-107">If you apply the filter to the mining model itself, the model will be trained and tested by using only the cases in the existing test data set that meet the filter criteria.</span></span>  
+  
+-   <span data-ttu-id="538eb-108">La boîte de dialogue **Filtre de jeu de données** est disponible sous l’onglet **Sélection d’entrée** du concepteur **Graphique d’analyse de précision de l’exploration de données** .</span><span class="sxs-lookup"><span data-stu-id="538eb-108">The **Data Set Filter** dialog box is available from the **Input Selection** tab of the **Mining Accuracy Chart** designer.</span></span>  
+  
+-   <span data-ttu-id="538eb-109">La boîte de dialogue **Filtre de modèle** est disponible sous l’onglet **Modèles d’exploration de données** du Concepteur d’exploration de données.</span><span class="sxs-lookup"><span data-stu-id="538eb-109">The **Model Filter** dialog box is available from the **Mining Models** tab of the Data Miningdesigner.</span></span>  
+  
+-   <span data-ttu-id="538eb-110">La grille **Conditions** contient des colonnes dans lesquelles vous pouvez spécifier un nom de table ou de colonne, un opérateur et des valeurs cibles.</span><span class="sxs-lookup"><span data-stu-id="538eb-110">The **Conditions** grid contains columns where you can specify a table or column name, an operator, and target values.</span></span> <span data-ttu-id="538eb-111">L'utilisation de cette grille permet de créer en fait une clause WHERE.</span><span class="sxs-lookup"><span data-stu-id="538eb-111">By using this grid you are essentially creating a WHERE clause.</span></span>  
+  
+> [!TIP]  
+>  <span data-ttu-id="538eb-112">Pour tester la précision sur un sous-ensemble des données d’apprentissage d’origine, vous pouvez ajouter la vue de source de données utilisée pour définir le jeu d’apprentissage en tant que données de test externes, puis ajouter des conditions dans la grille **Filtre de jeu de données**.</span><span class="sxs-lookup"><span data-stu-id="538eb-112">To test accuracy on a subset of the original training data, you can add the data source view that was used to define the training set as the external testing data, and then add conditions in the **Data Set Filter** grid.</span></span>  
+  
+ <span data-ttu-id="538eb-113">**Pour plus d’informations :** [Test et validation &#40;exploration de données&#41;](data-mining/testing-and-validation-data-mining.md)</span><span class="sxs-lookup"><span data-stu-id="538eb-113">**For more information:** [Testing and Validation &#40;Data Mining&#41;](data-mining/testing-and-validation-data-mining.md)</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="538eb-114">Options</span><span class="sxs-lookup"><span data-stu-id="538eb-114">Options</span></span>  
+ <span data-ttu-id="538eb-115">**Conditions**</span><span class="sxs-lookup"><span data-stu-id="538eb-115">**Conditions**</span></span>  
+ <span data-ttu-id="538eb-116">Affiche des noms de table, suivis de noms de colonne avec des conditions.</span><span class="sxs-lookup"><span data-stu-id="538eb-116">Displays table names, followed by column names with conditions.</span></span>  
+  
+|<span data-ttu-id="538eb-117">Valeur</span><span class="sxs-lookup"><span data-stu-id="538eb-117">Value</span></span>|<span data-ttu-id="538eb-118">Description</span><span class="sxs-lookup"><span data-stu-id="538eb-118">Description</span></span>|  
+|-----------|-----------------|  
+|<span data-ttu-id="538eb-119">**Et/ou**</span><span class="sxs-lookup"><span data-stu-id="538eb-119">**And/Or**</span></span>|<span data-ttu-id="538eb-120">Choisissez un opérateur pour joindre plusieurs conditions.</span><span class="sxs-lookup"><span data-stu-id="538eb-120">Choose an operator to join multiple conditions.</span></span>|  
+|<span data-ttu-id="538eb-121">**Colonne de la structure d'exploration de données**</span><span class="sxs-lookup"><span data-stu-id="538eb-121">**Mining Structure Column**</span></span>|<span data-ttu-id="538eb-122">Cliquez pour sélectionner une source de données, puis cliquez sur des lignes consécutives dans la grille pour ajouter des colonnes de la source de données.</span><span class="sxs-lookup"><span data-stu-id="538eb-122">Click to select a data source, and then click successive lines in the grid to add columns from the data source.</span></span><br /><br /> <span data-ttu-id="538eb-123">La première ligne de la grille spécifie la vue de source de données.</span><span class="sxs-lookup"><span data-stu-id="538eb-123">The first line in the grid specifies the data source view.</span></span> <span data-ttu-id="538eb-124">Une fois que vous avez sélectionné une vue de source de données, la zone **Colonne de la structure d’exploration de données** affiche une icône de table et le champ **Valeur** affiche la combinaison de tous les critères que vous avez définis pour cette source de données.</span><span class="sxs-lookup"><span data-stu-id="538eb-124">After you select a data source view, **Mining Structure Column** displays a table icon, and the **Value** field displays the combination of all criteria that you have defined for this data source.</span></span><br /><br /> <span data-ttu-id="538eb-125">Une fois que vous avez sélectionné une source de données, la zone **Colonne de la structure d’exploration de données** propose une liste déroulante de colonnes individuelles contenues dans la source de données.</span><span class="sxs-lookup"><span data-stu-id="538eb-125">After you have selected a data source, the **Mining Structure Column** box provides a dropdown list of individual columns in the data source.</span></span>|  
+|<span data-ttu-id="538eb-126">**Opérateur**</span><span class="sxs-lookup"><span data-stu-id="538eb-126">**Operator**</span></span>|<span data-ttu-id="538eb-127">Sélectionnez un opérateur dans la liste.</span><span class="sxs-lookup"><span data-stu-id="538eb-127">Select an operator from the list.</span></span>|  
+|<span data-ttu-id="538eb-128">**Valeur**</span><span class="sxs-lookup"><span data-stu-id="538eb-128">**Value**</span></span>|<span data-ttu-id="538eb-129">Pour les tables, le champ **Valeur** affiche la combinaison de tous les filtres appliqués à la source de données.</span><span class="sxs-lookup"><span data-stu-id="538eb-129">For tables, the **Value** field shows the combination of all filters applied to the data source.</span></span> <span data-ttu-id="538eb-130">Vous pouvez également cliquer sur le bouton Générer **(...)** à droite de la zone de texte pour ouvrir la boîte de dialogue **filtre** et générer une condition.</span><span class="sxs-lookup"><span data-stu-id="538eb-130">You can also click the build **(...)** button at the right of the text box to open the **Filter** dialog box and build a condition.</span></span>|  
+  
+ <span data-ttu-id="538eb-131">**Expression**</span><span class="sxs-lookup"><span data-stu-id="538eb-131">**Expression**</span></span>  
+ <span data-ttu-id="538eb-132">Affiche l'ensemble de critères que vous avez définis à l'aide de la grille.</span><span class="sxs-lookup"><span data-stu-id="538eb-132">Displays the set of criteria that you built by using the grid.</span></span>  
+  
+ <span data-ttu-id="538eb-133">**Modifier la requête**</span><span class="sxs-lookup"><span data-stu-id="538eb-133">**Edit Query**</span></span>  
+ <span data-ttu-id="538eb-134">Modifie le mode de modification de filtre afin que vous puissiez directement taper une expression de filtre dans la zone de texte **Expression** .</span><span class="sxs-lookup"><span data-stu-id="538eb-134">Changes the filter editing mode so that you can type a filter expression directly in the **Expression** text box.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="538eb-135">Une fois que vous avez apporté des modifications manuelles à l’expression de filtre, vous ne pouvez pas revenir au mode de modification de grille, même après avoir enregistré l’expression dans la zone **expression de filtre** sous l’onglet **sélection d’entrée** . Si vous souhaitez générer une expression à l’aide de la grille, vous devez supprimer l’expression de filtre existante et recommencer.</span><span class="sxs-lookup"><span data-stu-id="538eb-135">After you have made manual changes to the filter expression, you cannot return to grid edit mode, even after you have saved the expression in the **Filter Expression** box on the **Input Selection** tab. If you want to build an expression by using the grid, you must delete the existing filter expression and start over.</span></span>  
+  
+ <span data-ttu-id="538eb-136">**Rétablir les modifications apportées à la requête**</span><span class="sxs-lookup"><span data-stu-id="538eb-136">**Revert Query Edits**</span></span>  
+ <span data-ttu-id="538eb-137">Rétablit l'état précédent de la grille et annule toutes les modifications apportées à l'expression de filtre.</span><span class="sxs-lookup"><span data-stu-id="538eb-137">Restores the grid to its previous state and cancels any changes that you made to the filter expression.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="538eb-138">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="538eb-138">See Also</span></span>  
+ <span data-ttu-id="538eb-139">[Tâches de test et de validation et &#40;d’exploration de données&#41;](data-mining/testing-and-validation-tasks-and-how-tos-data-mining.md) </span><span class="sxs-lookup"><span data-stu-id="538eb-139">[Testing and Validation Tasks and How-tos &#40;Data Mining&#41;](data-mining/testing-and-validation-tasks-and-how-tos-data-mining.md) </span></span>  
+ [<span data-ttu-id="538eb-140">Concepteur graphique d’analyse de précision de l’exploration de données &#40;&#41;</span><span class="sxs-lookup"><span data-stu-id="538eb-140">Mining Accuracy Chart Designer &#40;Data Mining&#41;</span></span>](mining-accuracy-chart-designer-data-mining.md)  
+  
+  

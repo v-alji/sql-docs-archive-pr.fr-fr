@@ -1,0 +1,119 @@
+---
+title: Sauvegarder la base de données (page Options de support) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: backup-restore
+ms.topic: conceptual
+f1_keywords:
+- swb.backupdatabase.mediaoptions.f1
+- sql12.swb.backupdatabase.mediaoptions.f1
+ms.assetid: eff36228-710c-4ed5-9af5-95859575dc0f
+author: MikeRayMSFT
+ms.author: mikeray
+ms.openlocfilehash: cd09eb091a7f488f891bc2e69d19ad039b65e065
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87704212"
+---
+# <a name="back-up-database-media-options-page"></a><span data-ttu-id="c76fa-102">Sauvegarder la base de données (page Options de support)</span><span class="sxs-lookup"><span data-stu-id="c76fa-102">Back Up Database (Media Options Page)</span></span>
+  <span data-ttu-id="c76fa-103">Utilisez la page  **Options de support** de la boîte de dialogue **Sauvegarder la base de données** pour afficher ou modifier les options de sauvegarde de la base de données.</span><span class="sxs-lookup"><span data-stu-id="c76fa-103">Use the  **Media Options** page of the **Back Up Database** dialog box to view or modify database media options.</span></span>  
+  
+ <span data-ttu-id="c76fa-104">**Pour créer une sauvegarde à l'aide de SQL Server Management Studio**</span><span class="sxs-lookup"><span data-stu-id="c76fa-104">**To create a backup by using SQL Server Management Studio**</span></span>  
+  
+-   [<span data-ttu-id="c76fa-105">Créer une sauvegarde complète de base de données &#40;SQL Server&#41;</span><span class="sxs-lookup"><span data-stu-id="c76fa-105">Create a Full Database Backup &#40;SQL Server&#41;</span></span>](create-a-full-database-backup-sql-server.md)  
+  
+-   [<span data-ttu-id="c76fa-106">Créer une sauvegarde différentielle de base de données &#40;SQL Server&#41;</span><span class="sxs-lookup"><span data-stu-id="c76fa-106">Create a Differential Database Backup &#40;SQL Server&#41;</span></span>](create-a-differential-database-backup-sql-server.md)  
+  
+> [!IMPORTANT]  
+>  <span data-ttu-id="c76fa-107">Vous pouvez définir un plan de maintenance de base de données pour créer des sauvegardes de base de données.</span><span class="sxs-lookup"><span data-stu-id="c76fa-107">You can define a database maintenance plan to create database backups.</span></span> <span data-ttu-id="c76fa-108">Pour plus d’informations, consultez [Plans de maintenance](../maintenance-plans/maintenance-plans.md) et [Utiliser l’Assistant Plan de maintenance](../maintenance-plans/use-the-maintenance-plan-wizard.md).</span><span class="sxs-lookup"><span data-stu-id="c76fa-108">For more information, see [Maintenance Plans](../maintenance-plans/maintenance-plans.md) and [Use the Maintenance Plan Wizard](../maintenance-plans/use-the-maintenance-plan-wizard.md).</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="c76fa-109">Quand vous spécifiez une tâche de sauvegarde à l’aide de [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], vous pouvez générer le script [!INCLUDE[tsql](../../includes/tsql-md.md)][BACKUP](/sql/t-sql/statements/backup-transact-sql) correspondant en cliquant sur le bouton **Script** et en sélectionnant une destination pour le script.</span><span class="sxs-lookup"><span data-stu-id="c76fa-109">When you specify a backup task by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], you can generate the corresponding [!INCLUDE[tsql](../../includes/tsql-md.md)][BACKUP](/sql/t-sql/statements/backup-transact-sql) script by clicking the **Script** button and then selecting a destination for the script.</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="c76fa-110">Options</span><span class="sxs-lookup"><span data-stu-id="c76fa-110">Options</span></span>  
+  
+### <a name="overwrite-media"></a><span data-ttu-id="c76fa-111">Remplacer le support</span><span class="sxs-lookup"><span data-stu-id="c76fa-111">Overwrite media</span></span>  
+ <span data-ttu-id="c76fa-112">Les options du volet **Remplacer le support** contrôlent la façon dont la sauvegarde est écrite sur le support.</span><span class="sxs-lookup"><span data-stu-id="c76fa-112">The options of the **Overwrite media** panel control how the backup is written to the media.</span></span> <span data-ttu-id="c76fa-113">Si vous avez sélectionné l’URL (Stockage Azure) comme destination de la sauvegarde dans la page Général de la boîte de dialogue Sauvegarder la base de données, les options figurant sous la section Remplacer le support sont désactivées.</span><span class="sxs-lookup"><span data-stu-id="c76fa-113">IF you selected URL (Azure Storage) as the backup destination on the General page of the Back Up Database dialog box, the options under the Overwrite media section are disabled.</span></span> <span data-ttu-id="c76fa-114">Pour remplacer une sauvegarde, utilisez l'instruction Transact-SQL `BACKUP TO URL.. WITH FORMAT`.</span><span class="sxs-lookup"><span data-stu-id="c76fa-114">You can overwrite a backup using the `BACKUP TO URL.. WITH FORMAT` Transact-SQL statement.</span></span> <span data-ttu-id="c76fa-115">Pour plus d’informations, consultez [SQL Server Backup to URL](sql-server-backup-to-url.md).</span><span class="sxs-lookup"><span data-stu-id="c76fa-115">For more information, see [SQL Server Backup to URL](sql-server-backup-to-url.md).</span></span>  
+  
+ <span data-ttu-id="c76fa-116">Seule l’option **Sauvegarder sur un nouveau support de sauvegarde et effacer tous les jeux de sauvegarde existants** est prise en charge avec les options de chiffrement.</span><span class="sxs-lookup"><span data-stu-id="c76fa-116">Only the option, **Backup to a new media, and erase all existing backup sets** is supported with encryption options.</span></span> <span data-ttu-id="c76fa-117">Si vous sélectionnez les options sous la section **Sauvegarder sur le support de sauvegarde existant**, les options de chiffrements sur la page **Options de sauvegarde** sont désactivées.</span><span class="sxs-lookup"><span data-stu-id="c76fa-117">If you select the options under the **Back up to existing media** section, the encryptions options on the **Backup Options** page will be disabled.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="c76fa-118">Pour plus d’informations sur les supports de sauvegarde, consultez [Jeux de supports, familles de supports et jeux de sauvegarde &#40;SQL Server&#41;](media-sets-media-families-and-backup-sets-sql-server.md).</span><span class="sxs-lookup"><span data-stu-id="c76fa-118">For information about media sets, see [Media Sets, Media Families, and Backup Sets &#40;SQL Server&#41;](media-sets-media-families-and-backup-sets-sql-server.md).</span></span>  
+  
+ <span data-ttu-id="c76fa-119">**Sauvegarder sur le support de sauvegarde existant**</span><span class="sxs-lookup"><span data-stu-id="c76fa-119">**Back up to the existing media set**</span></span>  
+ <span data-ttu-id="c76fa-120">Sauvegarde la base de données sur le support de sauvegarde existant.</span><span class="sxs-lookup"><span data-stu-id="c76fa-120">Back up a database to an existing media set.</span></span> <span data-ttu-id="c76fa-121">L'activation de cette case d'option active trois options.</span><span class="sxs-lookup"><span data-stu-id="c76fa-121">Selecting this option button activates three options.</span></span>  
+  
+ <span data-ttu-id="c76fa-122">Choisissez l’une des options suivantes :</span><span class="sxs-lookup"><span data-stu-id="c76fa-122">Choose one of the following options:</span></span>  
+  
+ <span data-ttu-id="c76fa-123">**Ajouter au jeu de sauvegarde existant**</span><span class="sxs-lookup"><span data-stu-id="c76fa-123">**Append to the existing backup set**</span></span>  
+ <span data-ttu-id="c76fa-124">Ajoute le jeu de sauvegarde au support de sauvegarde existant, tout en préservant les sauvegardes antérieures.</span><span class="sxs-lookup"><span data-stu-id="c76fa-124">Append the backup set to the existing media set, preserving any prior backups.</span></span>  
+  
+ <span data-ttu-id="c76fa-125">**Remplacer tous les jeux de sauvegarde existants**</span><span class="sxs-lookup"><span data-stu-id="c76fa-125">**Overwrite all existing backup sets**</span></span>  
+ <span data-ttu-id="c76fa-126">Remplace les éventuelles sauvegardes antérieures présentes sur le support de sauvegarde existant par la sauvegarde active.</span><span class="sxs-lookup"><span data-stu-id="c76fa-126">Replace any prior backups on the existing media set with the current backup.</span></span>  
+  
+ <span data-ttu-id="c76fa-127">**Vérifier le nom du support de sauvegarde et la date d'expiration du jeu de sauvegarde**</span><span class="sxs-lookup"><span data-stu-id="c76fa-127">**Check media set name and backup set expiration**</span></span>  
+ <span data-ttu-id="c76fa-128">Éventuellement, si vous sauvegardez sur un support de sauvegarde existant, exigez la vérification du nom et de la date d'expiration des jeux de sauvegarde pendant l'opération de sauvegarde.</span><span class="sxs-lookup"><span data-stu-id="c76fa-128">Optionally, if backing up to an existing media set, require the backup operation to verify the name and the expiration date of the backup sets.</span></span>  
+  
+ <span data-ttu-id="c76fa-129">**Nom du support de sauvegarde**</span><span class="sxs-lookup"><span data-stu-id="c76fa-129">**Media set name**</span></span>  
+ <span data-ttu-id="c76fa-130">Si l’option **Vérifier le nom du support de sauvegarde et la date d’expiration du jeu de sauvegarde** est sélectionnée, éventuellement, spécifiez le nom du support de sauvegarde à utiliser pour cette opération de sauvegarde.</span><span class="sxs-lookup"><span data-stu-id="c76fa-130">If **Check media set name and backup set expiration** is selected, optionally, specify the name of the media set to be used for this backup operation.</span></span>  
+  
+ <span data-ttu-id="c76fa-131">**Sauvegarder sur un nouveau support de sauvegarde et effacer tous les jeux de sauvegarde existants**</span><span class="sxs-lookup"><span data-stu-id="c76fa-131">**Back up to a new media set, and erase all existing backup sets**</span></span>  
+ <span data-ttu-id="c76fa-132">Utilise un nouveau support de sauvegarde et efface tous les jeux de sauvegarde antérieurs s'y trouvant.</span><span class="sxs-lookup"><span data-stu-id="c76fa-132">Use a new media set, erasing the previous backup sets.</span></span>  
+  
+ <span data-ttu-id="c76fa-133">Si vous cliquez sur cette option, les options suivantes sont activées :</span><span class="sxs-lookup"><span data-stu-id="c76fa-133">Clicking this option activates the following options:</span></span>  
+  
+ <span data-ttu-id="c76fa-134">**Nouveau nom du support de sauvegarde**</span><span class="sxs-lookup"><span data-stu-id="c76fa-134">**New media set name**</span></span>  
+ <span data-ttu-id="c76fa-135">Éventuellement, entrez un nouveau nom pour le support de sauvegarde.</span><span class="sxs-lookup"><span data-stu-id="c76fa-135">Optionally, enter a new name for the media set.</span></span>  
+  
+ <span data-ttu-id="c76fa-136">**Description du nouveau support de sauvegarde**</span><span class="sxs-lookup"><span data-stu-id="c76fa-136">**New media set description**</span></span>  
+ <span data-ttu-id="c76fa-137">Éventuellement, entrez une description significative pour le support de sauvegarde.</span><span class="sxs-lookup"><span data-stu-id="c76fa-137">Optionally, enter a meaningful description of the new media set.</span></span> <span data-ttu-id="c76fa-138">Cette description doit être suffisamment explicite pour indiquer avec précision le contenu du support.</span><span class="sxs-lookup"><span data-stu-id="c76fa-138">This description should be specific enough to communicate the contents accurately.</span></span>  
+  
+### <a name="reliability"></a><span data-ttu-id="c76fa-139">Fiabilité</span><span class="sxs-lookup"><span data-stu-id="c76fa-139">Reliability</span></span>  
+ <span data-ttu-id="c76fa-140">Les options du volet **Journal des transactions** contrôlent la gestion des erreurs par l’opération de sauvegarde.</span><span class="sxs-lookup"><span data-stu-id="c76fa-140">The options of the **Transaction log** panel control error management by the backup operation.</span></span>  
+  
+ <span data-ttu-id="c76fa-141">**Vérifier la sauvegarde en fin d’opération**</span><span class="sxs-lookup"><span data-stu-id="c76fa-141">**Verify backup when finished**</span></span>  
+ <span data-ttu-id="c76fa-142">Vérifie si le jeu de sauvegarde est complet et que tous les volumes sont lisibles.</span><span class="sxs-lookup"><span data-stu-id="c76fa-142">Verify that the backup set is complete and that all volumes are readable.</span></span>  
+  
+ <span data-ttu-id="c76fa-143">**Effectuer une somme de contrôle avant d’écrire sur le support**</span><span class="sxs-lookup"><span data-stu-id="c76fa-143">**Perform checksum before writing to media**</span></span>  
+ <span data-ttu-id="c76fa-144">La somme de contrôle permet de s'assurer de l'intégrité des supports de sauvegarde avant l'écriture.</span><span class="sxs-lookup"><span data-stu-id="c76fa-144">Verify the checksums before writing to the backup media.</span></span> <span data-ttu-id="c76fa-145">L'activation de cette option revient à spécifier l'option CHECKSUM dans une instruction BACKUP [!INCLUDE[tsql](../../includes/tsql-md.md)].</span><span class="sxs-lookup"><span data-stu-id="c76fa-145">Selecting this option is equivalent to specifying the CHECKSUM option in the BACKUP statement of [!INCLUDE[tsql](../../includes/tsql-md.md)].</span></span> <span data-ttu-id="c76fa-146">Elle peut entraîner une augmentation de la charge de travail et une diminution du débit de la sauvegarde.</span><span class="sxs-lookup"><span data-stu-id="c76fa-146">Selecting this option may increase the workload, and decrease the backup throughput of the backup operation.</span></span> <span data-ttu-id="c76fa-147">Pour plus d’informations sur les sommes de contrôle de sauvegarde, consultez [Erreurs de support possibles pendant les opérations de sauvegarde et de restauration &#40;SQL Server&#41;](possible-media-errors-during-backup-and-restore-sql-server.md).</span><span class="sxs-lookup"><span data-stu-id="c76fa-147">For information about backup checksums, see [Possible Media Errors During Backup and Restore &#40;SQL Server&#41;](possible-media-errors-during-backup-and-restore-sql-server.md).</span></span>  
+  
+ <span data-ttu-id="c76fa-148">**Continuer en cas d’erreur**</span><span class="sxs-lookup"><span data-stu-id="c76fa-148">**Continue on error**</span></span>  
+ <span data-ttu-id="c76fa-149">La sauvegarde se poursuit même si une ou plusieurs erreurs sont rencontrées.</span><span class="sxs-lookup"><span data-stu-id="c76fa-149">The backup operation is to continue even after encountering one or more errors.</span></span>  
+  
+### <a name="transaction-log"></a><span data-ttu-id="c76fa-150">Journal des transactions</span><span class="sxs-lookup"><span data-stu-id="c76fa-150">Transaction log</span></span>  
+ <span data-ttu-id="c76fa-151">Les options du volet **Journal des transactions** contrôlent le comportement d’une sauvegarde de journal des transactions.</span><span class="sxs-lookup"><span data-stu-id="c76fa-151">The options of the **Transaction log** panel control the behavior of a transaction log backup.</span></span> <span data-ttu-id="c76fa-152">Ces options concernent uniquement le mode de récupération complète ou le mode de récupération utilisant les journaux de transactions.</span><span class="sxs-lookup"><span data-stu-id="c76fa-152">These options are relevant only under the full recovery model or bulk-logged recovery model.</span></span> <span data-ttu-id="c76fa-153">Elles sont activées uniquement si **Journal des transactions** a été sélectionné dans le champ **Type de sauvegarde** de la page [Général](../../integration-services/general-page-of-integration-services-designers-options.md) de la boîte de dialogue **Sauvegarder la base de données**.</span><span class="sxs-lookup"><span data-stu-id="c76fa-153">They are activated only if **Transaction log** has been selected in the **Backup type** field on the [General](../../integration-services/general-page-of-integration-services-designers-options.md) page of the **Back Up Database** dialog box.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="c76fa-154">Pour plus d’informations sur les sauvegardes des journaux de transactions, consultez [Sauvegardes des journaux de transactions &#40;SQL Server&#41;](transaction-log-backups-sql-server.md).</span><span class="sxs-lookup"><span data-stu-id="c76fa-154">For information about transaction log backups, see [Transaction Log Backups &#40;SQL Server&#41;](transaction-log-backups-sql-server.md).</span></span>  
+  
+ <span data-ttu-id="c76fa-155">**Tronquer le journal des transactions**</span><span class="sxs-lookup"><span data-stu-id="c76fa-155">**Truncate the transaction log**</span></span>  
+ <span data-ttu-id="c76fa-156">Permet de sauvegarder le journal des transactions puis de le tronquer pour libérer de l'espace.</span><span class="sxs-lookup"><span data-stu-id="c76fa-156">Back up the transaction log and truncate it to free log space.</span></span> <span data-ttu-id="c76fa-157">La base de données reste en ligne.</span><span class="sxs-lookup"><span data-stu-id="c76fa-157">The database remains online.</span></span> <span data-ttu-id="c76fa-158">Il s'agit de l'option par défaut.</span><span class="sxs-lookup"><span data-stu-id="c76fa-158">This is the default option.</span></span>  
+  
+ <span data-ttu-id="c76fa-159">**Sauvegarder la fin du journal et laisser la base de données dans l'état de restauration**</span><span class="sxs-lookup"><span data-stu-id="c76fa-159">**Back up the tail of the log, and leave the database in the restoring state**</span></span>  
+ <span data-ttu-id="c76fa-160">Sauvegarder la fin du journal et laisser la base de données dans l'état de restauration.</span><span class="sxs-lookup"><span data-stu-id="c76fa-160">Back up the tail of the log and leave the database in a restoring state.</span></span> <span data-ttu-id="c76fa-161">Crée une *sauvegarde de la fin du journal*, incluant les journaux n’ayant pas encore été sauvegardés (journal actif), généralement en guise de préparation à la restauration d’une base de données.</span><span class="sxs-lookup"><span data-stu-id="c76fa-161">This option creates a *tail-log backup*, which backs up logs that have not yet been backed up (the active log), typically, in preparation for restoring a database.</span></span> <span data-ttu-id="c76fa-162">La base de données est inaccessible aux utilisateurs tant qu'elle n'a pas été restaurée dans son intégralité.</span><span class="sxs-lookup"><span data-stu-id="c76fa-162">The database will be unavailable to users until it is completely restored.</span></span>  
+  
+ <span data-ttu-id="c76fa-163">La sélection de cette option revient à spécifier WITH NO_TRUNCATE, NORECOVERY dans une instruction [BACKUP](/sql/t-sql/statements/backup-transact-sql) ([!INCLUDE[tsql](../../includes/tsql-md.md)]).</span><span class="sxs-lookup"><span data-stu-id="c76fa-163">Selecting this option is equivalent to specifying WITH NO_TRUNCATE, NORECOVERY in a [BACKUP](/sql/t-sql/statements/backup-transact-sql) statement ([!INCLUDE[tsql](../../includes/tsql-md.md)]).</span></span> <span data-ttu-id="c76fa-164">Pour plus d’informations, consultez [Sauvegardes de la fin du journal &#40;SQL Server&#41;](tail-log-backups-sql-server.md).</span><span class="sxs-lookup"><span data-stu-id="c76fa-164">For more information, see [Tail-Log Backups &#40;SQL Server&#41;](tail-log-backups-sql-server.md).</span></span>  
+  
+### <a name="tape-drive"></a><span data-ttu-id="c76fa-165">Lecteur de bande</span><span class="sxs-lookup"><span data-stu-id="c76fa-165">Tape drive</span></span>  
+ <span data-ttu-id="c76fa-166">Les options du volet **Lecteur de bande** contrôlent la gestion des bandes durant l’opération de sauvegarde.</span><span class="sxs-lookup"><span data-stu-id="c76fa-166">The options of the **Tape drive** panel control tape management during the backup operation.</span></span> <span data-ttu-id="c76fa-167">Ces options sont activées uniquement si **Bande** a été sélectionné dans le volet **Destination** de la page [Général](../../integration-services/general-page-of-integration-services-designers-options.md) de la boîte de dialogue **Sauvegarder la base de données**.</span><span class="sxs-lookup"><span data-stu-id="c76fa-167">These options are activated only if **Tape** has been selected in the **Destination** panel on the [General](../../integration-services/general-page-of-integration-services-designers-options.md) page of the **Back Up Database** dialog box.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="c76fa-168">Pour plus d’informations sur l’utilisation des périphériques à bandes, consultez, consultez [Unités de sauvegarde &#40;SQL Server&#41;](backup-devices-sql-server.md).</span><span class="sxs-lookup"><span data-stu-id="c76fa-168">For information about how to use tape devices, see [Backup Devices &#40;SQL Server&#41;](backup-devices-sql-server.md).</span></span>  
+  
+ <span data-ttu-id="c76fa-169">**Décharger la bande après la sauvegarde**</span><span class="sxs-lookup"><span data-stu-id="c76fa-169">**Unload the tape after backup**</span></span>  
+ <span data-ttu-id="c76fa-170">La bande est déchargée une fois la sauvegarde terminée.</span><span class="sxs-lookup"><span data-stu-id="c76fa-170">After the backup is complete, unload the tape.</span></span>  
+  
+ <span data-ttu-id="c76fa-171">**Rembobiner la bande avant de décharger**</span><span class="sxs-lookup"><span data-stu-id="c76fa-171">**Rewind the tape before unloading**</span></span>  
+ <span data-ttu-id="c76fa-172">La bande est automatiquement libérée et rembobinée avant d'être déchargée.</span><span class="sxs-lookup"><span data-stu-id="c76fa-172">Before unloading the tape, release and rewind it.</span></span> <span data-ttu-id="c76fa-173">Cette option est activée uniquement si **Décharger la bande après la sauvegarde** est sélectionné.</span><span class="sxs-lookup"><span data-stu-id="c76fa-173">This is enabled only if **Unload the tape after backup** is selected.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="c76fa-174"> Voir aussi</span><span class="sxs-lookup"><span data-stu-id="c76fa-174">See Also</span></span>  
+ <span data-ttu-id="c76fa-175">[BACKUP &#40;Transact-SQL&#41;](/sql/t-sql/statements/backup-transact-sql) </span><span class="sxs-lookup"><span data-stu-id="c76fa-175">[BACKUP &#40;Transact-SQL&#41;](/sql/t-sql/statements/backup-transact-sql) </span></span>  
+ <span data-ttu-id="c76fa-176">[Sauvegarder un journal des transactions &#40;SQL Server&#41;](back-up-a-transaction-log-sql-server.md) </span><span class="sxs-lookup"><span data-stu-id="c76fa-176">[Back Up a Transaction Log &#40;SQL Server&#41;](back-up-a-transaction-log-sql-server.md) </span></span>  
+ <span data-ttu-id="c76fa-177">[Sauvegarder des fichiers et des groupes de fichiers &#40;SQL Server&#41;](back-up-files-and-filegroups-sql-server.md) </span><span class="sxs-lookup"><span data-stu-id="c76fa-177">[Back Up Files and Filegroups &#40;SQL Server&#41;](back-up-files-and-filegroups-sql-server.md) </span></span>  
+ [<span data-ttu-id="c76fa-178">Sauvegarder le journal des transactions lorsque la base de données est endommagée &#40;SQL Server&#41;</span><span class="sxs-lookup"><span data-stu-id="c76fa-178">Back Up the Transaction Log When the Database Is Damaged &#40;SQL Server&#41;</span></span>](back-up-the-transaction-log-when-the-database-is-damaged-sql-server.md)  
+  
+  

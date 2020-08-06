@@ -1,0 +1,45 @@
+---
+title: Configurer les propriétés du groupe de mesures | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+helpviewer_keywords:
+- properties [Analysis Services], measure groups
+ms.assetid: fa66bdb6-60b8-413c-ac2a-00e4d09f60a2
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: 03dad3d8ee33ea8a78b08f9a354d0db3d177198c
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87705651"
+---
+# <a name="configure-measure-group-properties"></a><span data-ttu-id="b9af4-102">Configurer les propriétés d'un groupe de mesures</span><span class="sxs-lookup"><span data-stu-id="b9af4-102">Configure Measure Group Properties</span></span>
+  <span data-ttu-id="b9af4-103">Les propriétés des groupes de mesures vous permettent de définir le fonctionnement des groupes de mesures.</span><span class="sxs-lookup"><span data-stu-id="b9af4-103">Measures groups have properties that enable you to define how measure groups function.</span></span>  
+  
+## <a name="measure-group-properties"></a><span data-ttu-id="b9af4-104">Propriétés des groupes de mesures</span><span class="sxs-lookup"><span data-stu-id="b9af4-104">Measure Group Properties</span></span>  
+ <span data-ttu-id="b9af4-105">Les propriétés d'un groupe de mesures déterminent les comportements de l'ensemble du groupe de mesures et définissent les comportements par défaut des nouveaux objets de certaines propriétés de mesures dans un groupe de mesures.</span><span class="sxs-lookup"><span data-stu-id="b9af4-105">Measure group properties determine behaviors for the entire measure group and set the default behaviors for certain properties of measures within a measure group.</span></span>  
+  
+|<span data-ttu-id="b9af4-106">Propriété</span><span class="sxs-lookup"><span data-stu-id="b9af4-106">Property</span></span>|<span data-ttu-id="b9af4-107">Définition</span><span class="sxs-lookup"><span data-stu-id="b9af4-107">Definition</span></span>|  
+|--------------|----------------|  
+|`AggregationPrefix`|<span data-ttu-id="b9af4-108">S'applique au stockage ROLAP.</span><span class="sxs-lookup"><span data-stu-id="b9af4-108">Applies to ROLAP storage.</span></span> <span data-ttu-id="b9af4-109">Affecte un préfixe commun aux vues indexées dans SQL Server. Ce préfixe est utilisé pour stocker les agrégations des partitions associées au groupe de mesures.</span><span class="sxs-lookup"><span data-stu-id="b9af4-109">Assigns a common prefix to the indexed views in SQL Server, used to store aggregations for the partitions associated with this measure group.</span></span>|  
+|`DataAggregation`|<span data-ttu-id="b9af4-110">Cette propriété est réservée à un usage ultérieur et n'a aucun effet actuellement.</span><span class="sxs-lookup"><span data-stu-id="b9af4-110">This property is reserved for future use and currently has no effect.</span></span> <span data-ttu-id="b9af4-111">Il est donc recommandé de ne pas modifier ce paramètre.</span><span class="sxs-lookup"><span data-stu-id="b9af4-111">Therefore, it is recommended that you do not modify this setting.</span></span>|  
+|`Description`|<span data-ttu-id="b9af4-112">Vous pouvez utiliser cette propriété pour décrire le groupe de mesures.</span><span class="sxs-lookup"><span data-stu-id="b9af4-112">You can use this property to document the measure group.</span></span>|  
+|`ErrorConfiguration`|<span data-ttu-id="b9af4-113">Paramètres de gestion des erreurs configurables pour gérer les clés dupliquées, les clés inconnues, les clés NULL, les limitations des erreurs, l'action lors de la détection d'erreurs, le fichier journal des erreurs.</span><span class="sxs-lookup"><span data-stu-id="b9af4-113">Configurable error handling settings for handling of duplicate keys, unknown keys, null keys, error limits, action upon error detection, and the error log file.</span></span> <span data-ttu-id="b9af4-114">Consultez [Configuration d’erreur pour le traitement des cubes, des partitions et des dimensions &#40;SSAS – Multidimensionnel&#41;](error-configuration-for-cube-partition-and-dimension-processing.md).</span><span class="sxs-lookup"><span data-stu-id="b9af4-114">See [Error Configuration for Cube, Partition, and Dimension Processing &#40;SSAS - Multidimensional&#41;](error-configuration-for-cube-partition-and-dimension-processing.md).</span></span>|  
+|`EstimatedRows`|<span data-ttu-id="b9af4-115">Spécifie le nombre estimé de lignes dans la table de faits.</span><span class="sxs-lookup"><span data-stu-id="b9af4-115">Specifies the estimated number of rows in the fact table.</span></span>|  
+|`EstimatedSize`|<span data-ttu-id="b9af4-116">Spécifie la taille estimée (en octets) du groupe de mesures.</span><span class="sxs-lookup"><span data-stu-id="b9af4-116">Specifies the estimated size (in bytes) of the measure group.</span></span>|  
+|`ID`|<span data-ttu-id="b9af4-117">Spécifie l'identificateur de l'objet.</span><span class="sxs-lookup"><span data-stu-id="b9af4-117">Specifies the identifier of the object.</span></span>|  
+|`IgnoreUnrelatedDimensions`|<span data-ttu-id="b9af4-118">Détermine si les dimensions non liées sont ignorées lorsque des membres de dimensions qui ne sont pas associées au groupe de mesures sont inclus dans une requête.</span><span class="sxs-lookup"><span data-stu-id="b9af4-118">Determines whether unrelated dimensions are forced to their top level when members of dimensions that are unrelated to the measure group are included in a query.</span></span> <span data-ttu-id="b9af4-119">Le paramètre par défaut est `True`.</span><span class="sxs-lookup"><span data-stu-id="b9af4-119">Default setting is `True`.</span></span>|  
+|`Name`|<span data-ttu-id="b9af4-120">Spécifie le nom de la mesure.</span><span class="sxs-lookup"><span data-stu-id="b9af4-120">Name of the measure.</span></span> <span data-ttu-id="b9af4-121">Cette propriété est en lecture seule.</span><span class="sxs-lookup"><span data-stu-id="b9af4-121">This property is read-only.</span></span>|  
+|`ProactiveCaching`|<span data-ttu-id="b9af4-122">Paramètres de gestion des erreurs configurables pour gérer les clés dupliquées, les clés inconnues, les clés NULL, les limitations des erreurs, l'action lors de la détection d'erreurs, le fichier journal des erreurs.</span><span class="sxs-lookup"><span data-stu-id="b9af4-122">Configurable error handling settings for handling of duplicate keys, unknown keys, null keys, error limits, action upon error detection, and the error log file.</span></span>|  
+|`ProcessingMode`|<span data-ttu-id="b9af4-123">Indique si l'indexation et l'agrégation doivent avoir lieu lors du traitement ou après celui-ci.</span><span class="sxs-lookup"><span data-stu-id="b9af4-123">Indicates whether indexing and aggregating should occur during or after processing.</span></span> <span data-ttu-id="b9af4-124">Les options sont Regular et LazyAggregations.</span><span class="sxs-lookup"><span data-stu-id="b9af4-124">Options are Regular and LazyAggregations.</span></span> <span data-ttu-id="b9af4-125">L'option LazyAggregations permet d'exécuter l'agrégation en tant que tâche en arrière-plan.</span><span class="sxs-lookup"><span data-stu-id="b9af4-125">LazyAggregations can be used to run aggregation as a background task.</span></span>|  
+|`ProcessingPriority`|<span data-ttu-id="b9af4-126">Détermine la priorité de traitement du cube pendant les opérations d'arrière-plan, telles que les agrégations et les indexations différées (Lazy).</span><span class="sxs-lookup"><span data-stu-id="b9af4-126">Determines the processing priority of the cube during background operations, such as lazy aggregations and indexing.</span></span> <span data-ttu-id="b9af4-127">La valeur par défaut est **0**.</span><span class="sxs-lookup"><span data-stu-id="b9af4-127">The default value is **0**.</span></span>|  
+|`StorageLocation`|<span data-ttu-id="b9af4-128">Emplacement de stockage du système de fichiers du groupe de mesures.</span><span class="sxs-lookup"><span data-stu-id="b9af4-128">The file system storage location for the measure group.</span></span> <span data-ttu-id="b9af4-129">Si aucun emplacement n'est spécifié, l'emplacement est hérité du cube contenant le groupe de mesures.</span><span class="sxs-lookup"><span data-stu-id="b9af4-129">If none is specified, the location is inherited from the cube that contains the measure group.</span></span>|  
+|`StorageMode`|<span data-ttu-id="b9af4-130">Mode de stockage pour le groupe de mesures.</span><span class="sxs-lookup"><span data-stu-id="b9af4-130">The storage mode for the measure group.</span></span> <span data-ttu-id="b9af4-131">Les valeurs possibles sont MOLAP, ROLAP ou HOLAP.</span><span class="sxs-lookup"><span data-stu-id="b9af4-131">Available values are MOLAP, ROLAP, or HOLAP.</span></span>|  
+|`Type`|<span data-ttu-id="b9af4-132">Spécifie le type du groupe de mesures.</span><span class="sxs-lookup"><span data-stu-id="b9af4-132">Specifies the type of the measure group.</span></span>|  
+  
+  
