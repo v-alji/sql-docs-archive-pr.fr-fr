@@ -1,0 +1,34 @@
+---
+title: Didacticiels sur la gestion des informations d’entreprise | Microsoft Docs
+ms.custom: ''
+ms.date: 12/29/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: integration-services
+ms.topic: conceptual
+ms.assetid: 8745dc80-193d-4de0-9f17-ba648ab1e81c
+author: lrtoyou1223
+ms.author: lle
+ms.openlocfilehash: b8cde162479645ab13a6ae000cc46e42e3c10e41
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87612037"
+---
+# <a name="enterprise-information-management-tutorials"></a><span data-ttu-id="bd0a1-102">Didacticiels sur la Gestion des informations d'entreprise</span><span class="sxs-lookup"><span data-stu-id="bd0a1-102">Enterprise Information Management Tutorials</span></span>
+  <span data-ttu-id="bd0a1-103">Cette section contient des didacticiels pour gérer les informations de l'entreprise à l'aide des technologies de gestion des informations d'entreprise (EIM) incluses dans [!INCLUDE[ssSQL11](../includes/sssql11-md.md)].</span><span class="sxs-lookup"><span data-stu-id="bd0a1-103">This section contains tutorials for managing information in an enterprise by using Enterprise Information Management (EIM) technologies that are included in [!INCLUDE[ssSQL11](../includes/sssql11-md.md)].</span></span> <span data-ttu-id="bd0a1-104">La gestion des informations d'entreprise (EIM) fournit un éventail de solutions qui permettent aux organisations d'évaluer la crédibilité et la cohérence de leurs données afin de prendre des décisions commerciales critiques.</span><span class="sxs-lookup"><span data-stu-id="bd0a1-104">Enterprise Integration Management (EIM) provides a portfolio of solutions that enable organizations to trust the credibility and consistency of their data so they can make critical business decisions.</span></span> [!INCLUDE[ssSQL11](../includes/sssql11-md.md)] <span data-ttu-id="bd0a1-105">contient les technologies suivantes, qui vous aident à mettre en œuvre les solutions EIM dans votre entreprise.</span><span class="sxs-lookup"><span data-stu-id="bd0a1-105">has the following technologies that help you implement EIM solutions in your enterprise.</span></span>  
+  
+-   <span data-ttu-id="bd0a1-106">SQL Server Integration Services (SSIS).</span><span class="sxs-lookup"><span data-stu-id="bd0a1-106">SQL Server Integration Services (SSIS).</span></span> <span data-ttu-id="bd0a1-107">SSIS fournit une plateforme puissante et souple pour intégrer les données provenant de différentes sources dans une solution d'extraction, de transformation et de chargement (ETL) complète qui prend en charge les flux de travail d'entreprise, un entrepôt de données, ou la gestion des données de référence.</span><span class="sxs-lookup"><span data-stu-id="bd0a1-107">SSIS provides a powerful, extensible platform for integrating data from various sources in a comprehensive extract, transform, and load (ETL) solution that supports business workflows, a data warehouse, or master data management.</span></span>  
+  
+-   <span data-ttu-id="bd0a1-108">SQL Server Data Quality Services (DQS).</span><span class="sxs-lookup"><span data-stu-id="bd0a1-108">SQL Server Data Quality Services (DQS).</span></span> <span data-ttu-id="bd0a1-109">DQS permet de nettoyer, faire correspondre, normaliser et enrichir les données, afin de disposer d'informations approuvées pour le décisionnel, d'un entrepôt de données et de charges de traitement pour les transactions.</span><span class="sxs-lookup"><span data-stu-id="bd0a1-109">DQS enables you to cleanse, match, standardize, and enrich data, so you can deliver trusted information for business intelligence, a data warehouse, and transaction processing workloads.</span></span>  
+  
+-   <span data-ttu-id="bd0a1-110">SQL Server Master Data Services (MDS).</span><span class="sxs-lookup"><span data-stu-id="bd0a1-110">SQL Server Master Data Services (MDS).</span></span> <span data-ttu-id="bd0a1-111">MDS est un concentrateur de données central qui garantit l'intégrité des informations et la cohérence des données entre différentes applications.</span><span class="sxs-lookup"><span data-stu-id="bd0a1-111">MDS provides a central data hub that ensures that the integrity of information and consistency of data is constant across different applications.</span></span>  
+  
+ [<span data-ttu-id="bd0a1-112">Gestion des informations d’entreprise à l’aide de SSIS, MDS et DQS ensemble &#91;didacticiel&#93;</span><span class="sxs-lookup"><span data-stu-id="bd0a1-112">Enterprise Information Management using SSIS, MDS, and DQS Together &#91;Tutorial&#93;</span></span>](../../2014/tutorials/enterprise-information-management-using-ssis-mds-and-dqs-together-[tutorial].md)  
+ <span data-ttu-id="bd0a1-113">Dans ce didacticiel, vous allez apprendre à utiliser SSIS, MDS et DQS conjointement pour implémenter un exemple de solution de gestion des informations d'entreprise (EIM).</span><span class="sxs-lookup"><span data-stu-id="bd0a1-113">In this tutorial, you learn how to use SSIS, MDS, and DQS together to implement a sample Enterprise Information Management (EIM) solution.</span></span> <span data-ttu-id="bd0a1-114">Vous utiliserez d'abord DQS pour créer une base de connaissances contenant les connaissances relatives aux données des fournisseurs (métadonnées), puis vous allez nettoyer les données dans un fichier Excel en fonction de la base de connaissances, et enfin, vous allez faire correspondre les données pour identifier et supprimer les doublons.</span><span class="sxs-lookup"><span data-stu-id="bd0a1-114">First, you use DQS to create a knowledgebase with the knowledge about the supplier data (metadata), cleanse the data in an Excel file against the knowledge base, and match the data to identify and remove duplicates in the data.</span></span> <span data-ttu-id="bd0a1-115">Ensuite, vous utiliserez le complément MDS pour Excel pour télécharger les données nettoyées et mises en correspondance dans MDS.</span><span class="sxs-lookup"><span data-stu-id="bd0a1-115">Next, you use the MDS Add-in for Excel to upload the cleansed and matched data to MDS.</span></span> <span data-ttu-id="bd0a1-116">Enfin, vous automatiserez l'ensemble du processus en utilisant une solution SSIS.</span><span class="sxs-lookup"><span data-stu-id="bd0a1-116">Then, you automate the whole process by using an SSIS solution.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="bd0a1-117">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="bd0a1-117">See Also</span></span>  
+ [<span data-ttu-id="bd0a1-118">Gestion des informations d’entreprise-Microsoft SQL Server</span><span class="sxs-lookup"><span data-stu-id="bd0a1-118">Enterprise Information Management - Microsoft SQL Server</span></span>](https://go.microsoft.com/fwlink/?LinkId=270871)  
+  
+  

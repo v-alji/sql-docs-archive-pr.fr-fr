@@ -1,0 +1,201 @@
+---
+title: Utilisation de MARS (Multiple Active Result Sets) | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: native-client
+ms.topic: reference
+helpviewer_keywords:
+- SQL Server Native Client OLE DB provider, MARS
+- SQLNCLI, MARS
+- data access [SQL Server Native Client], MARS
+- Multiple Active Result Sets
+- SQL Server Native Client, MARS
+- MARS [SQL Server]
+- SQL Server Native Client ODBC driver, MARS
+ms.assetid: ecfd9c6b-7d29-41d8-af2e-89d7fb9a1d83
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 7119048df3de23b1cfc5d6c8fb41672d82be14f9
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87612273"
+---
+# <a name="using-multiple-active-result-sets-mars"></a><span data-ttu-id="753da-102">Utilisation de MARS (Multiple Active Result Sets)</span><span class="sxs-lookup"><span data-stu-id="753da-102">Using Multiple Active Result Sets (MARS)</span></span>
+  [!INCLUDE[ssVersion2005](../../../includes/ssversion2005-md.md)] <span data-ttu-id="753da-103">a introduit la prise en charge de MARS (Multiple Active Result Sets) dans les applications accédant au [!INCLUDE[ssDE](../../../includes/ssde-md.md)].</span><span class="sxs-lookup"><span data-stu-id="753da-103">introduced support for multiple active result sets (MARS) in applications accessing the [!INCLUDE[ssDE](../../../includes/ssde-md.md)].</span></span> <span data-ttu-id="753da-104">Dans les versions antérieures de [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)], les applications de base de données ne pouvaient pas gérer plusieurs instructions actives sur une connexion.</span><span class="sxs-lookup"><span data-stu-id="753da-104">In earlier versions of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)], database applications could not maintain multiple active statements on a connection.</span></span> <span data-ttu-id="753da-105">Lors de l'utilisation de jeux de résultats [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] par défaut, l'application devait traiter ou annuler tous les jeux de résultats d'un lot avant de pouvoir exécuter tout autre lot sur cette connexion.</span><span class="sxs-lookup"><span data-stu-id="753da-105">When using [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] default result sets, the application had to process or cancel all result sets from one batch before it could execute any other batch on that connection.</span></span> <span data-ttu-id="753da-106">Un nouvel attribut de connexion a été introduit dans [!INCLUDE[ssVersion2005](../../../includes/ssversion2005-md.md)] de manière à ce que les applications puissent gérer plus d'une demande en attente par connexion et, plus spécifiquement, pour qu'elles puissent avoir plus d'un jeu de résultats par défaut actif par connexion.</span><span class="sxs-lookup"><span data-stu-id="753da-106">[!INCLUDE[ssVersion2005](../../../includes/ssversion2005-md.md)] introduced a new connection attribute that allows applications to have more than one pending request per connection, and in particular, to have more than one active default result set per connection.</span></span>  
+  
+ <span data-ttu-id="753da-107">MARS simplifie la conception d'applications grâce aux nouvelles fonctionnalités suivantes :</span><span class="sxs-lookup"><span data-stu-id="753da-107">MARS simplifies application design with the following new capabilities:</span></span>  
+  
+-   <span data-ttu-id="753da-108">Les applications peuvent avoir plusieurs jeux de résultats par défaut ouverts et entrelacer leur lecture.</span><span class="sxs-lookup"><span data-stu-id="753da-108">Applications can have multiple default result sets open and can interleave reading from them.</span></span>  
+  
+-   <span data-ttu-id="753da-109">Les applications peuvent exécuter d'autres instructions (par exemple, INSERT, UPDATE, DELETE et des appels de procédure stockée) pendant que les jeux de résultats par défaut sont ouverts.</span><span class="sxs-lookup"><span data-stu-id="753da-109">Applications can execute other statements (for example, INSERT, UPDATE, DELETE, and stored procedure calls) while default result sets are open.</span></span>  
+  
+ <span data-ttu-id="753da-110">Voici quelques recommandations pour les applications utilisant MARS :</span><span class="sxs-lookup"><span data-stu-id="753da-110">Applications using MARS will find the following guidelines beneficial:</span></span>  
+  
+-   <span data-ttu-id="753da-111">Les jeux de résultats par défaut doivent être utilisés pour des jeux de résultats à courte durée de vie ou des jeux de résultats de petites taille générés par des instructions SQL uniques (SELECT, DML avec OUTPUT, RECEIVE, READ TEXT, etc.).</span><span class="sxs-lookup"><span data-stu-id="753da-111">Default results sets should be used for short lived or short result sets generated by single SQL statements (SELECT, DML with OUTPUT, RECEIVE, READ TEXT, and so on).</span></span>  
+  
+-   <span data-ttu-id="753da-112">Des curseurs côté serveur doivent être utilisés pour des jeux de résultats à plus longue durée de vie ou des jeux de résultats de grande taille générés par des instructions SQL uniques.</span><span class="sxs-lookup"><span data-stu-id="753da-112">Server cursors should be used for longer lived or large result sets generated by single SQL statements.</span></span>  
+  
+-   <span data-ttu-id="753da-113">Lisez systématiquement les résultats dans leur intégralité afin de savoir s'ils contiennent des demandes de procédure ou des traitements qui renvoient des résultats multiples.</span><span class="sxs-lookup"><span data-stu-id="753da-113">Always read to the end of results for procedural requests regardless of whether they return results or not, and for batches that return multiple results.</span></span>  
+  
+-   <span data-ttu-id="753da-114">Si possible, utilisez des appels d'API pour modifier les propriétés de connexion et gérez les transactions plutôt que les instructions [!INCLUDE[tsql](../../../includes/tsql-md.md)].</span><span class="sxs-lookup"><span data-stu-id="753da-114">Wherever possible, use API calls to change connection properties and manage transactions in preference to [!INCLUDE[tsql](../../../includes/tsql-md.md)] statements.</span></span>  
+  
+-   <span data-ttu-id="753da-115">Dans MARS, l'emprunt d'identité à l'échelle de la session est interdit lorsque des traitements simultanés sont en cours d'exécution.</span><span class="sxs-lookup"><span data-stu-id="753da-115">In MARS, session-scoped impersonation is prohibited while concurrent batches are running.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="753da-116">Par défaut, la fonctionnalités MARS n'est pas activée.</span><span class="sxs-lookup"><span data-stu-id="753da-116">By default, MARS functionality is not enabled.</span></span> <span data-ttu-id="753da-117">Pour utiliser MARS lors de la connexion à [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] avec [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client, vous devez l'activer spécifiquement dans une chaîne de connexion.</span><span class="sxs-lookup"><span data-stu-id="753da-117">To use MARS when connecting to [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] with [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client, you must specifically enable it within a connection string.</span></span> <span data-ttu-id="753da-118">Pour plus d'informations, consultez les sections relatives au fournisseur OLE DB de [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client et au pilote ODBC [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client, plus loin dans cette rubrique.</span><span class="sxs-lookup"><span data-stu-id="753da-118">For more information, see the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client OLE DB provider and [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client ODBC driver sections, later in this topic.</span></span>  
+  
+ [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] <span data-ttu-id="753da-119">Native Client ne limite pas le nombre d'instructions actives sur une connexion.</span><span class="sxs-lookup"><span data-stu-id="753da-119">Native Client does not limit the number of active statements on a connection.</span></span>  
+  
+ <span data-ttu-id="753da-120">Les applications conventionnelles n'ayant pas besoin que plus d'un traitement à instructions multiples ou plus d'une procédure stockée s'exécute simultanément peuvent tirer parti de MARS sans avoir à comprendre comment ce dernier est implémenté.</span><span class="sxs-lookup"><span data-stu-id="753da-120">Typical applications which do not need to have more than a single multistatement batch or stored procedure executing at the same time will benefit from MARS without having to understand how MARS is implemented.</span></span> <span data-ttu-id="753da-121">Toutefois, les applications ayant des exigences plus complexes doivent prendre ceci compte.</span><span class="sxs-lookup"><span data-stu-id="753da-121">However, applications with more complex requirements do need to take account of this.</span></span>  
+  
+ <span data-ttu-id="753da-122">MARS permet l'exécution entrelacée de plusieurs demandes au sein d'une connexion unique.</span><span class="sxs-lookup"><span data-stu-id="753da-122">MARS enables the interleaved execution of multiple requests within a single connection.</span></span> <span data-ttu-id="753da-123">Autrement dit, il permet à un traitement de s'exécuter, et au sein de cette exécution, il permet à d'autres demandes de s'exécuter.</span><span class="sxs-lookup"><span data-stu-id="753da-123">That is, it allows a batch to run, and within its execution, it allows other requests to execute.</span></span> <span data-ttu-id="753da-124">Notez toutefois que MARS est défini en terme d'entrelacement et non en terme d'exécution parallèle.</span><span class="sxs-lookup"><span data-stu-id="753da-124">Note, however, that MARS is defined in terms of interleaving, not in terms of parallel execution.</span></span>  
+  
+ <span data-ttu-id="753da-125">L'infrastructure de MARS permet l'exécution entrelacée de plusieurs traitements, mais l'exécution ne peut être basculée qu'à des points bien définis.</span><span class="sxs-lookup"><span data-stu-id="753da-125">The MARS infrastructure allows multiple batches to execute in an interleaved fashion, though execution can only be switched at well defined points.</span></span> <span data-ttu-id="753da-126">Par ailleurs, la plupart des instructions doivent s'exécuter atomiquement au sein d'un lot.</span><span class="sxs-lookup"><span data-stu-id="753da-126">In addition, most statements must run atomically within a batch.</span></span> <span data-ttu-id="753da-127">Les instructions qui retournent des lignes au client, parfois appelées « *points de rendement*», sont autorisées à entrelacer l’exécution avant la fin de l’envoi des lignes au client, par exemple :</span><span class="sxs-lookup"><span data-stu-id="753da-127">Statements which return rows to the client, which are sometimes referred to as *yield points*, are allowed to interleave execution before completion while rows are being sent to the client, for example:</span></span>  
+  
+-   <span data-ttu-id="753da-128">SELECT</span><span class="sxs-lookup"><span data-stu-id="753da-128">SELECT</span></span>  
+  
+-   <span data-ttu-id="753da-129">FETCH</span><span class="sxs-lookup"><span data-stu-id="753da-129">FETCH</span></span>  
+  
+-   <span data-ttu-id="753da-130">RECEIVE</span><span class="sxs-lookup"><span data-stu-id="753da-130">RECEIVE</span></span>  
+  
+ <span data-ttu-id="753da-131">Toute autre instruction exécutée dans le cadre d'une procédure stockée ou d'un traitement doit s'exécuter jusqu'à la fin pour que l'exécution puisse être basculée sur d'autres demandes MARS.</span><span class="sxs-lookup"><span data-stu-id="753da-131">Any other statements that are executed as part of a stored procedure or batch must run to completion before execution can be switched to other MARS requests.</span></span>  
+  
+ <span data-ttu-id="753da-132">La manière exacte dont les lots entrelacent l'exécution dépend de plusieurs facteurs et il est difficile de prédire la séquence exacte dans laquelle les commandes de plusieurs traitements qui contiennent des points d'interruption seront exécutées.</span><span class="sxs-lookup"><span data-stu-id="753da-132">The exact manner in which batches interleave execution is influenced by a number of factors, and it is difficult to predict the exact sequence in which commands from multiple batches that contain yield points will be executed.</span></span> <span data-ttu-id="753da-133">Soyez prudent afin d'éviter des effets secondaires non désirés liés à l'exécution entrelacée de traitements complexes de cet type.</span><span class="sxs-lookup"><span data-stu-id="753da-133">Be careful to avoid unwanted side effects due to interleaved execution of such complex batches.</span></span>  
+  
+ <span data-ttu-id="753da-134">Évitez des problèmes en utilisant des appels d'API plutôt que des instructions [!INCLUDE[tsql](../../../includes/tsql-md.md)] pour gérer l'état de la connexion (SET, USE) et les transactions (BEGIN TRAN, COMMIT, ROLLBACK) en n'incluant pas ces instructions dans des traitements à instructions multiples qui contiennent également des points d'interruption, et en sérialisant l'exécution de tels traitements par la consommation ou l'annulation de tous les résultats.</span><span class="sxs-lookup"><span data-stu-id="753da-134">Avoid problems by using API calls rather than [!INCLUDE[tsql](../../../includes/tsql-md.md)] statements to manage connection state (SET, USE) and transactions (BEGIN TRAN, COMMIT, ROLLBACK) by not including these statements in multi-statement batches that also contain yield points, and by serializing execution of such batches by consuming or canceling all results.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="753da-135">Un traitement ou une procédure stockée qui démarre une transaction manuelle ou implicite lorsque MARS est activé doit terminer la transaction avant que le traitement ne quitte.</span><span class="sxs-lookup"><span data-stu-id="753da-135">A batch or stored procedure which starts a manual or implicit transaction when MARS is enabled must complete the transaction before the batch exits.</span></span> <span data-ttu-id="753da-136">S'il ne le fait pas, [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] restaure toutes les modifications apportées par la transaction lorsque le traitement se termine.</span><span class="sxs-lookup"><span data-stu-id="753da-136">If it does not, [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] rolls back all changes made by the transaction when the batch finishes.</span></span> <span data-ttu-id="753da-137">Une telle transaction est gérée par [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] en tant que transaction dont l'étendue est définie par traitement.</span><span class="sxs-lookup"><span data-stu-id="753da-137">Such a transaction is managed by [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] as a batch-scoped transaction.</span></span> <span data-ttu-id="753da-138">Il s'agit d'un nouveau type de transaction introduit dans [!INCLUDE[ssVersion2005](../../../includes/ssversion2005-md.md)] pour permettre aux procédures stockées valides existantes d'être utilisées lorsque MARS est activé.</span><span class="sxs-lookup"><span data-stu-id="753da-138">This is a new type of transaction introduced in [!INCLUDE[ssVersion2005](../../../includes/ssversion2005-md.md)] to enable existing well-behaved stored procedures to be used when MARS is enabled.</span></span> <span data-ttu-id="753da-139">Pour plus d’informations sur les transactions dont l’étendue est définie par lot, consultez [Instructions de transaction &#40;Transact-SQL&#41;](/sql/t-sql/language-elements/transactions-transact-sql).</span><span class="sxs-lookup"><span data-stu-id="753da-139">For more information about batch-scoped transactions, see [Transaction Statements &#40;Transact-SQL&#41;](/sql/t-sql/language-elements/transactions-transact-sql).</span></span>  
+  
+ <span data-ttu-id="753da-140">Pour obtenir un exemple d’utilisation de MARS à partir d’ADO, consultez [utilisation d’ADO avec SQL Server Native Client](../applications/using-ado-with-sql-server-native-client.md).</span><span class="sxs-lookup"><span data-stu-id="753da-140">For an example of using MARS from ADO, see [Using ADO with SQL Server Native Client](../applications/using-ado-with-sql-server-native-client.md).</span></span>  
+  
+## <a name="sql-server-native-client-ole-db-provider"></a><span data-ttu-id="753da-141">Fournisseur OLE DB SQL Server Native Client</span><span class="sxs-lookup"><span data-stu-id="753da-141">SQL Server Native Client OLE DB Provider</span></span>  
+ <span data-ttu-id="753da-142">Le [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] fournisseur de OLE DB Native Client prend en charge mars par le biais de l’ajout de la propriété d’initialisation de la source de données SSPROP_INIT_MARSCONNECTION, qui est implémentée dans le jeu de propriétés DBPROPSET_SQLSERVERDBINIT.</span><span class="sxs-lookup"><span data-stu-id="753da-142">The [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client OLE DB provider supports MARS through the addition of the SSPROP_INIT_MARSCONNECTION data source initialization property, which is implemented in the DBPROPSET_SQLSERVERDBINIT property set.</span></span> <span data-ttu-id="753da-143">De plus, un nouveau mot clé de chaîne de connexion, `MarsConn`, a été ajouté.</span><span class="sxs-lookup"><span data-stu-id="753da-143">In addition, a new connection string keyword, `MarsConn`, as been added.</span></span> <span data-ttu-id="753da-144">Il accepte les valeurs `true` ou `false` ; `false` étant la valeur par défaut.</span><span class="sxs-lookup"><span data-stu-id="753da-144">It accepts `true` or `false` values; `false` is the default.</span></span>  
+  
+ <span data-ttu-id="753da-145">Le propriété de source de données DBPROP_MULTIPLECONNECTIONS a la valeur par défaut VARIANT_TRUE.</span><span class="sxs-lookup"><span data-stu-id="753da-145">The data source property DBPROP_MULTIPLECONNECTIONS defaults to VARIANT_TRUE.</span></span> <span data-ttu-id="753da-146">Cela signifie que le fournisseur générera dynamiquement plusieurs connexions pour prendre en charge plusieurs objets command et rowset simultanés.</span><span class="sxs-lookup"><span data-stu-id="753da-146">This means the provider will spawn multiple connections in order to support multiple concurrent command and rowset objects.</span></span> <span data-ttu-id="753da-147">Lorsque MARS est activé, [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client peut prendre en charge plusieurs objets Command et rowset sur une seule connexion, donc MULTIPLE_CONNECTIONS est défini sur VARIANT_FALSE par défaut.</span><span class="sxs-lookup"><span data-stu-id="753da-147">When MARS is enabled, [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client can support multiple command and rowset objects on a single connection, so MULTIPLE_CONNECTIONS is set to VARIANT_FALSE by default.</span></span>  
+  
+ <span data-ttu-id="753da-148">Pour plus d'informations sur les améliorations apportées au jeu de propriétés DBPROPSET_SQLSERVERDBINIT, consultez [Propriétés d'initialisation et d'autorisation](../../native-client-ole-db-data-source-objects/initialization-and-authorization-properties.md).</span><span class="sxs-lookup"><span data-stu-id="753da-148">For more information about enhancements made to the DBPROPSET_SQLSERVERDBINIT property set, see [Initialization and Authorization Properties](../../native-client-ole-db-data-source-objects/initialization-and-authorization-properties.md).</span></span>  
+  
+### <a name="sql-server-native-client-ole-db-provider-example"></a><span data-ttu-id="753da-149">Exemple de fournisseur OLE DB de SQL Server Native Client</span><span class="sxs-lookup"><span data-stu-id="753da-149">SQL Server Native Client OLE DB Provider Example</span></span>  
+ <span data-ttu-id="753da-150">Dans cet exemple, un objet de source de données est créé à l’aide du [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] fournisseur de OLE DB natif et mars est activé à l’aide de la propriété DBPROPSET_SQLSERVERDBINIT définie avant la création de l’objet de session.</span><span class="sxs-lookup"><span data-stu-id="753da-150">In this example, a data source object is created using the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native OLE DB provider, and MARS is enabled using the DBPROPSET_SQLSERVERDBINIT property set before the session object is created.</span></span>  
+  
+```  
+#include <sqlncli.h>  
+  
+IDBInitialize *pIDBInitialize = NULL;  
+IDBCreateSession *pIDBCreateSession = NULL;  
+IDBProperties *pIDBProperties = NULL;  
+  
+// Create the data source object.  
+hr = CoCreateInstance(CLSID_SQLNCLI10, NULL,  
+   CLSCTX_INPROC_SERVER,  
+   IID_IDBInitialize,   
+    (void**)&pIDBInitialize);  
+  
+hr = pIDBInitialize->QueryInterface(IID_IDBProperties, (void**)&pIDBProperties);  
+  
+// Set the MARS property.  
+DBPROP rgPropMARS;  
+  
+// The following is necessary since MARS is off by default.  
+rgPropMARS.dwPropertyID = SSPROP_INIT_MARSCONNECTION;  
+rgPropMARS.dwOptions = DBPROPOPTIONS_REQUIRED;  
+rgPropMARS.dwStatus = DBPROPSTATUS_OK;  
+rgPropMARS.colid = DB_NULLID;  
+V_VT(&(rgPropMARS.vValue)) = VT_BOOL;  
+V_BOOL(&(rgPropMARS.vValue)) = VARIANT_TRUE;  
+  
+// Create the structure containing the properties.  
+DBPROPSET PropSet;  
+PropSet.rgProperties = &rgPropMARS;  
+PropSet.cProperties = 1;  
+PropSet.guidPropertySet = DBPROPSET_SQLSERVERDBINIT;  
+  
+// Get an IDBProperties pointer and set the initialization properties.  
+pIDBProperties->SetProperties(1, &PropSet);  
+pIDBProperties->Release();  
+  
+// Initialize the data source object.  
+hr = pIDBInitialize->Initialize();  
+  
+//Create a session object from a data source object.  
+IOpenRowset * pIOpenRowset = NULL;  
+hr = IDBInitialize->QueryInterface(IID_IDBCreateSession, (void**)&pIDBCreateSession));  
+hr = pIDBCreateSession->CreateSession(  
+   NULL,             // pUnkOuter  
+   IID_IOpenRowset,  // riid  
+  &pIOpenRowset ));  // ppSession  
+  
+// Create a rowset with a firehose mode cursor.  
+IRowset *pIRowset = NULL;  
+DBPROP rgRowsetProperties[2];  
+  
+// To get a firehose mode cursor request a   
+// forward only read only rowset.  
+rgRowsetProperties[0].dwPropertyID = DBPROP_IRowsetLocate;  
+rgRowsetProperties[0].dwOptions = DBPROPOPTIONS_REQUIRED;  
+rgRowsetProperties[0].dwStatus = DBPROPSTATUS_OK;  
+rgRowsetProperties[0].colid = DB_NULLID;  
+VariantInit(&(rgRowsetProperties[0].vValue));  
+rgRowsetProperties[0].vValue.vt = VARIANT_BOOL;  
+rgRowsetProperties[0].vValue.boolVal = VARIANT_FALSE;  
+  
+rgRowsetProperties[1].dwPropertyID = DBPROP_IRowsetChange;  
+rgRowsetProperties[1].dwOptions = DBPROPOPTIONS_REQUIRED;  
+rgRowsetProperties[1].dwStatus = DBPROPSTATUS_OK;  
+rgRowsetProperties[1].colid = DB_NULLID;  
+VariantInit(&(rgRowsetProperties[1].vValue));  
+rgRowsetProperties[1].vValue.vt = VARIANT_BOOL;  
+rgRowsetProperties[1].vValue.boolVal = VARIANT_FALSE;  
+  
+DBPROPSET rgRowsetPropSet[1];  
+rgRowsetPropSet[0].rgProperties = rgRowsetProperties  
+rgRowsetPropSet[0].cProperties = 2  
+rgRowsetPropSet[0].guidPropertySet = DBPROPSET_ROWSET;  
+  
+hr = pIOpenRowset->OpenRowset (NULL,  
+   &TableID,  
+   NULL,  
+   IID_IRowset,  
+   1,  
+   rgRowsetPropSet  
+   (IUnknown**)&pIRowset);  
+```  
+  
+## <a name="sql-server-native-client-odbc-driver"></a><span data-ttu-id="753da-151">Pilote ODBC SQL Server Native Client</span><span class="sxs-lookup"><span data-stu-id="753da-151">SQL Server Native Client ODBC Driver</span></span>  
+ <span data-ttu-id="753da-152">Le [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] pilote ODBC Native Client prend en charge mars par le biais d’ajouts aux fonctions [SQLSetConnectAttr](../../native-client-odbc-api/sqlsetconnectattr.md) et [SQLGetConnectAttr](../../native-client-odbc-api/sqlgetconnectattr.md) .</span><span class="sxs-lookup"><span data-stu-id="753da-152">The [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Native Client ODBC driver supports MARS through additions to the [SQLSetConnectAttr](../../native-client-odbc-api/sqlsetconnectattr.md) and [SQLGetConnectAttr](../../native-client-odbc-api/sqlgetconnectattr.md) functions.</span></span> <span data-ttu-id="753da-153">SQL_COPT_SS_MARS_ENABLED a été ajouté pour accepter SQL_MARS_ENABLED_YES ou SQL_MARS_ENABLED_NO ; SQL_MARS_ENABLED_NO étant la valeur par défaut.</span><span class="sxs-lookup"><span data-stu-id="753da-153">SQL_COPT_SS_MARS_ENABLED has been added to accept either SQL_MARS_ENABLED_YES or SQL_MARS_ENABLED_NO, with SQL_MARS_ENABLED_NO being the default.</span></span> <span data-ttu-id="753da-154">De plus, un nouveau mot clé de chaîne de connexion, `Mars_Connection`, a été ajouté.</span><span class="sxs-lookup"><span data-stu-id="753da-154">In addition, a new connection string keyword, `Mars_Connection`, as been added.</span></span> <span data-ttu-id="753da-155">Il accepte les valeurs « yes » ou « non » ; «no » étant la valeur par défaut.</span><span class="sxs-lookup"><span data-stu-id="753da-155">It accepts "yes" or "no" values; "no" is the default.</span></span>  
+  
+### <a name="sql-server-native-client-odbc-driver-example"></a><span data-ttu-id="753da-156">Exemple de pilote ODBC SQL Server Native Client</span><span class="sxs-lookup"><span data-stu-id="753da-156">SQL Server Native Client ODBC Driver Example</span></span>  
+ <span data-ttu-id="753da-157">Dans cet exemple, la fonction **SQLSetConnectAttr** est utilisée pour activer mars avant d’appeler la fonction **SQLDriverConnect** pour connecter la base de données.</span><span class="sxs-lookup"><span data-stu-id="753da-157">In this example, the **SQLSetConnectAttr** function is used to enable MARS before calling the **SQLDriverConnect** function to connect the database.</span></span> <span data-ttu-id="753da-158">Une fois la connexion établie, deux fonctions **SQLExecDirect** sont appelées pour créer deux jeux de résultats distincts sur la même connexion.</span><span class="sxs-lookup"><span data-stu-id="753da-158">Once the connection is made, two **SQLExecDirect** functions are called to create two separate result sets on the same connection.</span></span>  
+  
+```  
+#include <sqlncli.h>  
+  
+SQLSetConnectAttr(hdbc, SQL_COPT_SS_MARS_ENABLED, SQL_MARS_ENABLED_YES, SQL_IS_UINTEGER);  
+SQLDriverConnect(hdbc, hwnd,   
+   "DRIVER=SQL Server Native Client 10.0;  
+   SERVER=(local);trusted_connection=yes;", SQL_NTS, szOutConn,   
+   MAX_CONN_OUT, &cbOutConn, SQL_DRIVER_COMPLETE);  
+  
+SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt1);  
+SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt2);  
+  
+// The 2nd execute would have failed with connection busy error if  
+// MARS were not enabled.  
+SQLExecDirect(hstmt1, L"SELECT * FROM Authors", SQL_NTS);  
+SQLExecDirect(hstmt2, L"SELECT * FROM Titles", SQL_NTS);  
+  
+// Result set processing can interleave.  
+SQLFetch(hstmt1);  
+SQLFetch(hstmt2);  
+```  
+  
+## <a name="see-also"></a><span data-ttu-id="753da-159">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="753da-159">See Also</span></span>  
+ <span data-ttu-id="753da-160">[Fonctionnalités de SQL Server Native Client](sql-server-native-client-features.md) </span><span class="sxs-lookup"><span data-stu-id="753da-160">[SQL Server Native Client Features](sql-server-native-client-features.md) </span></span>  
+ [<span data-ttu-id="753da-161">Utilisation de jeux de résultats SQL Server par défaut</span><span class="sxs-lookup"><span data-stu-id="753da-161">Using SQL Server Default Result Sets</span></span>](../../native-client-odbc-cursors/implementation/using-sql-server-default-result-sets.md)  
+  
+  

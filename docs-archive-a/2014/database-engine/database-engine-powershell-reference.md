@@ -1,0 +1,46 @@
+---
+title: Référence de PowerShell (Moteur de base de données) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: database-engine
+ms.topic: conceptual
+ms.assetid: 3c379a43-c497-47dd-8e7d-2b015c068bb7
+author: mashamsft
+ms.author: mathoma
+ms.openlocfilehash: 2d72f9fcedee02e475369c32a7c263578c9ff156
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87610838"
+---
+# <a name="database-engine-powershell-reference"></a><span data-ttu-id="abe51-102">Référence de PowerShell (Moteur de base de données)</span><span class="sxs-lookup"><span data-stu-id="abe51-102">Database Engine PowerShell Reference</span></span>
+  [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] <span data-ttu-id="abe51-103">inclut un jeu d'applets de commande Windows PowerShell 2.0 pour effectuer des actions courantes dans le [!INCLUDE[ssDE](../includes/ssde-md.md)].</span><span class="sxs-lookup"><span data-stu-id="abe51-103">includes a set of Windows PowerShell 2.0 cmdlets for performing common actions in the [!INCLUDE[ssDE](../includes/ssde-md.md)].</span></span> <span data-ttu-id="abe51-104">En outre, les expressions de requête et les noms URN (Uniform Resource Names) peuvent être convertis en chemins d'accès SQL Server PowerShell, ou être utilisés pour spécifier un ou plusieurs objets dans le [!INCLUDE[ssDE](../includes/ssde-md.md)].</span><span class="sxs-lookup"><span data-stu-id="abe51-104">In addition, Query Expressions and Uniform Resource Names (URN) can be converted to SQL Server PowerShell paths, or used to specify one or more objects in the [!INCLUDE[ssDE](../includes/ssde-md.md)].</span></span>  
+  
+## <a name="database-engine-cmdlets"></a><span data-ttu-id="abe51-105">Applets de commande du moteur de base de données</span><span class="sxs-lookup"><span data-stu-id="abe51-105">Database Engine Cmdlets</span></span>  
+ [!INCLUDE[ssCurrent](../includes/sscurrent-md.md)] <span data-ttu-id="abe51-106">inclut relativement peu d’applets de commande pour le [!INCLUDE[ssDE](../includes/ssde-md.md)].</span><span class="sxs-lookup"><span data-stu-id="abe51-106">includes relatively few cmdlets for the [!INCLUDE[ssDE](../includes/ssde-md.md)].</span></span> <span data-ttu-id="abe51-107">La plupart des scripts PowerShell compatibles avec le [!INCLUDE[ssDE](../includes/ssde-md.md)] utilisent le fournisseur SQL Server PowerShell et les modèles d'objet de gestion.</span><span class="sxs-lookup"><span data-stu-id="abe51-107">Most PowerShell scripts working with the [!INCLUDE[ssDE](../includes/ssde-md.md)] use the SQL Server PowerShell provider and the manageability object models.</span></span> <span data-ttu-id="abe51-108">Pour plus d’informations, consultez [Fournisseur PowerShell SQL Server](../powershell/sql-server-powershell-provider.md).</span><span class="sxs-lookup"><span data-stu-id="abe51-108">For more information, see [SQL Server PowerShell Provider](../powershell/sql-server-powershell-provider.md).</span></span>  
+  
+ <span data-ttu-id="abe51-109">Pour savoir comment obtenir de l’aide sur les applets de commande SQL Server dans un environnement Windows PowerShell, consultez [Obtenir de l’aide sur SQL Server PowerShell](../powershell/sql-server-powershell.md).</span><span class="sxs-lookup"><span data-stu-id="abe51-109">To learn how to get help about the SQL Server cmdlets in a Windows PowerShell environment, see [Get Help SQL Server PowerShell](../powershell/sql-server-powershell.md).</span></span>  
+  
+### <a name="in-this-section"></a><span data-ttu-id="abe51-110">Dans cette section</span><span class="sxs-lookup"><span data-stu-id="abe51-110">In This Section</span></span>  
+ <span data-ttu-id="abe51-111">Cette section contient des informations sur ces applets de commande.</span><span class="sxs-lookup"><span data-stu-id="abe51-111">This section contains information about these cmdlets.</span></span>  
+  
+|<span data-ttu-id="abe51-112">Description</span><span class="sxs-lookup"><span data-stu-id="abe51-112">Description</span></span>|<span data-ttu-id="abe51-113">Applet de commande</span><span class="sxs-lookup"><span data-stu-id="abe51-113">Cmdlet</span></span>|  
+|-----------------|------------|  
+|<span data-ttu-id="abe51-114">Exécute les scripts Transact-SQL et XQuery, tels que les scripts qui peuvent être exécutés à l'aide de l'utilitaire `sqlcmd`.</span><span class="sxs-lookup"><span data-stu-id="abe51-114">Runs Transact-SQL and XQuery scripts, such as scripts that can be run using the `sqlcmd` utility.</span></span>|[<span data-ttu-id="abe51-115">Invoke-Sqlcmd (applet de commande)</span><span class="sxs-lookup"><span data-stu-id="abe51-115">Invoke-Sqlcmd cmdlet</span></span>](../../2014/database-engine/invoke-sqlcmd-cmdlet.md)|  
+|<span data-ttu-id="abe51-116">Évalue si un objet du moteur de base de données est conforme à une stratégie de gestion basée sur des stratégies.</span><span class="sxs-lookup"><span data-stu-id="abe51-116">Evaluates whether a Database Engine object complies with a Policy-based Management policy.</span></span>|[<span data-ttu-id="abe51-117">Invoke-PolicyEvaluation (applet de commande)</span><span class="sxs-lookup"><span data-stu-id="abe51-117">Invoke-PolicyEvaluation cmdlet</span></span>](../../2014/database-engine/invoke-policyevaluation-cmdlet.md)|  
+  
+### <a name="information-about-other-cmdlets"></a><span data-ttu-id="abe51-118">Informations sur d'autres applets de commande</span><span class="sxs-lookup"><span data-stu-id="abe51-118">Information About Other Cmdlets</span></span>  
+ <span data-ttu-id="abe51-119">Les applets de commande `Encode-Sqlname` et `Decode-Sqlname` vous aident à spécifier les identificateurs SQL Server qui contiennent des caractères non pris en charge dans les chemins d'accès PowerShell.</span><span class="sxs-lookup"><span data-stu-id="abe51-119">The `Encode-Sqlname` and `Decode-Sqlname` cmdlets help you specify SQL Server identifiers that contain characters not supported in PowerShell paths.</span></span> <span data-ttu-id="abe51-120">Pour plus d’informations, consultez [Identificateurs SQL Server dans PowerShell](../powershell/sql-server-identifiers-in-powershell.md).</span><span class="sxs-lookup"><span data-stu-id="abe51-120">For more information, see [SQL Server Identifiers in PowerShell](../powershell/sql-server-identifiers-in-powershell.md).</span></span>  
+  
+ <span data-ttu-id="abe51-121">Utilisez l'applet de commande `Convert-UrnToPath` pour convertir un nom de ressource unique pour un objet du [!INCLUDE[ssDE](../includes/ssde-md.md)] en un chemin d'accès pour le fournisseur SQL Server PowerShell.</span><span class="sxs-lookup"><span data-stu-id="abe51-121">Use the `Convert-UrnToPath` cmdlet to convert a Unique Resource Name for a [!INCLUDE[ssDE](../includes/ssde-md.md)] object to a path for the SQL Server PowerShell provider.</span></span> <span data-ttu-id="abe51-122">Pour plus d’informations, consultez [Convertir des URN en chemins d’accès de fournisseur SQL Server](../../2014/database-engine/convert-urns-to-sql-server-provider-paths.md).</span><span class="sxs-lookup"><span data-stu-id="abe51-122">For more information, see [Convert URNs to SQL Server Provider Paths](../../2014/database-engine/convert-urns-to-sql-server-provider-paths.md).</span></span>  
+  
+## <a name="query-expressions-and-unique-resource-names"></a><span data-ttu-id="abe51-123">Expressions de requête et noms de ressource uniques</span><span class="sxs-lookup"><span data-stu-id="abe51-123">Query Expressions and Unique Resource Names</span></span>  
+ <span data-ttu-id="abe51-124">Les expressions de requête sont des chaînes qui utilise une syntaxe semblable à XPath pour spécifier un jeu de critères permettant d'énumérer un ou plusieurs objets dans une hiérarchie de modèle objet.</span><span class="sxs-lookup"><span data-stu-id="abe51-124">Query expressions are strings that use syntax similar to XPath to specify a set of criteria that enumerate one or more objects in an object model hierarchy.</span></span> <span data-ttu-id="abe51-125">Un nom de ressource unique (URN) est un type spécifique de chaîne d'expression de requête qui identifie de façon unique un objet particulier.</span><span class="sxs-lookup"><span data-stu-id="abe51-125">A Unique Resource Name (URN) is a specific type of query expression string that uniquely identifies a single object.</span></span> <span data-ttu-id="abe51-126">Pour plus d’informations, consultez [Expressions de requête et noms URN](../powershell/query-expressions-and-uniform-resource-names.md).</span><span class="sxs-lookup"><span data-stu-id="abe51-126">For more information, see [Query Expressions and Uniform Resource Names](../powershell/query-expressions-and-uniform-resource-names.md).</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="abe51-127">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="abe51-127">See Also</span></span>  
+ [<span data-ttu-id="abe51-128">SQL Server PowerShell</span><span class="sxs-lookup"><span data-stu-id="abe51-128">SQL Server PowerShell</span></span>](../powershell/sql-server-powershell.md)  
+  
+  

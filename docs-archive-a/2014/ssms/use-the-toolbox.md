@@ -1,0 +1,47 @@
+---
+title: Utiliser la boîte à outils | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: ssms
+ms.topic: conceptual
+helpviewer_keywords:
+- adding controls
+- Toolbox [SQL Server Management Studio]
+- dragging and dropping text
+- designer controls [SQL Server Management Studio]
+ms.assetid: 16733e39-4dc5-416f-ab10-c1d823f79d2d
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: 7b1dcc6e8a696d6a30be3d38bf30b653f24cac28
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87613760"
+---
+# <a name="use-the-toolbox"></a><span data-ttu-id="f7944-102">Utiliser la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-102">Use the Toolbox</span></span>
+  <span data-ttu-id="f7944-103">Vous pouvez sélectionner et faire glisser des éléments, du texte et des contrôles à partir de la boîte à outils vers des formulaires, des pages et des générateurs, puis faire glisser ces éléments à partir de ces sources de nouveau vers la boîte à outils pour une utilisation ultérieure.</span><span class="sxs-lookup"><span data-stu-id="f7944-103">You can select and drag items, text, and controls from the Toolbox onto forms, pages, and designers, and drag items from these sources back into the Toolbox for reuse later.</span></span> <span data-ttu-id="f7944-104">Par exemple, dans [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)] , vous pouvez faire glisser une tâche vers un plan de maintenance.</span><span class="sxs-lookup"><span data-stu-id="f7944-104">For example, in [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)] you can drag a task onto a Maintenance Plan.</span></span>  
+  
+ <span data-ttu-id="f7944-105">Les éléments de la boîte à outils sont regroupés dans des sections appelés onglets.</span><span class="sxs-lookup"><span data-stu-id="f7944-105">Items in the Toolbox are grouped into sections called tabs.</span></span> <span data-ttu-id="f7944-106">Voici une liste de référence des tâches courantes effectuées à l'aide de la boîte à outils. Des instructions sur leur réalisation sont également proposées.</span><span class="sxs-lookup"><span data-stu-id="f7944-106">Here is a reference list of common Toolbox tasks and how to do them:</span></span>  
+  
+|<span data-ttu-id="f7944-107">À</span><span class="sxs-lookup"><span data-stu-id="f7944-107">To</span></span>|<span data-ttu-id="f7944-108">Action</span><span class="sxs-lookup"><span data-stu-id="f7944-108">Do this</span></span>|  
+|--------|-------------|  
+|<span data-ttu-id="f7944-109">Ouvrir la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-109">Open the Toolbox</span></span>|<span data-ttu-id="f7944-110">Dans le menu **Affichage** , cliquez sur **Boîte à outils**.</span><span class="sxs-lookup"><span data-stu-id="f7944-110">On the **View** menu, click **Toolbox**.</span></span>|  
+|<span data-ttu-id="f7944-111">Faire en sorte que la boîte à outils se ferme automatiquement</span><span class="sxs-lookup"><span data-stu-id="f7944-111">Make the Toolbox close automatically</span></span>|<span data-ttu-id="f7944-112">Ouvrez la boîte à outils.</span><span class="sxs-lookup"><span data-stu-id="f7944-112">Open the Toolbox.</span></span> <span data-ttu-id="f7944-113">Dans le menu **Fenêtre** , sélectionnez **Masquer automatiquement**.</span><span class="sxs-lookup"><span data-stu-id="f7944-113">On the **Window** menu, select **Auto Hide**.</span></span>|  
+|<span data-ttu-id="f7944-114">Garder la boîte à outils ouverte</span><span class="sxs-lookup"><span data-stu-id="f7944-114">Make the Toolbox stay open</span></span>|<span data-ttu-id="f7944-115">Ouvrez la boîte à outils.</span><span class="sxs-lookup"><span data-stu-id="f7944-115">Open the Toolbox.</span></span> <span data-ttu-id="f7944-116">Dans le menu **Fenêtre** , désactivez **Masquer automatiquement**.</span><span class="sxs-lookup"><span data-stu-id="f7944-116">On the **Window** menu, clear **Auto Hide**.</span></span>|  
+|<span data-ttu-id="f7944-117">Déplacer la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-117">Move the Toolbox to a different location</span></span>|<span data-ttu-id="f7944-118">Ouvrez la boîte à outils.</span><span class="sxs-lookup"><span data-stu-id="f7944-118">Open the Toolbox.</span></span> <span data-ttu-id="f7944-119">Dans le menu **Fenêtre** , désactivez **Masquer automatiquement**et sélectionnez **Flottante**.</span><span class="sxs-lookup"><span data-stu-id="f7944-119">On the **Window** menu, clear **Auto Hide**, and then select **Floating**.</span></span> <span data-ttu-id="f7944-120">Faites glisser la boîte à outils jusqu'à l'emplacement souhaité.</span><span class="sxs-lookup"><span data-stu-id="f7944-120">Drag the Toolbox to the desired location.</span></span>|  
+|<span data-ttu-id="f7944-121">Masquer la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-121">Hide the Toolbox</span></span>|<span data-ttu-id="f7944-122">Dans le menu **Fenêtre** , sélectionnez **Masquer**.</span><span class="sxs-lookup"><span data-stu-id="f7944-122">In the **Window** menu, select **Hide**.</span></span> <span data-ttu-id="f7944-123">(Pour rouvrir la boîte à outils, cliquez sur **Boîte à outils** dans le menu **Affichage** .)</span><span class="sxs-lookup"><span data-stu-id="f7944-123">(To reopen the Toolbox, click **Toolbox** on the **View** menu.)</span></span>|  
+|<span data-ttu-id="f7944-124">Développer un onglet de la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-124">Expand a Toolbox tab</span></span>|<span data-ttu-id="f7944-125">Cliquez sur l'onglet souhaité de la boîte à outils.</span><span class="sxs-lookup"><span data-stu-id="f7944-125">Click the desired tab in the Toolbox.</span></span>|  
+|<span data-ttu-id="f7944-126">Développer un à un les onglets de la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-126">Expand Toolbox tabs one after another</span></span>|<span data-ttu-id="f7944-127">Appuyez sur CTRL+BAS pour développer l'onglet suivant de la boîte à outils ou sur CTRL+HAUT pour développer l'onglet précédent.</span><span class="sxs-lookup"><span data-stu-id="f7944-127">Press CTRL+DOWN ARROW to expand the next Toolbox tab, or CTRL+UP ARROW to expand the previous tab.</span></span>|  
+|<span data-ttu-id="f7944-128">Créer un onglet pour la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-128">Create a new Toolbox tab</span></span>|<span data-ttu-id="f7944-129">Cliquez avec le bouton droit n’importe où dans la boîte à outils, puis cliquez sur **Ajouter un onglet**. Tapez le nom du nouvel onglet, puis appuyez sur ENTRÉE.</span><span class="sxs-lookup"><span data-stu-id="f7944-129">Right-click anywhere in the Toolbox, and then click **Add Tab**. Type the name for the new tab, and then press Enter.</span></span>|  
+|<span data-ttu-id="f7944-130">Insérer un élément de la boîte à outils à l'emplacement sélectionné dans le concepteur</span><span class="sxs-lookup"><span data-stu-id="f7944-130">Insert a Toolbox item at the selected location on the designer</span></span>|<span data-ttu-id="f7944-131">Faites glisser un élément de la boîte à outils jusqu'au concepteur ou double-cliquez sur l'élément désiré sous l'onglet développé de la boîte à outils.</span><span class="sxs-lookup"><span data-stu-id="f7944-131">Drag an item from the Toolbox to the designer or double-click the desired item on the expanded Toolbox tab.</span></span>|  
+|<span data-ttu-id="f7944-132">Modifier l'emplacement d'un onglet dans la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-132">Change the position of a tab in the Toolbox</span></span>|<span data-ttu-id="f7944-133">Faites glisser l'onglet de la boîte à outils vers son nouvel emplacement, puis relâchez le bouton de la souris.</span><span class="sxs-lookup"><span data-stu-id="f7944-133">Drag the Toolbox tab to the new location preferred, and release the mouse.</span></span>|  
+|<span data-ttu-id="f7944-134">Déplacer un élément sous un onglet développé de la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-134">Change the position of an item on an expanded Toolbox tab</span></span>|<span data-ttu-id="f7944-135">Faites glisser l'élément vers son nouvel emplacement, puis relâchez le bouton de la souris.</span><span class="sxs-lookup"><span data-stu-id="f7944-135">Drag the item to the new location, and release the mouse.</span></span>|  
+|<span data-ttu-id="f7944-136">Renommer un élément de la boîte à outils</span><span class="sxs-lookup"><span data-stu-id="f7944-136">Rename a Toolbox item</span></span>|<span data-ttu-id="f7944-137">Cliquez avec le bouton droit sur l’élément de la boîte à outils, puis cliquez sur **Renommer un élément** dans le menu contextuel.</span><span class="sxs-lookup"><span data-stu-id="f7944-137">Right-click the Toolbox item, and click **Rename Item** on the shortcut menu.</span></span>|  
+  
+## <a name="see-also"></a><span data-ttu-id="f7944-138">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="f7944-138">See Also</span></span>  
+ [<span data-ttu-id="f7944-139">Éléments généraux de l’interface utilisateur</span><span class="sxs-lookup"><span data-stu-id="f7944-139">General User Interface Elements</span></span>](general-user-interface-elements.md)  
+  
+  

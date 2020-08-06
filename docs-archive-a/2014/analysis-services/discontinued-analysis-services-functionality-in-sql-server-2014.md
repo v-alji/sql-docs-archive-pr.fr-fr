@@ -1,0 +1,45 @@
+---
+title: Fonctionnalités de Analysis Services abandonnées dans SQL Server 2014 | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+helpviewer_keywords:
+- Analysis Services, backward compatibility
+- SSAS, backward compatibility
+- SQL Server Analysis Services, backward compatibility
+- discontinued functionality [Analysis Services]
+- unsupported features [Analysis Services]
+ms.assetid: 39406be1-9819-4629-9c29-b32fb20bab2e
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: 5414344eb65c907593c9077ee2ba5610b8b397c0
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87614237"
+---
+# <a name="discontinued-analysis-services-functionality-in-sql-server-2014"></a><span data-ttu-id="2ce33-102">Fonctionnalités Analysis Services abandonnées dans SQL Server 2014</span><span class="sxs-lookup"><span data-stu-id="2ce33-102">Discontinued Analysis Services Functionality in SQL Server 2014</span></span>
+  <span data-ttu-id="2ce33-103">Cette rubrique décrit les fonctionnalités de [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)] qui ne sont plus disponibles dans [!INCLUDE[ssCurrent](../includes/sscurrent-md.md)].</span><span class="sxs-lookup"><span data-stu-id="2ce33-103">This topic describes [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)] features that are no longer available in [!INCLUDE[ssCurrent](../includes/sscurrent-md.md)].</span></span>  
+  
+## <a name="discontinued-features-in-sssql14"></a><span data-ttu-id="2ce33-104">Fonctionnalités supprimées dans [!INCLUDE[ssSQL14](../includes/sssql14-md.md)]</span><span class="sxs-lookup"><span data-stu-id="2ce33-104">Discontinued Features in [!INCLUDE[ssSQL14](../includes/sssql14-md.md)]</span></span>  
+  
+|<span data-ttu-id="2ce33-105">Category</span><span class="sxs-lookup"><span data-stu-id="2ce33-105">Category</span></span>|<span data-ttu-id="2ce33-106">Fonctionnalité déconseillée</span><span class="sxs-lookup"><span data-stu-id="2ce33-106">Deprecated feature</span></span>|<span data-ttu-id="2ce33-107">Remplacement</span><span class="sxs-lookup"><span data-stu-id="2ce33-107">Replacement</span></span>|  
+|--------------|------------------------|-----------------|  
+|<span data-ttu-id="2ce33-108">Cube locaux</span><span class="sxs-lookup"><span data-stu-id="2ce33-108">Local cubes</span></span>|<span data-ttu-id="2ce33-109">Propriété de chaîne de connexion INSERTINTO</span><span class="sxs-lookup"><span data-stu-id="2ce33-109">InsertInto connection string property</span></span>|<span data-ttu-id="2ce33-110">La syntaxe de la chaîne de connexion d'origine pour le remplissage de cubes locaux est remplacée par l'instruction CREATE GLOBAL CUBE.</span><span class="sxs-lookup"><span data-stu-id="2ce33-110">Original connection string syntax for populating local cubes is replaced by the Create Global Cube statement.</span></span> <span data-ttu-id="2ce33-111">Pour plus d’informations, consultez [Create global cube, instruction &#40;MDX&#41;](/sql/mdx/mdx-data-definition-create-global-cube).</span><span class="sxs-lookup"><span data-stu-id="2ce33-111">For more information, see [CREATE GLOBAL CUBE Statement  &#40;MDX&#41;](/sql/mdx/mdx-data-definition-create-global-cube).</span></span>|  
+|<span data-ttu-id="2ce33-112">Cube locaux</span><span class="sxs-lookup"><span data-stu-id="2ce33-112">Local cubes</span></span>|<span data-ttu-id="2ce33-113">Propriété de chaîne de connexion CREATECUBE</span><span class="sxs-lookup"><span data-stu-id="2ce33-113">CreateCube connection string property</span></span>|<span data-ttu-id="2ce33-114">La syntaxe de la chaîne de connexion d'origine pour le remplissage de cubes locaux est remplacée par l'instruction CREATE GLOBAL CUBE.</span><span class="sxs-lookup"><span data-stu-id="2ce33-114">Original connection string syntax for populating local cubes is replaced by the Create Global Cube statement.</span></span> <span data-ttu-id="2ce33-115">Pour plus d’informations, consultez [Create global cube, instruction &#40;MDX&#41;](/sql/mdx/mdx-data-definition-create-global-cube).</span><span class="sxs-lookup"><span data-stu-id="2ce33-115">For more information, see [CREATE GLOBAL CUBE Statement  &#40;MDX&#41;](/sql/mdx/mdx-data-definition-create-global-cube).</span></span>|  
+|<span data-ttu-id="2ce33-116">Exploration de données</span><span class="sxs-lookup"><span data-stu-id="2ce33-116">Data Mining</span></span>|<span data-ttu-id="2ce33-117">SQL Server 2000 PMML</span><span class="sxs-lookup"><span data-stu-id="2ce33-117">SQL Server 2000 PMML</span></span>|<span data-ttu-id="2ce33-118">La fonctionnalité de SQL Server 2000 PMML produisait un formulaire de PMML qui avait des extensions exclusives permettant de prendre en charge les fonctionnalités uniques fournies par les algorithmes d'exploration de données qui n'étaient pas disponibles dans la spécification PMML.</span><span class="sxs-lookup"><span data-stu-id="2ce33-118">The SQL Server 2000 PMML feature produced a form of PMML that had proprietary extensions to support unique features provided by Data Mining algorithms that were not available in the PMML specification.</span></span> <span data-ttu-id="2ce33-119">Dans SQL Server 2005, Analysis Services a mis à jour la fonctionnalité PMML avec le nouveau standard PMML 2.1.</span><span class="sxs-lookup"><span data-stu-id="2ce33-119">In SQL Server 2005, Analysis Services updated the PMML feature to the newer PMML 2.1 standard.</span></span> <span data-ttu-id="2ce33-120">Par conséquent, les extensions exclusives ajoutées dans SQL Server 2000 ne sont plus exigées, bien qu'elles soient encore prises en charge dans cette version.</span><span class="sxs-lookup"><span data-stu-id="2ce33-120">As a result, the proprietary extensions added in SQL Server 2000 are no longer needed, although they are still supported in this release.</span></span>|  
+|<span data-ttu-id="2ce33-121">Instruction MDX</span><span class="sxs-lookup"><span data-stu-id="2ce33-121">MDX Statement</span></span>|<span data-ttu-id="2ce33-122">Instruction CREATE ACTION</span><span class="sxs-lookup"><span data-stu-id="2ce33-122">Create Action statement</span></span>|<span data-ttu-id="2ce33-123">Cette instruction est comprise pour des raisons de compatibilité descendante.</span><span class="sxs-lookup"><span data-stu-id="2ce33-123">This statement is included for backwards compatibility.</span></span> <span data-ttu-id="2ce33-124">Elle est remplacée par l'objet Action.</span><span class="sxs-lookup"><span data-stu-id="2ce33-124">It is replaced by the Action object.</span></span> <span data-ttu-id="2ce33-125">Pour plus d’informations sur la création d’actions dans les versions récentes de [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)] , consultez [actions &#40;Analysis Services-données multidimensionnelles&#41;](multidimensional-models/actions-analysis-services-multidimensional-data.md).</span><span class="sxs-lookup"><span data-stu-id="2ce33-125">For more information about how to create actions in recent versions of [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)], see [Actions &#40;Analysis Services - Multidimensional Data&#41;](multidimensional-models/actions-analysis-services-multidimensional-data.md).</span></span>|  
+  
+## <a name="discontinued-features-in-previous-releases"></a><span data-ttu-id="2ce33-126">Fonctionnalités abandonnées dans les versions précédentes</span><span class="sxs-lookup"><span data-stu-id="2ce33-126">Discontinued Features in Previous Releases</span></span>  
+ <span data-ttu-id="2ce33-127">L'Assistant Migration, utilisé pour migrer des bases de données SQL Server 2000 Analysis Services vers des versions plus récentes, est supprimé, car SQL Server 2000 n'est plus pris en charge.</span><span class="sxs-lookup"><span data-stu-id="2ce33-127">Migration Wizard, used to migrate SQL Server 2000 Analysis Services databases to newer versions, is discontinued because SQL Server 2000 is no longer supported.</span></span>  
+  
+ <span data-ttu-id="2ce33-128">La bibliothèque DSO (Decision Support Objects), qui assurait la compatibilité avec les bases de données SQL Server 2000 Analysis Services, est également supprimée et ne fait plus partie de SQL Server.</span><span class="sxs-lookup"><span data-stu-id="2ce33-128">Decision Support Objects (DSO) library that provided compatibility with SQL Server 2000 Analysis Services databases is also discontinued and no longer part of SQL Server.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="2ce33-129">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="2ce33-129">See Also</span></span>  
+ [<span data-ttu-id="2ce33-130">Compatibilité descendante Analysis Services</span><span class="sxs-lookup"><span data-stu-id="2ce33-130">Analysis Services Backward Compatibility</span></span>](analysis-services-backward-compatibility.md)  
+  
+  

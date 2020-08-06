@@ -1,0 +1,53 @@
+---
+title: Considérations sur la sécurité pour les extensions | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services
+ms.topic: reference
+helpviewer_keywords:
+- security [Reporting Services], extensions
+- extensions [Reporting Services], security
+- permissions [Reporting Services], extensions
+ms.assetid: 58cbdfeb-1105-4a7d-a3b8-b897ff95f367
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: e7819f4d6de2003c9982d33ab00cfa0d4030aa36
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87614390"
+---
+# <a name="security-considerations-for-extensions"></a><span data-ttu-id="757de-102">Considérations sur la sécurité pour les extensions</span><span class="sxs-lookup"><span data-stu-id="757de-102">Security Considerations for Extensions</span></span>
+  <span data-ttu-id="757de-103">Toute application qui cible le CLR (Common Language Runtime) doit interagir avec le système de sécurité du CLR.</span><span class="sxs-lookup"><span data-stu-id="757de-103">Every application that targets the common language runtime (CLR) must interact with the CLR security system.</span></span> <span data-ttu-id="757de-104">Lorsqu'une application de ce type est exécutée, elle est automatiquement évaluée et reçoit un jeu d'autorisations de la part du CLR.</span><span class="sxs-lookup"><span data-stu-id="757de-104">When such an application runs, it is automatically evaluated and given a set of permissions by the CLR.</span></span> <span data-ttu-id="757de-105">En fonction des autorisations reçues par l'application, elle continue de s'exécuter ou génère une exception de sécurité.</span><span class="sxs-lookup"><span data-stu-id="757de-105">Depending on the permissions that the application receives, it either continues running or generates a security exception.</span></span> <span data-ttu-id="757de-106">Les paramètres et stratégies de sécurité locale définis dans les fichiers de configuration de stratégie de sécurité pour un serveur de rapports particulier définissent les autorisations de code reçues par un assembly.</span><span class="sxs-lookup"><span data-stu-id="757de-106">The local security settings and policies in the security policy configuration files for a particular report server define the code permissions that an assembly receives.</span></span>  
+  
+ <span data-ttu-id="757de-107">Avant de demander des autorisations, vous devez savoir quelles ressources et opérations protégées votre code d'extension projette d'utiliser, et vous devez savoir quelles autorisations protègent ces ressources et opérations.</span><span class="sxs-lookup"><span data-stu-id="757de-107">Before requesting permissions, you need to be aware of the resources and protected operations your extension code is planning to use, and you also need to know which permissions protect those resources and operations.</span></span> <span data-ttu-id="757de-108">De plus, vous devez conserver une trace de toutes les ressources auxquelles les méthodes des bibliothèques de classes accèdent et qui sont appelées par les composants de l'extension.</span><span class="sxs-lookup"><span data-stu-id="757de-108">In addition, you need to keep track of any resources accessed by any class library methods that are called by the extension components.</span></span> <span data-ttu-id="757de-109">Pour plus d'informations, consultez « Demande d'autorisations » dans le Guide du développeur [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)].</span><span class="sxs-lookup"><span data-stu-id="757de-109">For more information, see "Requesting Permissions" in the [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] Developer's Guide.</span></span>  
+  
+ <span data-ttu-id="757de-110">Les extensions déployées sur un serveur de rapports doivent s’exécuter avec une confiance totale, ce qui signifie que votre extension doit faire partie d’un groupe de codes auquel le jeu d’autorisations **FullTrust** est accordé.</span><span class="sxs-lookup"><span data-stu-id="757de-110">Extensions deployed to a report server must run as fully trusted, meaning that your extension needs to be part of a code group that is granted the **FullTrust** permission set.</span></span> <span data-ttu-id="757de-111">Cela signifie également que votre extension peut avoir accès à certaines ressources et opérations serveur disponibles par le biais du CLR selon l'utilisateur qui est authentifié pour un rapport particulier.</span><span class="sxs-lookup"><span data-stu-id="757de-111">This also means that your extension may have access to certain server resources and operations available through the CLR depending on the user that is being authenticated for a particular report.</span></span> <span data-ttu-id="757de-112">Pour plus d’informations sur les groupes de codes et les extensions, consultez [Sécurité d’accès du code dans Reporting Services](secure-development/code-access-security-in-reporting-services.md).</span><span class="sxs-lookup"><span data-stu-id="757de-112">For more information about code groups and extensions, see [Code Access Security in Reporting Services](secure-development/code-access-security-in-reporting-services.md).</span></span>  
+  
+> [!IMPORTANT]  
+>  [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] <span data-ttu-id="757de-113">applique la sécurité [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] à toutes ses extensions.</span><span class="sxs-lookup"><span data-stu-id="757de-113">enforces [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] security for all of its extensions.</span></span>  
+  
+ <span data-ttu-id="757de-114">Les conditions suivantes s'appliquent au déploiement des extensions pour le traitement des données, aux extensions de remise, aux extensions de rendu et aux extensions de sécurité dans [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] :</span><span class="sxs-lookup"><span data-stu-id="757de-114">The following conditions apply to the deployment of data processing, delivery, rendering, and security extensions in [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)]:</span></span>  
+  
+-   <span data-ttu-id="757de-115">Seul l'administrateur local a l'autorisation de déployer une extension.</span><span class="sxs-lookup"><span data-stu-id="757de-115">Only the local administrator has permission to deploy an extension.</span></span>  
+  
+-   <span data-ttu-id="757de-116">Seuls les utilisateurs disposant des autorisations de lecture/écriture appropriées peuvent modifier les fichiers de configuration du composant [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] en cours d'extension.</span><span class="sxs-lookup"><span data-stu-id="757de-116">Only users with the appropriate read/write permissions can change the configuration files for the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] component that is being extended.</span></span>  
+  
+-   <span data-ttu-id="757de-117">Seuls les utilisateurs dotés de privilèges ont l'autorisation de modifier les fichiers de stratégie de sécurité et d'activer la sécurité d'accès du code pour une extension.</span><span class="sxs-lookup"><span data-stu-id="757de-117">Only privileged users have permission to edit the security policy files and enable code access security for an extension.</span></span>  
+  
+ <span data-ttu-id="757de-118">Pour plus d’informations sur la sécurité d’accès du code dans [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)], consultez [Développement sécurisé &#40;Reporting Services&#41;](secure-development/secure-development-reporting-services.md).</span><span class="sxs-lookup"><span data-stu-id="757de-118">For more information about code access security in [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)], see [Secure Development &#40;Reporting Services&#41;](secure-development/secure-development-reporting-services.md).</span></span>  
+  
+ <span data-ttu-id="757de-119">Pour plus d'informations sur la sécurité du [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)], consultez « Sécurité .NET Framework » dans le Guide du développeur [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)].</span><span class="sxs-lookup"><span data-stu-id="757de-119">For more information about [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] security, see ".NET Framework Security" in your [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] Developer's Guide.</span></span>  
+  
+## <a name="initialization-of-extension-assemblies"></a><span data-ttu-id="757de-120">Initialisation des assemblys d'extension</span><span class="sxs-lookup"><span data-stu-id="757de-120">Initialization of Extension Assemblies</span></span>  
+ <span data-ttu-id="757de-121">Lorsque des extensions commencent à être chargées dans la mémoire par le serveur de rapports, elles utilisent les informations d'identification de compte de service car certains assemblys d'extension requièrent des autorisations spécifiques pour accéder aux ressources système, lire des fichiers de configuration et charger d'autres assemblys dépendants.</span><span class="sxs-lookup"><span data-stu-id="757de-121">When extensions are first loaded into memory by the report server, they use the service account credentials, because some extension assemblies require specific permissions to access system resources, to read configuration files, and to load other, dependent assemblies.</span></span> <span data-ttu-id="757de-122">Toutefois, une fois un assembly chargé et initialisé, tous les appels suivants aux assemblys d'extension utilisent les informations d'identification du compte d'utilisateur sous lequel la session a été ouverte.</span><span class="sxs-lookup"><span data-stu-id="757de-122">After an assembly has been loaded and initialized, however, all subsequent calls to extension assemblies use the credentials of the user account that is currently logged on.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="757de-123">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="757de-123">See Also</span></span>  
+ <span data-ttu-id="757de-124">[Extensions Reporting Services](reporting-services-extensions.md) </span><span class="sxs-lookup"><span data-stu-id="757de-124">[Reporting Services Extensions](reporting-services-extensions.md) </span></span>  
+ [<span data-ttu-id="757de-125">Bibliothèque d'extensions Reporting Services</span><span class="sxs-lookup"><span data-stu-id="757de-125">Reporting Services Extension Library</span></span>](reporting-services-extension-library.md)  
+  
+  
