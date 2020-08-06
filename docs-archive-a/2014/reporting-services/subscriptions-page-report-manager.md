@@ -1,0 +1,87 @@
+---
+title: Page abonnements (Gestionnaire de rapports) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+ms.assetid: cf3a6bd0-e0b2-4875-a532-63ef34cfa860
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: c67895babe99c92b7c09afd8cb75ca88d5cd7553
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87703760"
+---
+# <a name="subscriptions-page-report-manager"></a><span data-ttu-id="66fbb-102">Page Abonnements (Gestionnaire de rapports)</span><span class="sxs-lookup"><span data-stu-id="66fbb-102">Subscriptions Page (Report Manager)</span></span>
+  <span data-ttu-id="66fbb-103">La page Abonnements vous permet de répertorier tous les abonnements de la source de données partagée ou du rapport actifs.</span><span class="sxs-lookup"><span data-stu-id="66fbb-103">Use the Subscriptions page to list all of the subscriptions for the current report or shared data source.</span></span> <span data-ttu-id="66fbb-104">Si vous disposez d'une autorisation suffisante (accordée par la tâche « Gérer tous les abonnements », par exemple), vous pouvez afficher les abonnements de tous les utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="66fbb-104">If you have sufficient permission (as conveyed by the "Manage all subscriptions" task), you can view the subscriptions of all users.</span></span> <span data-ttu-id="66fbb-105">Si ce n'est pas le cas, cette page affiche uniquement les abonnements dont vous être propriétaire.</span><span class="sxs-lookup"><span data-stu-id="66fbb-105">Otherwise, this page shows only the subscriptions that you own.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="66fbb-106">D'autres pages contiennent également des informations sur les abonnements.</span><span class="sxs-lookup"><span data-stu-id="66fbb-106">Other pages also contain subscription information.</span></span> <span data-ttu-id="66fbb-107">Pour plus d’informations, consultez la [page mes abonnements &#40;Gestionnaire de rapports&#41;](../../2014/reporting-services/my-subscriptions-page-report-manager.md) pour accéder à tous vos abonnements dans un même emplacement ou la [page nouvel abonnement ou modifier l’abonnement &#40;gestionnaire de rapports&#41;](../../2014/reporting-services/new-subscription-or-edit-subscription-page-report-manager.md) pour créer ou modifier un abonnement.</span><span class="sxs-lookup"><span data-stu-id="66fbb-107">For more information, see [My Subscriptions Page &#40;Report Manager&#41;](../../2014/reporting-services/my-subscriptions-page-report-manager.md) to access all your subscriptions in one place or the [New Subscription or Edit Subscription Page &#40;Report Manager&#41;](../../2014/reporting-services/new-subscription-or-edit-subscription-page-report-manager.md) to create or edit a subscription.</span></span>  
+  
+ <span data-ttu-id="66fbb-108">Certaines options ne sont disponibles que s'il existe des abonnements.</span><span class="sxs-lookup"><span data-stu-id="66fbb-108">Some options are visible only if there are existing subscriptions to work with.</span></span> <span data-ttu-id="66fbb-109">Si aucun abonnement n'est défini et si vous accédez à cette page à partir d'un rapport, les options **Nouvel abonnement** et **Nouvel abonnement piloté par les données** sont les seules disponibles dans la page.</span><span class="sxs-lookup"><span data-stu-id="66fbb-109">If no subscriptions are defined and you are accessing this page from a report, the **New Subscription** and **New Data-Driven Subscription** are the only options on the page.</span></span>  
+  
+ <span data-ttu-id="66fbb-110">Avant de créer un abonnement, vous devez vérifier que la source de données du rapport utilise des informations d'identification stockées.</span><span class="sxs-lookup"><span data-stu-id="66fbb-110">Before you can create a new subscription, you must verify that the report data source uses stored credentials.</span></span> <span data-ttu-id="66fbb-111">Utilisez la page des propriétés des sources de données pour stocker des informations d'identification.</span><span class="sxs-lookup"><span data-stu-id="66fbb-111">Use the Data Sources properties page to store credentials.</span></span> <span data-ttu-id="66fbb-112">Pour plus d’informations, consultez la [page Propriétés des sources de données &#40;Gestionnaire de rapports&#41;](../../2014/reporting-services/data-sources-properties-page-report-manager.md).</span><span class="sxs-lookup"><span data-stu-id="66fbb-112">For more information, see [Data Sources Properties Page &#40;Report Manager&#41;](../../2014/reporting-services/data-sources-properties-page-report-manager.md).</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="66fbb-113">Cette fonctionnalité n'est pas disponible dans toutes les éditions de [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="66fbb-113">This feature is not available in every edition of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)].</span></span> <span data-ttu-id="66fbb-114">Pour obtenir une liste des fonctionnalités prises en charge par les éditions de [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], consultez [Features Supported by the Editions of SQL Server 2014](../../2014/getting-started/features-supported-by-the-editions-of-sql-server-2014.md).</span><span class="sxs-lookup"><span data-stu-id="66fbb-114">For a list of features that are supported by the editions of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], see [Features Supported by the Editions of SQL Server 2014](../../2014/getting-started/features-supported-by-the-editions-of-sql-server-2014.md).</span></span>  
+  
+## <a name="navigation"></a><span data-ttu-id="66fbb-115">Navigation</span><span class="sxs-lookup"><span data-stu-id="66fbb-115">Navigation</span></span>  
+ <span data-ttu-id="66fbb-116">Utilisez la procédure suivante pour naviguer jusqu'à cet emplacement dans l'interface utilisateur.</span><span class="sxs-lookup"><span data-stu-id="66fbb-116">Use the following procedure to navigate to this location in the user interface (UI).</span></span>  
+  
+### <a name="to-open-the-subscriptions-page-for-report"></a><span data-ttu-id="66fbb-117">Pour ouvrir la page Abonnements pour le rapport</span><span class="sxs-lookup"><span data-stu-id="66fbb-117">To open the Subscriptions page for report</span></span>  
+  
+1.  <span data-ttu-id="66fbb-118">Ouvrez le Gestionnaire de rapports et recherchez le rapport pour lequel vous souhaitez afficher ou configurer un abonnement.</span><span class="sxs-lookup"><span data-stu-id="66fbb-118">Open Report Manager, and locate the report for which you want to view or configure a subscription.</span></span>  
+  
+2.  <span data-ttu-id="66fbb-119">Pointez sur le rapport et cliquez sur la flèche déroulante.</span><span class="sxs-lookup"><span data-stu-id="66fbb-119">Hover over the report, and click the drop-down arrow.</span></span>  
+  
+3.  <span data-ttu-id="66fbb-120">Dans le menu déroulant, cliquez sur **Gérer**.</span><span class="sxs-lookup"><span data-stu-id="66fbb-120">In the drop-down menu, click **Manage**.</span></span> <span data-ttu-id="66fbb-121">La page des propriétés générales pour le rapport s'ouvre.</span><span class="sxs-lookup"><span data-stu-id="66fbb-121">This opens the General properties page for the report.</span></span>  
+  
+4.  <span data-ttu-id="66fbb-122">Sélectionnez l'onglet **Abonnements** .</span><span class="sxs-lookup"><span data-stu-id="66fbb-122">Select the **Subscriptions** tab.</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="66fbb-123">Options</span><span class="sxs-lookup"><span data-stu-id="66fbb-123">Options</span></span>  
+ <span data-ttu-id="66fbb-124">**Supprimer**</span><span class="sxs-lookup"><span data-stu-id="66fbb-124">**Delete**</span></span>  
+ <span data-ttu-id="66fbb-125">Cliquez pour supprimer un abonnement.</span><span class="sxs-lookup"><span data-stu-id="66fbb-125">Click to delete a subscription.</span></span> <span data-ttu-id="66fbb-126">Avant de cliquer sur ce bouton, activez la case à cocher en regard de chaque abonnement que vous souhaitez supprimer.</span><span class="sxs-lookup"><span data-stu-id="66fbb-126">Before you can delete a subscription, select the check box next to each subscription that you want to delete.</span></span>  
+  
+ <span data-ttu-id="66fbb-127">**Nouvel abonnement**</span><span class="sxs-lookup"><span data-stu-id="66fbb-127">**New Subscription**</span></span>  
+ <span data-ttu-id="66fbb-128">Cliquez pour créer un abonnement au rapport actif.</span><span class="sxs-lookup"><span data-stu-id="66fbb-128">Click to create a new subscription to the current report.</span></span> <span data-ttu-id="66fbb-129">Ce bouton est activé lorsque le rapport utilise des informations d'identification stockées ou aucune information d'identification.</span><span class="sxs-lookup"><span data-stu-id="66fbb-129">This button is enabled when the report uses stored credentials or no credentials.</span></span> <span data-ttu-id="66fbb-130">Il n'est pas disponible lorsque vous ouvrez la page Abonnements pour une source de données partagée.</span><span class="sxs-lookup"><span data-stu-id="66fbb-130">This button is not available when you open the Subscriptions page for a shared data source.</span></span>  
+  
+ <span data-ttu-id="66fbb-131">**Nouvel abonnement piloté par les données**</span><span class="sxs-lookup"><span data-stu-id="66fbb-131">**New Data-Driven Subscription**</span></span>  
+ <span data-ttu-id="66fbb-132">Cliquez pour générer une liste d'abonnés et des options de remise à partir d'une commande ou d'une requête exécutée sur une banque de données qui contient ces informations.</span><span class="sxs-lookup"><span data-stu-id="66fbb-132">Click to generate a subscriber list and delivery options from a command or query against a data store that contains this information.</span></span> <span data-ttu-id="66fbb-133">Ce bouton est activé lorsque le rapport utilise des informations d'identification stockées ou aucune information d'identification.</span><span class="sxs-lookup"><span data-stu-id="66fbb-133">This button is enabled when the report uses stored credentials or no credentials.</span></span> <span data-ttu-id="66fbb-134">Il n'est pas disponible lorsque vous ouvrez la page Abonnements pour une source de données partagée.</span><span class="sxs-lookup"><span data-stu-id="66fbb-134">This button is not available when you open the Subscriptions page for a shared data source.</span></span>  
+  
+ <span data-ttu-id="66fbb-135">**Modifier**</span><span class="sxs-lookup"><span data-stu-id="66fbb-135">**Edit**</span></span>  
+ <span data-ttu-id="66fbb-136">Cliquez pour afficher ou modifier la description.</span><span class="sxs-lookup"><span data-stu-id="66fbb-136">Click to view or edit the description.</span></span>  
+  
+ <span data-ttu-id="66fbb-137">**Report**</span><span class="sxs-lookup"><span data-stu-id="66fbb-137">**Report**</span></span>  
+ <span data-ttu-id="66fbb-138">Lorsque vous ouvrez cette page à partir d'une source de données partagée, cette colonne identifie le rapport pour lequel l'abonnement est défini.</span><span class="sxs-lookup"><span data-stu-id="66fbb-138">When you open this page from a shared data source, this column identifies the report for which the subscription is defined.</span></span> <span data-ttu-id="66fbb-139">La colonne **Dossier** identifie l'emplacement du rapport.</span><span class="sxs-lookup"><span data-stu-id="66fbb-139">The **Folder** column identifies the location of the report.</span></span>  
+  
+ <span data-ttu-id="66fbb-140">**Description**</span><span class="sxs-lookup"><span data-stu-id="66fbb-140">**Description**</span></span>  
+ <span data-ttu-id="66fbb-141">Affiche une description de l'abonnement.</span><span class="sxs-lookup"><span data-stu-id="66fbb-141">Shows a description of the subscription.</span></span>  
+  
+ <span data-ttu-id="66fbb-142">**Déclencheur**</span><span class="sxs-lookup"><span data-stu-id="66fbb-142">**Trigger**</span></span>  
+ <span data-ttu-id="66fbb-143">Identifie les critères qui entraînent l'exécution de l'abonnement.</span><span class="sxs-lookup"><span data-stu-id="66fbb-143">Identifies criteria that cause the subscription to run.</span></span> <span data-ttu-id="66fbb-144">Un déclencheur **TimedSubscription** est basé sur une planification qui définit à quel moment l'abonnement s'exécute.</span><span class="sxs-lookup"><span data-stu-id="66fbb-144">A **TimedSubscription** trigger is based on a schedule that defines when the subscription runs.</span></span> <span data-ttu-id="66fbb-145">Un déclencheur **SnapshotUpdated** est basé sur une mise à jour d'un instantané de rapport.</span><span class="sxs-lookup"><span data-stu-id="66fbb-145">A **SnapshotUpdated** trigger is based on an update to a report snapshot.</span></span>  
+  
+ <span data-ttu-id="66fbb-146">**Propriétaire**</span><span class="sxs-lookup"><span data-stu-id="66fbb-146">**Owner**</span></span>  
+ <span data-ttu-id="66fbb-147">Affiche le nom de l'utilisateur qui a créé l'abonnement.</span><span class="sxs-lookup"><span data-stu-id="66fbb-147">Shows the name of the user who created the subscription.</span></span>  
+  
+ <span data-ttu-id="66fbb-148">**Dernière exécution**</span><span class="sxs-lookup"><span data-stu-id="66fbb-148">**Last Run**</span></span>  
+ <span data-ttu-id="66fbb-149">Indique à quel moment a eu lieu le dernier traitement de l'abonnement.</span><span class="sxs-lookup"><span data-stu-id="66fbb-149">Shows the last time that the subscription was processed.</span></span>  
+  
+ <span data-ttu-id="66fbb-150">**État**</span><span class="sxs-lookup"><span data-stu-id="66fbb-150">**Status**</span></span>  
+ <span data-ttu-id="66fbb-151">Indique l'état de l'abonnement</span><span class="sxs-lookup"><span data-stu-id="66fbb-151">Shows the status of the subscription.</span></span> <span data-ttu-id="66fbb-152">Généralement, la valeur d'état est Nouveau ou la date et l'heure de dernière exécution de l'abonnement.</span><span class="sxs-lookup"><span data-stu-id="66fbb-152">Usually, the status value is either New or the date and time at which the subscription last ran.</span></span>  
+  
+ <span data-ttu-id="66fbb-153">La valeur d'état « Données incorrectes » se présente lorsque l'abonnement comporte un pointeur vers des valeurs chiffrées qui ne sont plus valides, c'est-à-dire vers les informations d'identification utilisées pour exécuter le rapport).</span><span class="sxs-lookup"><span data-stu-id="66fbb-153">A status value of "Bad Data" occurs when the subscription includes a pointer to encrypted values that are no longer valid (that is, to the stored credentials used to run the report).</span></span> <span data-ttu-id="66fbb-154">Les valeurs chiffrées existantes deviennent inutilisables lorsque les clés symétriques utilisées pour chiffrer et déchiffrer les données sont recréées sur le serveur de rapports.</span><span class="sxs-lookup"><span data-stu-id="66fbb-154">Existing encrypted values become unusable when the symmetric keys used to encrypt and decrypt data are recreated on the report server.</span></span>  
+  
+ <span data-ttu-id="66fbb-155">Il n'est pas possible de traiter un abonnement s'il a été désactivé.</span><span class="sxs-lookup"><span data-stu-id="66fbb-155">A subscription cannot be processed if it has been deactivated.</span></span> <span data-ttu-id="66fbb-156">Pour mettre à jour l'abonnement et le rendre opérationnel, ouvrez-le, puis enregistrez-le.</span><span class="sxs-lookup"><span data-stu-id="66fbb-156">To update the subscription and make it operational, open and then save the subscription.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="66fbb-157">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="66fbb-157">See Also</span></span>  
+ <span data-ttu-id="66fbb-158">[Gestionnaire de rapports &#40;SSRS en mode natif&#41;](../../2014/reporting-services/report-manager-ssrs-native-mode.md) </span><span class="sxs-lookup"><span data-stu-id="66fbb-158">[Report Manager  &#40;SSRS Native Mode&#41;](../../2014/reporting-services/report-manager-ssrs-native-mode.md) </span></span>  
+ <span data-ttu-id="66fbb-159">[Créez, modifiez et supprimez les abonnements standard &#40;Reporting Services en mode natif&#41;](subscriptions/create-and-manage-subscriptions-for-native-mode-report-servers.md) </span><span class="sxs-lookup"><span data-stu-id="66fbb-159">[Create, Modify, and Delete Standard Subscriptions &#40;Reporting Services in Native Mode&#41;](subscriptions/create-and-manage-subscriptions-for-native-mode-report-servers.md) </span></span>  
+ <span data-ttu-id="66fbb-160">[Create, Modify, and Delete Schedules](subscriptions/create-modify-and-delete-schedules.md) </span><span class="sxs-lookup"><span data-stu-id="66fbb-160">[Create, Modify, and Delete Schedules](subscriptions/create-modify-and-delete-schedules.md) </span></span>  
+ [<span data-ttu-id="66fbb-161">Aide F1 du Gestionnaire de rapports</span><span class="sxs-lookup"><span data-stu-id="66fbb-161">Report Manager F1 Help</span></span>](../../2014/reporting-services/report-manager-f1-help.md)  
+  
+  
