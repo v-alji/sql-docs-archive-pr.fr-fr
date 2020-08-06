@@ -1,0 +1,44 @@
+---
+title: Traiter des partitions dans la base de données de l’espace de travail (SSAS tabulaire) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+ms.assetid: 3a369705-43fa-4961-9045-32e06fbdde33
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: 4a996e90b30794882535327ea3192d7e72818422
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87696120"
+---
+# <a name="process-partitions-in-the-workspace-database-ssas-tabular"></a><span data-ttu-id="72c68-102">Traiter des partitions dans la base de données de l’espace de travail (SSAS tabulaire)</span><span class="sxs-lookup"><span data-stu-id="72c68-102">Process Partitions in the Workspace Database (SSAS Tabular)</span></span>
+  <span data-ttu-id="72c68-103">Les partitions divisent une table en sections logiques.</span><span class="sxs-lookup"><span data-stu-id="72c68-103">Partitions divide a table into logical parts.</span></span> <span data-ttu-id="72c68-104">Chaque partition peut ensuite être traitée (actualisée) indépendamment d'autres partitions.</span><span class="sxs-lookup"><span data-stu-id="72c68-104">Each partition can then be processed (Refreshed) independent of other partitions.</span></span> <span data-ttu-id="72c68-105">Les tâches de cette rubrique décrivent comment traiter les partitions dans la base de données model de l’espace de travail à l’aide de la boîte de dialogue **Traiter les partitions** dans [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)].</span><span class="sxs-lookup"><span data-stu-id="72c68-105">The tasks in this topic describe how to process partitions in the model workspace database by using the **Process Partitions** dialog box in [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)].</span></span>  
+  
+ <span data-ttu-id="72c68-106">Une fois que le modèle a été déployé sur une autre instance Analysis Services, les administrateurs de bases de données peuvent créer et gérer des partitions dans le modèle (déployé) à l'aide de [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], par script ou à l'aide d'un package IS.</span><span class="sxs-lookup"><span data-stu-id="72c68-106">After a model has been deployed to another Analysis Services instance, database administrators can create and manage partitions in the (deployed) model by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], by script, or by using an IS package.</span></span> <span data-ttu-id="72c68-107">Pour plus d’informations, consultez [Créer et gérer des partitions de modèles tabulaires &#40;SSAS Tabulaire&#41;](partitions-ssas-tabular.md).</span><span class="sxs-lookup"><span data-stu-id="72c68-107">For more information, see [Create and Manage Tabular Model Partitions &#40;SSAS Tabular&#41;](partitions-ssas-tabular.md).</span></span>  
+  
+###  <a name="to-process-a-partition"></a><a name="bkmk_create_new"></a> <span data-ttu-id="72c68-108">Pour traiter une partition</span><span class="sxs-lookup"><span data-stu-id="72c68-108">To process a partition</span></span>  
+  
+1.  <span data-ttu-id="72c68-109">Dans [!INCLUDE[ssBIDevStudio](../../includes/ssbidevstudio-md.md)], cliquez sur le menu **Modèle** , puis sur **Traiter** (Actualiser) et sur **Traiter les partitions**.</span><span class="sxs-lookup"><span data-stu-id="72c68-109">In [!INCLUDE[ssBIDevStudio](../../includes/ssbidevstudio-md.md)], click the **Model** menu, and then click **Process** (Refresh), and then click **Process Partitions**.</span></span>  
+  
+2.  <span data-ttu-id="72c68-110">Dans la zone de liste **Mode** , sélectionnez l’un des modes de traitement suivants :</span><span class="sxs-lookup"><span data-stu-id="72c68-110">In the **Mode** listbox, select one of the following process modes:</span></span>  
+  
+    |<span data-ttu-id="72c68-111">Mode</span><span class="sxs-lookup"><span data-stu-id="72c68-111">Mode</span></span>|<span data-ttu-id="72c68-112">Description</span><span class="sxs-lookup"><span data-stu-id="72c68-112">Description</span></span>|  
+    |----------|-----------------|  
+    |<span data-ttu-id="72c68-113">**Traiter par défaut**</span><span class="sxs-lookup"><span data-stu-id="72c68-113">**Process Default**</span></span>|<span data-ttu-id="72c68-114">Détecte l'état de traitement d'un objet de partition et effectue le traitement nécessaire pour faire passer les objets de partition non traités ou traités partiellement dans un état de traitement complet.</span><span class="sxs-lookup"><span data-stu-id="72c68-114">Detects the process state of a partition object, and performs processing necessary to deliver unprocessed or partially processed partition objects to a fully processed state.</span></span> <span data-ttu-id="72c68-115">Les données des partitions et des tables vides sont chargées ; les hiérarchies, les colonnes calculées et les relations sont créées ou reconstruites.</span><span class="sxs-lookup"><span data-stu-id="72c68-115">Data for empty tables and partitions is loaded; hierarchies, calculated columns, and relationships are built or rebuilt.</span></span>|  
+    |<span data-ttu-id="72c68-116">**Traiter entièrement**</span><span class="sxs-lookup"><span data-stu-id="72c68-116">**Process Full**</span></span>|<span data-ttu-id="72c68-117">Traite un objet de partition et tous les objets qu'il contient.</span><span class="sxs-lookup"><span data-stu-id="72c68-117">Processes a partition object and all the objects that it contains.</span></span> <span data-ttu-id="72c68-118">Lorsque la commande Traiter entièrement est exécutée pour un objet qui a déjà été traité, [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] supprime toutes les données de l'objet, puis traite l'objet.</span><span class="sxs-lookup"><span data-stu-id="72c68-118">When Process Full is run for an object that has already been processed, [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] drops all data in the object, and then processes the object.</span></span> <span data-ttu-id="72c68-119">Ce type de traitement est obligatoire lorsqu'une modification structurelle a été apportée à un objet.</span><span class="sxs-lookup"><span data-stu-id="72c68-119">This kind of processing is required when a structural change has been made to an object.</span></span>|  
+    |<span data-ttu-id="72c68-120">**Traiter des données**</span><span class="sxs-lookup"><span data-stu-id="72c68-120">**Process Data**</span></span>|<span data-ttu-id="72c68-121">Chargez les données dans une partition ou une table sans reconstruire les hiérarchies ou les relations ni recalculer les colonnes calculées et les mesures.</span><span class="sxs-lookup"><span data-stu-id="72c68-121">Load data into a partition or a table without rebuilding hierarchies or relationships or recalculating calculated columns and measures.</span></span>|  
+    |<span data-ttu-id="72c68-122">**Traiter l'effacement**</span><span class="sxs-lookup"><span data-stu-id="72c68-122">**Process Clear**</span></span>|<span data-ttu-id="72c68-123">Supprime toutes les données d'une partition.</span><span class="sxs-lookup"><span data-stu-id="72c68-123">Removes all data from a partition.</span></span>|  
+    |<span data-ttu-id="72c68-124">**Traiter l'ajout**</span><span class="sxs-lookup"><span data-stu-id="72c68-124">**Process Add**</span></span>|<span data-ttu-id="72c68-125">Mise à jour incrémentielle de la partition avec de nouvelles données.</span><span class="sxs-lookup"><span data-stu-id="72c68-125">Incrementally update partition with new data.</span></span>|  
+  
+3.  <span data-ttu-id="72c68-126">Dans la colonne de case à cocher **Traiter** , sélectionnez les partitions à traiter avec le mode sélectionné, puis cliquez sur **OK**.</span><span class="sxs-lookup"><span data-stu-id="72c68-126">In the **Process** checkbox column, select the partitions you want to process with the selected mode, and then click **Ok**.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="72c68-127">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="72c68-127">See Also</span></span>  
+ <span data-ttu-id="72c68-128">[Partitions &#40;&#41;tabulaire SSAS](partitions-ssas-tabular.md) </span><span class="sxs-lookup"><span data-stu-id="72c68-128">[Partitions &#40;SSAS Tabular&#41;](partitions-ssas-tabular.md) </span></span>  
+ [<span data-ttu-id="72c68-129">Créer et gérer des partitions dans la base de données de l’espace de travail &#40;SSAS Tabulaire&#41;</span><span class="sxs-lookup"><span data-stu-id="72c68-129">Create and Manage Partitions in the Workspace Database &#40;SSAS Tabular&#41;</span></span>](workspace-database-ssas-tabular.md)  
+  
+  

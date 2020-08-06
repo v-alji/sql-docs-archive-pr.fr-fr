@@ -1,0 +1,63 @@
+---
+title: Rapprocher les modifications effectuées par plusieurs utilisateurs (Visual Database Tools) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: ssms
+ms.topic: conceptual
+helpviewer_keywords:
+- table modifications [SQL Server], multiple users
+- reconciling changes made by multiple users
+- modifications made by multiple users
+ms.assetid: fc7ed4f2-ad3d-47fc-a3ef-51e5bb069ef0
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: 337d505fce474a33301c18313fe6137f6bc0ec1b
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87697332"
+---
+# <a name="reconcile-changes-made-by-multiple-users-visual-database-tools"></a><span data-ttu-id="d1628-102">Rapprocher les modifications effectuées par plusieurs utilisateurs (Visual Database Tools)</span><span class="sxs-lookup"><span data-stu-id="d1628-102">Reconcile Changes Made by Multiple Users (Visual Database Tools)</span></span>
+  <span data-ttu-id="d1628-103">Dans un environnement multi-utilisateur, des modifications peuvent être apportées à un même objet par plusieurs utilisateurs simultanément.</span><span class="sxs-lookup"><span data-stu-id="d1628-103">In a multiuser environment, changes can be made on the same object by multiple users at once.</span></span> <span data-ttu-id="d1628-104">Cela peut se produire lorsque vous travaillez sur la structure de l’objet dans le Concepteur de tables ou dans le Concepteur de diagrammes de base de données, ou dans les valeurs des résultats retournés dans le volet Résultats du Concepteur de requêtes et de vues.</span><span class="sxs-lookup"><span data-stu-id="d1628-104">This can happen when you're working on the structure of the object in the Table or Database Diagram designers or it can happen to values in the results returned in the Query and View designer's Results pane.</span></span> <span data-ttu-id="d1628-105">Cela peut provoquer des conflits que vous souhaiterez résoudre.</span><span class="sxs-lookup"><span data-stu-id="d1628-105">This can cause conflicts that you'll want to resolve.</span></span>  
+  
+## <a name="conflicts-in-the-table-or-database-diagram-designers"></a><span data-ttu-id="d1628-106">Conflits dans le Concepteur de tables ou le Concepteur de diagrammes de base de données</span><span class="sxs-lookup"><span data-stu-id="d1628-106">Conflicts in the Table or Database Diagram Designers</span></span>  
+ <span data-ttu-id="d1628-107">Par exemple, un autre utilisateur peut supprimer ou renommer une table pendant que vous l'utilisez ou que vous travaillez avec une table connexe dans le Concepteur de tables.</span><span class="sxs-lookup"><span data-stu-id="d1628-107">For example, another user might delete or rename a table while you are working with the same or a related table in Table Designer.</span></span> <span data-ttu-id="d1628-108">Si vous tentez d’enregistrer votre table, la [Boîte de dialogue Modifications détectées dans la base de données &#40;Visual Database Tools&#41;](visual-database-tools.md) vous avertit que la base de données a été modifiée depuis que vous avez ouvert la table.</span><span class="sxs-lookup"><span data-stu-id="d1628-108">When you attempt to save your table, the [Database Changes Detected Dialog Box &#40;Visual Database Tools&#41;](visual-database-tools.md) notifies you that the database has been updated since you opened the table.</span></span>  
+  
+ <span data-ttu-id="d1628-109">Elle affiche également la liste des objets de base de données qui seront affectés si vous enregistrez la table.</span><span class="sxs-lookup"><span data-stu-id="d1628-109">This dialog box also displays a list of database objects that will be affected as a result of saving your table.</span></span> <span data-ttu-id="d1628-110">À ce stade, vous pouvez prendre une des mesures suivantes :</span><span class="sxs-lookup"><span data-stu-id="d1628-110">At this point, you can take one of these actions:</span></span>  
+  
+-   <span data-ttu-id="d1628-111">Choisissez **Oui** pour enregistrer la table et mettre à jour la base de données avec toutes les modifications de la liste.</span><span class="sxs-lookup"><span data-stu-id="d1628-111">Choose **Yes** to save your table and update the database with all the changes in the list.</span></span>  
+  
+     <span data-ttu-id="d1628-112">Cette action peut affecter les tables partageant les mêmes objets de base de données.</span><span class="sxs-lookup"><span data-stu-id="d1628-112">This action could affect tables that share the same database objects.</span></span> <span data-ttu-id="d1628-113">Par exemple, supposons que vous modifiez la colonne `au`_`id` de la table `titleauthors` alors qu’un autre utilisateur travaille sur la table `authors` , reliée à la table `titleauthors` par la colonne `au`\_`id` .</span><span class="sxs-lookup"><span data-stu-id="d1628-113">For example, suppose you edit the `au`_`id` column in the `titleauthors` table while another user is working on the `authors` table which is related to the `titleauthors` table by the `au`\_`id` column.</span></span> <span data-ttu-id="d1628-114">L'enregistrement de votre table affecte la table de l'autre utilisateur.</span><span class="sxs-lookup"><span data-stu-id="d1628-114">Saving your table will affect the other user's table.</span></span> <span data-ttu-id="d1628-115">De façon similaire, quelqu'un d'autre a défini une contrainte de validation de la colonne `qty` de la table `sales` .</span><span class="sxs-lookup"><span data-stu-id="d1628-115">Similarly, suppose that another user defined a check constraint for the `qty` column in the `sales` table.</span></span> <span data-ttu-id="d1628-116">Si vous supprimez la colonne `qty` , puis enregistrez la table `sales` , la contrainte de validation de l'autre utilisateur est affectée.</span><span class="sxs-lookup"><span data-stu-id="d1628-116">If you delete the `qty` column and save the `sales` table, the other user's check constraint will be affected.</span></span>  
+  
+-   <span data-ttu-id="d1628-117">Choisissez **Non** pour annuler l’enregistrement.</span><span class="sxs-lookup"><span data-stu-id="d1628-117">Choose **No** to cancel the save action.</span></span>  
+  
+     <span data-ttu-id="d1628-118">Dans ce cas, vous fermez la table sans l'enregistrer.</span><span class="sxs-lookup"><span data-stu-id="d1628-118">You can then close the table without saving it.</span></span> <span data-ttu-id="d1628-119">Lorsque vous la rouvrirez, son contenu correspondra à celui de la base de données.</span><span class="sxs-lookup"><span data-stu-id="d1628-119">When you reopen the table it will match what is in the database.</span></span>  
+  
+-   <span data-ttu-id="d1628-120">Choisissez **Enregistrer comme fichier texte** pour enregistrer la liste des modifications.</span><span class="sxs-lookup"><span data-stu-id="d1628-120">Choose **Save Text File** to save a list of the changes.</span></span>  
+  
+     <span data-ttu-id="d1628-121">Cette liste des modifications apportées à la base de données s’affiche dans la boîte de dialogue **Modifications détectées dans la base de données** . Vous pouvez l’enregistrer dans un fichier texte, dans lequel vous pourrez examiner ce qui a motivé ces changements de la part des autres utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="d1628-121">You can save the list of database changes shown in the **Database Changes Detected** dialog box to a text file so that you can investigate the cause of other users' changes.</span></span> <span data-ttu-id="d1628-122">Par exemple, quelqu'un d'autre a modifié une table sur laquelle vous avez placé un marqueur de suppression et vous souhaitez savoir s'il faut vraiment supprimer la table avant de mettre la base de données à jour.</span><span class="sxs-lookup"><span data-stu-id="d1628-122">For example, if another user edited a table that you marked for deletion, you may want to research whether the table should be deleted before updating the database.</span></span>  
+  
+## <a name="conflicts-in-the-query-and-view-designer"></a><span data-ttu-id="d1628-123">Conflits dans le Concepteur de requêtes et de vues</span><span class="sxs-lookup"><span data-stu-id="d1628-123">Conflicts in the Query and View Designer</span></span>  
+ <span data-ttu-id="d1628-124">Si vous exécutez une requête ou retournez les résultats d’une vue, les données s’affichent dans le [volet Résultats](results-pane-visual-database-tools.md).</span><span class="sxs-lookup"><span data-stu-id="d1628-124">If you run a query or return the results of a view, the data is shown in the [Results Pane](results-pane-visual-database-tools.md).</span></span> <span data-ttu-id="d1628-125">Plusieurs utilisateurs peuvent travailler simultanément sur le même jeu de données, ce qui risque de provoquer des conflits.</span><span class="sxs-lookup"><span data-stu-id="d1628-125">Multiple users can work on the same set of data at the same time, which can cause conflicts.</span></span>  
+  
+ <span data-ttu-id="d1628-126">Par exemple, supposons qu'une collègue et vous-même exécutiez chacun une requête d'affichage de toutes les données contenues dans la table `titleauthors` .</span><span class="sxs-lookup"><span data-stu-id="d1628-126">For example, lets say you and a colleague each run a query to show all the data in the `titleauthors` table.</span></span> <span data-ttu-id="d1628-127">Votre collègue remplace le prénom du premier enregistrement retourné, Barb, par Barbara.</span><span class="sxs-lookup"><span data-stu-id="d1628-127">Your colleague changes the first name in the first record returned from Barb to Barbara.</span></span> <span data-ttu-id="d1628-128">À ce stade, la base de données contient Barbara dans ce champ, alors que votre jeu de résultats affiche toujours Barb.</span><span class="sxs-lookup"><span data-stu-id="d1628-128">At this point the database has Barbara in that field, while your result set still shows Barb.</span></span> <span data-ttu-id="d1628-129">À présent, vous tapez Barbara et cliquez en dehors de la ligne.</span><span class="sxs-lookup"><span data-stu-id="d1628-129">Now you type in Barbara and click off of the row.</span></span> <span data-ttu-id="d1628-130">Un message s'affiche pour vous demander de quelle manière vous souhaitez résoudre le conflit.</span><span class="sxs-lookup"><span data-stu-id="d1628-130">You will receive a message asking you how you want to resolve the conflict.</span></span>  
+  
+-   <span data-ttu-id="d1628-131">Cliquez sur **Oui** pour mettre à jour la base de données avec vos modifications.</span><span class="sxs-lookup"><span data-stu-id="d1628-131">Click **Yes** to update the database with your changes.</span></span>  
+  
+     <span data-ttu-id="d1628-132">Cette opération substituera les modifications de votre collègue.</span><span class="sxs-lookup"><span data-stu-id="d1628-132">This will override your colleague's changes.</span></span>  
+  
+-   <span data-ttu-id="d1628-133">Cliquez sur **Non** pour que votre jeu de résultats soit mis à jour afin d’afficher le contenu actuel de la base de données.</span><span class="sxs-lookup"><span data-stu-id="d1628-133">Click **No** to have your result set updated to what's currently in the database.</span></span>  
+  
+     <span data-ttu-id="d1628-134">Cette opération remplacera vos modifications par celles de votre collègue.</span><span class="sxs-lookup"><span data-stu-id="d1628-134">This will override your changes with those of your colleague's.</span></span>  
+  
+-   <span data-ttu-id="d1628-135">Cliquez sur **Annuler** pour poursuivre la modification sans résoudre le conflit.</span><span class="sxs-lookup"><span data-stu-id="d1628-135">Click **Cancel** to continue to edit without resolving the conflict.</span></span>  
+  
+     <span data-ttu-id="d1628-136">Dans ce cas, vous ne pouvez pas valider vos modifications apportées à la base de données.</span><span class="sxs-lookup"><span data-stu-id="d1628-136">In this case you will not be able to commit your changes to the database.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="d1628-137">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="d1628-137">See Also</span></span>  
+ [<span data-ttu-id="d1628-138">Boîte de dialogue Modifications détectées dans la base de données &#40;Visual Database Tools&#41;</span><span class="sxs-lookup"><span data-stu-id="d1628-138">Database Changes Detected Dialog Box &#40;Visual Database Tools&#41;</span></span>](visual-database-tools.md)  
+  
+  

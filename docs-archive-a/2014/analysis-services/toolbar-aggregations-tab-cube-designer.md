@@ -1,0 +1,37 @@
+---
+title: Barre d’outils (onglet agrégations, concepteur de cube) | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+ms.assetid: 8741ff3e-44c3-4bfa-a56a-de590e01576e
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: 8105ded62017fad035b1b2d756f0c797f6b94154
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87697236"
+---
+# <a name="toolbar-aggregations-tab-cube-designer"></a><span data-ttu-id="ef7de-102">Barre d'outils (onglet Agrégations, Concepteur de cube)</span><span class="sxs-lookup"><span data-stu-id="ef7de-102">Toolbar (Aggregations Tab, Cube Designer)</span></span>
+  <span data-ttu-id="ef7de-103">Utilisez le volet **Barre d’outils** pour exécuter des actions courantes sous l’onglet **Agrégations** du Concepteur de cube.</span><span class="sxs-lookup"><span data-stu-id="ef7de-103">Use the **Toolbar** pane to perform common actions on the **Aggregations** tab in Cube Designer.</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="ef7de-104">Options</span><span class="sxs-lookup"><span data-stu-id="ef7de-104">Options</span></span>  
+  
+|<span data-ttu-id="ef7de-105">Option</span><span class="sxs-lookup"><span data-stu-id="ef7de-105">Option</span></span>|<span data-ttu-id="ef7de-106">Description</span><span class="sxs-lookup"><span data-stu-id="ef7de-106">Description</span></span>|  
+|------------|-----------------|  
+|<span data-ttu-id="ef7de-107">**Créer des agrégations**</span><span class="sxs-lookup"><span data-stu-id="ef7de-107">**Design Aggregations**</span></span>|<span data-ttu-id="ef7de-108">Cliquez pour afficher l' **Assistant Conception d'agrégation**.</span><span class="sxs-lookup"><span data-stu-id="ef7de-108">Click to display the **Aggregation Design Wizard**.</span></span><br /><br /> <span data-ttu-id="ef7de-109">Remarque : cette option est affichée uniquement dans la vue standard du concepteur d’agrégation.</span><span class="sxs-lookup"><span data-stu-id="ef7de-109">Note: This option is only displayed in the standard view of the aggregation designer.</span></span>|  
+|<span data-ttu-id="ef7de-110">**Optimisation basée sur l'utilisation**</span><span class="sxs-lookup"><span data-stu-id="ef7de-110">**Usage Based Optimization**</span></span>|<span data-ttu-id="ef7de-111">Cliquez pour afficher l' **Assistant Optimisation**de l’utilisation.</span><span class="sxs-lookup"><span data-stu-id="ef7de-111">Click to display the **Usage Based Optimization Wizard**.</span></span><br /><br /> <span data-ttu-id="ef7de-112">Remarque : cette option est affichée uniquement dans la vue standard du concepteur d’agrégation.</span><span class="sxs-lookup"><span data-stu-id="ef7de-112">Note: This option is only displayed in the standard view of the aggregation designer.</span></span>|  
+|<span data-ttu-id="ef7de-113">**Affecter une conception d'agrégation**</span><span class="sxs-lookup"><span data-stu-id="ef7de-113">**Assign Aggregation Design**</span></span>|<span data-ttu-id="ef7de-114">Cliquez pour afficher la boîte de dialogue **Affecter une conception d'agrégation** .</span><span class="sxs-lookup"><span data-stu-id="ef7de-114">Click to display the **Assign Aggregation Design** dialog box.</span></span>|  
+|<span data-ttu-id="ef7de-115">**Affichage standard**</span><span class="sxs-lookup"><span data-stu-id="ef7de-115">**Standard View**</span></span>|<span data-ttu-id="ef7de-116">Cliquez pour afficher la **vue standard** du concepteur d’agrégation qui vous permet de créer et modifier des conceptions d’agrégation à l’aide de **l’Assistant Conception d’agrégation** ou de **l’Assistant Optimisation basée sur l’utilisation**.</span><span class="sxs-lookup"><span data-stu-id="ef7de-116">Click to display the **Standard View** of the aggregation designer where you can create and modify aggregation designs by using the **Aggregation Design Wizard** or the **Usage Based Optimization Wizard**.</span></span>|  
+|<span data-ttu-id="ef7de-117">**Vue avancée**</span><span class="sxs-lookup"><span data-stu-id="ef7de-117">**Advanced View**</span></span>|<span data-ttu-id="ef7de-118">Cliquez pour afficher la **vue avancée** du concepteur d’agrégation qui vous permet de créer et modifier manuellement des conceptions d’agrégation et des agrégations individuelles.</span><span class="sxs-lookup"><span data-stu-id="ef7de-118">Click to display the **Advanced View** of the aggregation designer where you can manually create and modify aggregation designs and individual aggregations.</span></span> <span data-ttu-id="ef7de-119">Cette vue ne doit être utilisée par des utilisateurs expérimentés.</span><span class="sxs-lookup"><span data-stu-id="ef7de-119">This view should be used by advanced users only.</span></span><br /><br /> <span data-ttu-id="ef7de-120">Remarque : l' **Assistant conception d’agrégation** et l' **Assistant optimisation basée sur l’utilisation** ne sont pas disponibles dans cette vue.</span><span class="sxs-lookup"><span data-stu-id="ef7de-120">Note: The **Aggregation Design Wizard** and the **Usage Based Optimization Wizard** are not available in this view.</span></span>|  
+|<span data-ttu-id="ef7de-121">**Nouvelle conception d'agrégation**</span><span class="sxs-lookup"><span data-stu-id="ef7de-121">**New Aggregation Design**</span></span>|<span data-ttu-id="ef7de-122">Cliquez pour afficher la boîte de dialogue **Nouvelle conception d’agrégation** .</span><span class="sxs-lookup"><span data-stu-id="ef7de-122">Click to display the **New Aggregation Design** dialog box.</span></span> <span data-ttu-id="ef7de-123">Vous pouvez créer une conception d'agrégation vide ou une copie d'une conception d'agrégation existante.</span><span class="sxs-lookup"><span data-stu-id="ef7de-123">You can either create an empty aggregation design or create a copy of an existing aggregation design.</span></span><br /><br /> <span data-ttu-id="ef7de-124">Remarque : cette option est affichée uniquement dans la vue avancée du concepteur d’agrégation.</span><span class="sxs-lookup"><span data-stu-id="ef7de-124">Note: This option is only displayed in the advanced view of the aggregation designer.</span></span>|  
+|<span data-ttu-id="ef7de-125">**Supprimer**</span><span class="sxs-lookup"><span data-stu-id="ef7de-125">**Delete**</span></span>|<span data-ttu-id="ef7de-126">Cliquez pour supprimer une conception d’agrégation sélectionnée.</span><span class="sxs-lookup"><span data-stu-id="ef7de-126">Click to delete a selected aggregation design.</span></span>  <span data-ttu-id="ef7de-127">Dans la vue avancée du concepteur d'agrégation, elle peut également être utilisée pour supprimer une agrégation d'une conception d'agrégation.</span><span class="sxs-lookup"><span data-stu-id="ef7de-127">In the advanced view of the aggregation designer, it can also be used to delete an aggregation from an aggregation design.</span></span>|  
+  
+## <a name="see-also"></a><span data-ttu-id="ef7de-128">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="ef7de-128">See Also</span></span>  
+ [<span data-ttu-id="ef7de-129">Agrégations &#40;&#41;de conception de cube</span><span class="sxs-lookup"><span data-stu-id="ef7de-129">Aggregations &#40;Cube Design&#41;</span></span>](aggregations-cube-design.md)  
+  
+  
