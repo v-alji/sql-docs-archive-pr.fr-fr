@@ -1,0 +1,43 @@
+---
+title: Quand utiliser SQL Server Native Client | Microsoft Docs
+ms.custom: ''
+ms.date: 03/09/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: native-client
+ms.topic: reference
+helpviewer_keywords:
+- SQL Server Native Client ODBC driver, about SQL Server Native Client ODBC driver
+- SQLNCLI, about SQL Server Native Client
+- data access [SQL Server Native Client], about SQL Server Native Client
+ms.assetid: 08f18b36-209d-4cf7-9623-ebc61859a91d
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: f8aeb34525bbe5c1b003e8fd95e7a414025965a8
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87603958"
+---
+# <a name="when-to-use-sql-server-native-client"></a><span data-ttu-id="af108-102">Quand utiliser SQL Server Native Client</span><span class="sxs-lookup"><span data-stu-id="af108-102">When to Use SQL Server Native Client</span></span>
+  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] <span data-ttu-id="af108-103">Native Client est une technologie que vous pouvez utiliser pour accéder aux données dans une base de données [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="af108-103">Native Client is one technology that you can use to access data in a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] database.</span></span>  <span data-ttu-id="af108-104">Pour en savoir plus sur les différentes technologies d’accès aux données, consultez [Data Access Technologies Road Map](https://go.microsoft.com/fwlink/?LinkID=179186).</span><span class="sxs-lookup"><span data-stu-id="af108-104">For a discussion of the different data-access technologies, see [Data Access Technologies Road Map](https://go.microsoft.com/fwlink/?LinkID=179186)</span></span>  
+  
+ <span data-ttu-id="af108-105">Lorsque vous décidez s'il faut utiliser [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client comme technologie d'accès aux données de votre application, vous devez considérer plusieurs facteurs.</span><span class="sxs-lookup"><span data-stu-id="af108-105">When deciding whether to use [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client as the data access technology of your application, you should consider several factors.</span></span>  
+  
+ <span data-ttu-id="af108-106">Pour les nouvelles applications, si vous utilisez un langage de programmation managé tel que Microsoft Visual C# ou Visual Basic et que vous devez accéder aux nouvelles fonctionnalités de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], vous devez utiliser le fournisseur de données .NET Framework pour [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], qui fait partie du .NET Framework.</span><span class="sxs-lookup"><span data-stu-id="af108-106">For new applications, if you're using a managed programming language such as Microsoft Visual C# or Visual Basic, and you need to access the new features in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], you should use the .NET Framework Data Provider for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], which is part of the .NET Framework.</span></span>  
+  
+ <span data-ttu-id="af108-107">Si vous développez une application COM et que vous devez accéder aux nouvelles fonctionnalités introduites dans [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], vous devez utiliser [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client.</span><span class="sxs-lookup"><span data-stu-id="af108-107">If you are developing a COM-based application and need to access the new features introduced in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], you should use [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client.</span></span> <span data-ttu-id="af108-108">Si vous n'avez pas besoin d'accéder aux nouvelles fonctionnalités de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], vous pouvez continuer à utiliser WDAC (Windows Data Access Components).</span><span class="sxs-lookup"><span data-stu-id="af108-108">If you don't need access to the new features of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], you can continue to use Windows Data Access Components (WDAC).</span></span>  
+  
+ <span data-ttu-id="af108-109">Pour les applications OLE DB et ODBC existantes, vous devez décider principalement si vous avez besoin d'accéder aux nouvelles fonctionnalités de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="af108-109">For existing OLE DB and ODBC applications, the primary issue is whether you need to access the new features of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span></span> <span data-ttu-id="af108-110">Si vous possédez une application déjà rodée qui n'a pas besoin des nouvelles fonctionnalités de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], vous pouvez continuer à utiliser WDAC.</span><span class="sxs-lookup"><span data-stu-id="af108-110">If you have a mature application that does not need the new features of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], you can continue to use WDAC.</span></span> <span data-ttu-id="af108-111">Toutefois, si vous devez accéder à ces nouvelles fonctionnalités, telles que le [type de données XML](/sql/t-sql/xml/xml-transact-sql), vous devez utiliser [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client.</span><span class="sxs-lookup"><span data-stu-id="af108-111">But if you do need to access those new features, such as the [xml data type](/sql/t-sql/xml/xml-transact-sql), you should use [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client.</span></span>  
+  
+ <span data-ttu-id="af108-112">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client et MDAC prennent en charge l'isolation de la transaction de lecture validée à l'aide du contrôle de version de ligne, mais seul [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client prend en charge l'isolation de la transaction d'instantané.</span><span class="sxs-lookup"><span data-stu-id="af108-112">Both [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client and MDAC support read committed transaction isolation using row versioning, but only [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client supports snapshot transaction isolation.</span></span> <span data-ttu-id="af108-113">(En termes de programmation, l'isolation des transactions de lecture validée avec le contrôle de version de ligne équivaut à la transaction de lecture validée.)</span><span class="sxs-lookup"><span data-stu-id="af108-113">(In programming terms, read committed transaction isolation with row versioning is the same as Read-Committed transaction.)</span></span>  
+  
+ <span data-ttu-id="af108-114">Pour plus d’informations sur les différences entre [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client et MDAC, consultez [mise à jour d’une Application vers SQL Server Native Client à partir de MDAC](../../relational-databases/native-client/applications/updating-an-application-to-sql-server-native-client-from-mdac.md).</span><span class="sxs-lookup"><span data-stu-id="af108-114">For information about the differences between [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client and MDAC, see [Updating an Application to SQL Server Native Client from MDAC](../../relational-databases/native-client/applications/updating-an-application-to-sql-server-native-client-from-mdac.md).</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="af108-115">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="af108-115">See Also</span></span>  
+ <span data-ttu-id="af108-116">[Programmation SQL Server Native Client](../../relational-databases/native-client/sql-server-native-client-programming.md) </span><span class="sxs-lookup"><span data-stu-id="af108-116">[SQL Server Native Client Programming](../../relational-databases/native-client/sql-server-native-client-programming.md) </span></span>  
+ <span data-ttu-id="af108-117">[Rubriques de procédures relatives à ODBC](../native-client-odbc-how-to/odbc-how-to-topics.md) </span><span class="sxs-lookup"><span data-stu-id="af108-117">[ODBC How-to Topics](../native-client-odbc-how-to/odbc-how-to-topics.md) </span></span>  
+ [<span data-ttu-id="af108-118">Rubriques de procédures liées à OLE DB</span><span class="sxs-lookup"><span data-stu-id="af108-118">OLE DB How-to Topics</span></span>](../native-client-ole-db-how-to/ole-db-how-to-topics.md)  
+  
+  
