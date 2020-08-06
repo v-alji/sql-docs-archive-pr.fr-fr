@@ -1,0 +1,84 @@
+---
+title: Effectuer une évaluation à la demande à l’aide de serveurs inscrits | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: security
+ms.topic: conceptual
+ms.assetid: c14034ef-6e0b-4df5-8072-bfb8d90b3172
+author: VanMSFT
+ms.author: vanto
+ms.openlocfilehash: a3a06efaabff7e94e5b560744f0e1c739831042a
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87600408"
+---
+# <a name="perform-an-on-demand-evaluation-by-using-registered-servers"></a><span data-ttu-id="782f5-102">Effectuer une évaluation à la demande à l'aide des serveurs inscrits</span><span class="sxs-lookup"><span data-stu-id="782f5-102">Perform an On-Demand Evaluation by Using Registered Servers</span></span>
+
+  <span data-ttu-id="782f5-103">Vous pouvez effectuer une évaluation à la demande des stratégies des meilleures pratiques sur une ou plusieurs instances de [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] à l'aide des serveurs inscrits.</span><span class="sxs-lookup"><span data-stu-id="782f5-103">You can perform an on-demand evaluation of best practices policies against one or more instances of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] by using Registered Servers.</span></span> <span data-ttu-id="782f5-104">Vous pouvez utiliser des groupes de serveurs locaux ou un serveur d'administration centralisée.</span><span class="sxs-lookup"><span data-stu-id="782f5-104">You can use either local server groups or a central management server.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="782f5-105">Vous pouvez effectuer une évaluation à la demande des stratégies des meilleures pratiques sur des membres de groupe de serveurs qui exécutent [!INCLUDE[ssVersion2005](../includes/ssversion2005-md.md)] ou une version ultérieure de [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="782f5-105">You can perform an on-demand evaluation of best practices policies against server group members that are running [!INCLUDE[ssVersion2005](../includes/ssversion2005-md.md)] or a later version of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)].</span></span> <span data-ttu-id="782f5-106">Toutefois, vous pouvez recevoir une erreur d'exception si quelques propriétés désignées par une stratégie ne sont pas prises en charge dans [!INCLUDE[ssVersion2005](../includes/ssversion2005-md.md)] ou [!INCLUDE[ssVersion2000](../includes/ssversion2000-md.md)].</span><span class="sxs-lookup"><span data-stu-id="782f5-106">However, you may receive an exception error if there are some properties that are referred to by a policy that are not supported in [!INCLUDE[ssVersion2005](../includes/ssversion2005-md.md)] or [!INCLUDE[ssVersion2000](../includes/ssversion2000-md.md)].</span></span>  
+  
+## <a name="prerequisites"></a><span data-ttu-id="782f5-107">Prérequis</span><span class="sxs-lookup"><span data-stu-id="782f5-107">Prerequisites</span></span>  
+ <span data-ttu-id="782f5-108">Pour effectuer cette tâche, vous devez avoir configuré une ou plusieurs inscriptions de serveurs dans les serveurs inscrits.</span><span class="sxs-lookup"><span data-stu-id="782f5-108">To perform this task, you must have configured one or more server registrations in Registered Servers.</span></span> <span data-ttu-id="782f5-109">Pour plus d'informations, voir les rubriques suivantes :</span><span class="sxs-lookup"><span data-stu-id="782f5-109">For more information, see the following topics:</span></span>  
+  
+-   [<span data-ttu-id="782f5-110">Créer ou modifier un groupe de serveurs &#40;SQL Server Management Studio&#41;</span><span class="sxs-lookup"><span data-stu-id="782f5-110">Create or Edit a Server Group &#40;SQL Server Management Studio&#41;</span></span>](../ssms/register-servers/create-or-edit-a-server-group-sql-server-management-studio.md)  
+  
+-   <span data-ttu-id="782f5-111">[Inscrire un serveur connecté &#40;SQL Server Management Studio&#41;](../ssms/register-servers/register-a-connected-server-sql-server-management-studio.md).</span><span class="sxs-lookup"><span data-stu-id="782f5-111">[Register a Connected Server &#40;SQL Server Management Studio&#41;](../ssms/register-servers/register-a-connected-server-sql-server-management-studio.md).</span></span>  
+  
+-   [<span data-ttu-id="782f5-112">Créer un serveur d’administration centralisée et un groupe de serveurs &#40;SQL Server Management Studio&#41;</span><span class="sxs-lookup"><span data-stu-id="782f5-112">Create a Central Management Server and Server Group &#40;SQL Server Management Studio&#41;</span></span>](../ssms/register-servers/create-a-central-management-server-and-server-group.md)  
+  
+### <a name="to-evaluate-best-practices-policies-against-a-server-group"></a><span data-ttu-id="782f5-113">Pour évaluer les stratégies des meilleures pratiques sur un groupe de serveurs</span><span class="sxs-lookup"><span data-stu-id="782f5-113">To evaluate best practices policies against a server group</span></span>  
+  
+1.  <span data-ttu-id="782f5-114">Dans [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)], dans le menu **Affichage** , cliquez sur **Serveurs inscrits**.</span><span class="sxs-lookup"><span data-stu-id="782f5-114">In [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)], on the **View** menu, click **Registered Servers**.</span></span>  
+  
+2.  <span data-ttu-id="782f5-115">Développez **moteur de base de données**, puis développez **groupes**de serveurs locaux ou **serveurs de gestion centralisée**, en fonction de votre configuration.</span><span class="sxs-lookup"><span data-stu-id="782f5-115">Expand **Database Engine**, and then expand either **Local Server Groups**, or **Central Management Servers**, depending on your configuration.</span></span>  
+  
+3.  <span data-ttu-id="782f5-116">Effectuez l'une des opérations suivantes :</span><span class="sxs-lookup"><span data-stu-id="782f5-116">Do either of the following:</span></span>  
+  
+    -   <span data-ttu-id="782f5-117">Pour évaluer les stratégies par rapport à tous les serveurs gérés par le groupe de serveurs local ou le serveur de gestion centralisée, cliquez avec le bouton droit sur le nom du groupe de serveurs local ou le nom du serveur de gestion centralisée, puis cliquez sur **évaluer les stratégies**.</span><span class="sxs-lookup"><span data-stu-id="782f5-117">To evaluate the policies against all servers that are managed by the local server group or the central management server, right-click the local server group name or the central management server name, and then click **Evaluate Policies**.</span></span>  
+  
+        > [!NOTE]  
+        >  <span data-ttu-id="782f5-118">Lorsque vous évaluez des stratégies via un serveur d'administration centralisée, les stratégies ne sont pas évaluées sur le serveur d'administration centralisée lui-même.</span><span class="sxs-lookup"><span data-stu-id="782f5-118">When you evaluate policies through a central management server, the policies are not evaluated against the central management server itself.</span></span>  
+  
+    -   <span data-ttu-id="782f5-119">Pour évaluer les stratégies par rapport à un serveur ou un groupe de serveurs spécifique, développez **groupes de serveurs locaux** ou le nom du serveur de gestion centralisée, cliquez avec le bouton droit sur le serveur ou le groupe de serveurs dont vous souhaitez évaluer les stratégies, puis cliquez sur **évaluer les stratégies**.</span><span class="sxs-lookup"><span data-stu-id="782f5-119">To evaluate the policies against a specific server or server group, expand **Local Server Groups** or the central management server name, right-click the server or server group that you want to evaluate policies against, and then click **Evaluate Policies**.</span></span>  
+  
+4.  <span data-ttu-id="782f5-120">Dans la boîte de dialogue **évaluer les stratégies** , en regard de la zone **source** , cliquez sur le bouton de sélection (**...**).</span><span class="sxs-lookup"><span data-stu-id="782f5-120">In the **Evaluate Policies** dialog box, next to the **Source** box, click the ellipsis (**...**) button.</span></span>  
+  
+5.  <span data-ttu-id="782f5-121">Dans la boîte de dialogue **Sélectionner une source** , vous pouvez sélectionner **fichiers** ou **serveur** comme source des fichiers de stratégie à évaluer.</span><span class="sxs-lookup"><span data-stu-id="782f5-121">In the **Select Source** dialog box, you can select either **Files** or **Server** as the source of the policy files to evaluate.</span></span> <span data-ttu-id="782f5-122">Si vous cliquez sur **serveur**, vous pouvez effectuer une évaluation à la demande des stratégies des meilleures pratiques qui ont été précédemment importées dans la gestion basée sur des stratégies sur un serveur local ou distant.</span><span class="sxs-lookup"><span data-stu-id="782f5-122">If you click **Server**, you can perform an on-demand evaluation of any best practices policies that were previously imported into Policy-Based Management on a local or remote server.</span></span> <span data-ttu-id="782f5-123">Dans ce didacticiel, vous allez cliquer sur **fichiers**, puis sélectionner les fichiers de stratégie individuels que vous souhaitez évaluer.</span><span class="sxs-lookup"><span data-stu-id="782f5-123">In this tutorial, you will click **Files**, and then select the individual policy files that you want to evaluate.</span></span> <span data-ttu-id="782f5-124">Pour ce faire, procédez comme suit :</span><span class="sxs-lookup"><span data-stu-id="782f5-124">To do this, follow these steps:</span></span>  
+  
+    1.  <span data-ttu-id="782f5-125">Cliquez sur **fichiers**.</span><span class="sxs-lookup"><span data-stu-id="782f5-125">Click **Files**.</span></span>  
+  
+    2.  <span data-ttu-id="782f5-126">En regard de **fichiers**, cliquez sur le bouton de sélection (**...**).</span><span class="sxs-lookup"><span data-stu-id="782f5-126">Next to **Files**, click the ellipsis (**...**) button.</span></span>  
+  
+    3.  <span data-ttu-id="782f5-127">Sélectionnez un ou plusieurs fichiers de stratégie. XML à évaluer, puis cliquez sur **ouvrir**.</span><span class="sxs-lookup"><span data-stu-id="782f5-127">Select one or more .xml policy files to evaluate, and then click **Open**.</span></span>  
+  
+         <span data-ttu-id="782f5-128">La liste des fichiers sélectionnés s’affiche dans la zone **fichiers** .</span><span class="sxs-lookup"><span data-stu-id="782f5-128">The list of selected files appears in the **Files** box.</span></span>  
+  
+    4.  <span data-ttu-id="782f5-129">Dans la boîte de dialogue **Sélectionner une source** , cliquez sur **OK**.</span><span class="sxs-lookup"><span data-stu-id="782f5-129">In the **Select Source** dialog box, click **OK**.</span></span>  
+  
+    5.  <span data-ttu-id="782f5-130">Si la boîte de dialogue **chargement des stratégies** s’affiche, cliquez sur **Fermer**.</span><span class="sxs-lookup"><span data-stu-id="782f5-130">If the **Loading Policies** dialog box appears, click **Close**.</span></span>  
+  
+     <span data-ttu-id="782f5-131">Les stratégies que vous avez sélectionnées sont répertoriées dans la page sélection de la **stratégie** .</span><span class="sxs-lookup"><span data-stu-id="782f5-131">The policies that you selected are listed on the **Policy Selection** page.</span></span> <span data-ttu-id="782f5-132">Gardez à l'esprit qu'une icône d'avertissement en regard d'une stratégie indique que la stratégie contient des scripts.</span><span class="sxs-lookup"><span data-stu-id="782f5-132">Be aware that a warning icon next to a policy indicates that the policy contains scripts.</span></span>  
+  
+6.  <span data-ttu-id="782f5-133">Cliquez sur **évaluer** pour évaluer les stratégies.</span><span class="sxs-lookup"><span data-stu-id="782f5-133">Click **Evaluate** to evaluate the policies.</span></span>  
+  
+7.  <span data-ttu-id="782f5-134">Pour certains échecs de stratégie, la Gestion basée sur des stratégies vous permet de mettre immédiatement en vigueur la conformité aux stratégies sur la cible.</span><span class="sxs-lookup"><span data-stu-id="782f5-134">For some policy failures, Policy-Based Management enables you to immediately enforce policy compliance on the target.</span></span> <span data-ttu-id="782f5-135">Pour de tels échecs, une case à cocher s'affichera en regard de la stratégie qui a échoué.</span><span class="sxs-lookup"><span data-stu-id="782f5-135">For such failures, a check box will appear next to the failed policy.</span></span> <span data-ttu-id="782f5-136">Si vous activez la case à cocher ou si vous cliquez sur la ligne avec la stratégie qui a échoué, les cases à cocher s’affichent dans le volet Détails de la **cible** en regard des instances cibles dont l’évaluation a échoué.</span><span class="sxs-lookup"><span data-stu-id="782f5-136">If you select the check box, or click the row with the failed policy, check boxes appear in the **Target details** pane next to the target instances that failed the evaluation.</span></span> <span data-ttu-id="782f5-137">Si l’une des cases à cocher est activée, le bouton **appliquer** devient disponible.</span><span class="sxs-lookup"><span data-stu-id="782f5-137">If any of the check boxes are selected, the **Apply** button becomes available.</span></span> <span data-ttu-id="782f5-138">Lorsque vous cliquez sur **appliquer**, le paramètre non conforme est automatiquement mis à jour sur les instances cibles que vous avez sélectionnées.</span><span class="sxs-lookup"><span data-stu-id="782f5-138">When you click **Apply**, the noncompliant setting will be automatically updated on the target instances that you selected.</span></span>  
+  
+    > [!CAUTION]  
+    >  <span data-ttu-id="782f5-139">Assurez-vous de bien comprendre le paramètre de stratégie avant de mettre à jour automatiquement une instance cible.</span><span class="sxs-lookup"><span data-stu-id="782f5-139">Make sure that you fully understand the policy setting before automatically updating a target instance.</span></span> <span data-ttu-id="782f5-140">Après avoir sélectionné une ou plusieurs cases à cocher, nous vous recommandons de cliquer sur **script**et de choisir un emplacement de sortie afin de pouvoir examiner le code sous-jacent [!INCLUDE[tsql](../includes/tsql-md.md)] avant d’appliquer les modifications.</span><span class="sxs-lookup"><span data-stu-id="782f5-140">We recommend that after you select one or more check boxes, you click **Script**, and choose an output location so that you can review the underlying [!INCLUDE[tsql](../includes/tsql-md.md)] code before you apply the changes.</span></span>  
+  
+8.  <span data-ttu-id="782f5-141">Pour afficher les résultats détaillés d’une stratégie, cliquez sur la stratégie dans le tableau des **résultats** .</span><span class="sxs-lookup"><span data-stu-id="782f5-141">To view detailed results for a policy, click the policy in the **Results** table.</span></span> <span data-ttu-id="782f5-142">La table Détails de la **cible** affiche les détails de chaque instance.</span><span class="sxs-lookup"><span data-stu-id="782f5-142">The **Target details** table shows the details for each instance.</span></span>  
+  
+## <a name="next-lesson"></a><span data-ttu-id="782f5-143">Leçon suivante</span><span class="sxs-lookup"><span data-stu-id="782f5-143">Next Lesson</span></span>  
+ [<span data-ttu-id="782f5-144">Leçon 2 : évaluer les stratégies des bonnes pratiques de façon planifiée</span><span class="sxs-lookup"><span data-stu-id="782f5-144">Lesson 2: Evaluate Best Practices Policies on a Scheduled Basis</span></span>](../../2014/tutorials/lesson-2-evaluate-best-practices-policies-on-a-scheduled-basis.md)  
+  
+## <a name="see-also"></a><span data-ttu-id="782f5-145">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="782f5-145">See Also</span></span>  
+ <span data-ttu-id="782f5-146">[Surveiller et appliquer les meilleures pratiques à l’aide de la gestion basée sur des stratégies](../relational-databases/policy-based-management/monitor-and-enforce-best-practices-by-using-policy-based-management.md) </span><span class="sxs-lookup"><span data-stu-id="782f5-146">[Monitor and Enforce Best Practices by Using Policy-Based Management](../relational-databases/policy-based-management/monitor-and-enforce-best-practices-by-using-policy-based-management.md) </span></span>  
+ [<span data-ttu-id="782f5-147">Administrer plusieurs serveurs à l’aide de serveurs de gestion centralisée</span><span class="sxs-lookup"><span data-stu-id="782f5-147">Administer Multiple Servers Using Central Management Servers</span></span>](../relational-databases/administer-multiple-servers-using-central-management-servers.md)  
+  
+  

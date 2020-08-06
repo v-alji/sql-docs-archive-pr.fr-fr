@@ -1,0 +1,54 @@
+---
+title: Optimiser les performances de la réplication de fusion avec le suivi conditionnel des suppressions | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: replication
+ms.topic: conceptual
+helpviewer_keywords:
+- conditional delete tracking [SQL Server replication]
+- merge replication [SQL Server replication], conditional delete tracking
+- articles [SQL Server replication], conditional delete tracking
+ms.assetid: 58f120a3-ea3a-4e97-93f0-0eb4e580ecf2
+author: MashaMSFT
+ms.author: mathoma
+ms.openlocfilehash: 46fc189d2a2e0ebf5ea44775585a69d52783a7e3
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87599936"
+---
+# <a name="optimize-merge-replication-performance-with-conditional-delete-tracking"></a><span data-ttu-id="f6476-102">Optimiser les performances de la réplication de fusion avec le suivi conditionnel des suppressions</span><span class="sxs-lookup"><span data-stu-id="f6476-102">Optimize Merge Replication Performance with Conditional Delete Tracking</span></span>
+    
+> [!NOTE]  
+>  [!INCLUDE[ssNoteDepFutureAvoid](../../../includes/ssnotedepfutureavoid-md.md)]  
+  
+ <span data-ttu-id="f6476-103">Avec la réplication de fusion, vous pouvez spécifier que les suppressions d'un ou plusieurs articles ne doivent pas faire l'objet d'un suivi par les déclencheurs de réplication et les tables système.</span><span class="sxs-lookup"><span data-stu-id="f6476-103">With merge replication you can specify that deletes for one or more articles should not be tracked by replication triggers and system tables.</span></span> <span data-ttu-id="f6476-104">Si vous spécifiez cette option pour un article, les suppressions ne sont pas suivies ni répliquées à partir du serveur de publication ou de quelque Abonné que ce soit.</span><span class="sxs-lookup"><span data-stu-id="f6476-104">If you specify this option for an article, deletes are not tracked or replicated from the Publisher or any Subscribers.</span></span> <span data-ttu-id="f6476-105">Cette option est disponible pour la prise en charge d'un certain nombre de scénarios d'application et pour l'optimisation des performances dans les cas où la réplication des suppressions n'est pas nécessaire ou souhaitable.</span><span class="sxs-lookup"><span data-stu-id="f6476-105">This option is available to support a number of application scenarios and to provide a performance optimization for cases in which the replication of deletes is not necessary or desirable.</span></span> <span data-ttu-id="f6476-106">Les performances sont améliorées de trois façons : les métadonnées des suppressions ne sont pas stockées ; les suppressions ne sont pas énumérées durant la synchronisation ; les suppressions ne sont pas répliquées sur l'Abonné, ni appliquées.</span><span class="sxs-lookup"><span data-stu-id="f6476-106">Performance is enhanced in three ways: metadata for deletes is not stored; deletes are not enumerated during synchronization; deletes are not replicated to and applied at the Subscriber.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="f6476-107">Afin d'utiliser les articles en téléchargement seul, le niveau de compatibilité de la publication doit être au moins 90RTM.</span><span class="sxs-lookup"><span data-stu-id="f6476-107">To use download-only articles, the compatibility level of the publication must be at least 90RTM.</span></span>  
+  
+ <span data-ttu-id="f6476-108">Cette option peut être spécifiée lors de la création d'une publication, ou être activée ou désactivée par bascule si une application nécessite que certaines suppressions soient répliquées et d'autres pas, telles que les suppressions de traitement.</span><span class="sxs-lookup"><span data-stu-id="f6476-108">The option can be specified when a publication is created or it can be toggled on and off if an application requires that some deletes be replicated and that others not be replicated, such as batch deletes.</span></span> <span data-ttu-id="f6476-109">Les exemples qui suivent illustrent diverses utilisations possibles de cette option dans une application :</span><span class="sxs-lookup"><span data-stu-id="f6476-109">The following examples illustrate ways in which this option might be used in an application:</span></span>  
+  
+-   <span data-ttu-id="f6476-110">Une application pour une force de vente mobile possède en général des tables telles que **SalesOrderHeader**, **SalesOrderDetail** et **Product**.</span><span class="sxs-lookup"><span data-stu-id="f6476-110">An application for a mobile sales force typically has tables such as **SalesOrderHeader**, **SalesOrderDetail** and **Product**.</span></span> <span data-ttu-id="f6476-111">Les commandes sont entrées au niveau de l'Abonné puis répliquées vers le serveur de publication, qui souvent fournit ces données à un système d'exécution de commandes.</span><span class="sxs-lookup"><span data-stu-id="f6476-111">Orders are entered at the Subscriber and then replicated to the Publisher, which often supplies data to an order fulfillment system.</span></span> <span data-ttu-id="f6476-112">Beaucoup de travailleurs mobiles utilisent des périphériques portables qui ont une mémoire limitée : une fois la commande reçue par le serveur de publication, elle peut être supprimée sur l'Abonné.</span><span class="sxs-lookup"><span data-stu-id="f6476-112">Many mobile workers use handheld devices which have limited storage: after the order is received at the Publisher, it can be deleted at the Subscriber.</span></span> <span data-ttu-id="f6476-113">La suppression n'est pas propagée vers le serveur de publication, puisque cette commande est toujours active dans le système.</span><span class="sxs-lookup"><span data-stu-id="f6476-113">The delete is not propagated to the Publisher, because the order is still active in the system.</span></span>  
+  
+     <span data-ttu-id="f6476-114">Dans ce scénario, les suppressions ne font pas l'objet d'un suivi pour les tables **SalesOrderHeader** et **SalesOrderDetail** .</span><span class="sxs-lookup"><span data-stu-id="f6476-114">In this scenario, deletes would not be tracked for the **SalesOrderHeader** and **SalesOrderDetail** tables.</span></span> <span data-ttu-id="f6476-115">En revanche les suppressions sont suivies pour la table **Product** parce que, si un produit est supprimé sur le serveur de publication, cette suppression doit être envoyée à l'Abonné pour qu'il garde à jour sa liste de produits.</span><span class="sxs-lookup"><span data-stu-id="f6476-115">Deletes would be tracked for the **Product** table, because if a product is deleted at the Publisher, the delete should be sent to the Subscriber to keep the product list up to date.</span></span>  
+  
+-   <span data-ttu-id="f6476-116">Une application pourrait stocker les données historiques dans une table telle que **TransactionHistory**, périodiquement purgée des enregistrements de plus d'un an.</span><span class="sxs-lookup"><span data-stu-id="f6476-116">An application could store historical data in a table such as **TransactionHistory**, which is periodically purged of records older than a year.</span></span> <span data-ttu-id="f6476-117">Cette table peut être filtrée de sorte que les Abonnés ne reçoivent que les données de transactions du mois en cours.</span><span class="sxs-lookup"><span data-stu-id="f6476-117">The table could be filtered such that Subscribers only receive data on transactions within the current month.</span></span> <span data-ttu-id="f6476-118">Les suppressions de traitement mensuelles sur le serveur de publication purgeant les données plus anciennes ne concernent pas les Abonnés, mais sont quand même suivies et énumérées par défaut.</span><span class="sxs-lookup"><span data-stu-id="f6476-118">Monthly batch deletes at the Publisher that purge older data are not relevant to Subscribers, but they would still be tracked and enumerated by default.</span></span>  
+  
+     <span data-ttu-id="f6476-119">Dans ce scénario, avant le traitement par lots, l'activité pourrait être interrompue sur le système, et l'application pourrait désactiver le suivi des suppressions.</span><span class="sxs-lookup"><span data-stu-id="f6476-119">In this scenario, before the batch processing occurred, activity could be stopped on the system, and the application could disable the tracking of deletes.</span></span> <span data-ttu-id="f6476-120">Une fois le traitement terminé, le suivi pourrait être réactivé.</span><span class="sxs-lookup"><span data-stu-id="f6476-120">After the processing has finished, tracking could again be enabled.</span></span>  
+  
+> [!IMPORTANT]  
+>  <span data-ttu-id="f6476-121">Si les autres activités se poursuivent sur le serveur de publication, vous devez vous assurer que les suppressions qui doivent être propagées aux Abonnés ne se produisent pas lorsque le suivi des suppressions est désactivé.</span><span class="sxs-lookup"><span data-stu-id="f6476-121">If other activity continues at the Publisher, you must ensure that deletes that should be propagated to Subscribers do not occur while delete tracking is disabled.</span></span>  
+  
+ <span data-ttu-id="f6476-122">**Pour spécifier que les suppressions ne doivent pas être suivies**</span><span class="sxs-lookup"><span data-stu-id="f6476-122">**To specify that deletes should not be tracked**</span></span>  
+  
+-   <span data-ttu-id="f6476-123">Programmation [!INCLUDE[tsql](../../../includes/tsql-md.md)] de la réplication : [indiquer que les suppressions ne doivent pas être suivies pour les articles de fusion &#40;programmation Transact-SQL de la réplication&#41;](..//publish/specify-merge-replication-properties.md#tracking-deletes)</span><span class="sxs-lookup"><span data-stu-id="f6476-123">Replication [!INCLUDE[tsql](../../../includes/tsql-md.md)] programming: [Specify That Deletes Should Not Be Tracked For Merge Articles &#40;Replication Transact-SQL Programming&#41;](..//publish/specify-merge-replication-properties.md#tracking-deletes)</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="f6476-124">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="f6476-124">See Also</span></span>  
+ <span data-ttu-id="f6476-125">[Options d’article pour la réplication de fusion](article-options-for-merge-replication.md) </span><span class="sxs-lookup"><span data-stu-id="f6476-125">[Article Options for Merge Replication](article-options-for-merge-replication.md) </span></span>  
+ [<span data-ttu-id="f6476-126">Optimiser les performances de la réplication de fusion avec les articles en téléchargement seul</span><span class="sxs-lookup"><span data-stu-id="f6476-126">Optimize Merge Replication Performance with Download-Only Articles</span></span>](optimize-merge-replication-performance-with-download-only-articles.md)  
+  
+  
