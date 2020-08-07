@@ -1,0 +1,42 @@
+---
+title: Curseurs XTP | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: performance
+ms.topic: conceptual
+ms.assetid: 84bf4654-3ef7-4d7f-a269-c8bb4ed4acad
+author: MikeRayMSFT
+ms.author: mikeray
+ms.openlocfilehash: 217a1196717492cb92adb24eaf7c06c8867abc2a
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87704047"
+---
+# <a name="xtp-cursors"></a><span data-ttu-id="d13d7-102">Curseurs XTP</span><span class="sxs-lookup"><span data-stu-id="d13d7-102">XTP Cursors</span></span>
+  <span data-ttu-id="d13d7-103">L'objet de performance Curseurs XTP contient des compteurs connexes aux curseurs internes du moteur XTP.</span><span class="sxs-lookup"><span data-stu-id="d13d7-103">The XTP Cursors performance object contains counters related to internal XTP engine cursors.</span></span> <span data-ttu-id="d13d7-104">Les curseurs sont des blocs de construction de bas niveau que le moteur XTP utilise pour traiter les requêtes [!INCLUDE[tsql](../../includes/tsql-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="d13d7-104">Cursors are the low-level building blocks the XTP engine uses to process [!INCLUDE[tsql](../../includes/tsql-md.md)] queries.</span></span> <span data-ttu-id="d13d7-105">Par conséquent, vous ne pouvez pas les contrôler directement.</span><span class="sxs-lookup"><span data-stu-id="d13d7-105">As such, you do not typically have direct control over them.</span></span>  
+  
+ <span data-ttu-id="d13d7-106">Ce tableau décrit les compteurs **curseurs XTP** .</span><span class="sxs-lookup"><span data-stu-id="d13d7-106">This table describes the **XTP Cursors** counters.</span></span>  
+  
+|<span data-ttu-id="d13d7-107">Compteur</span><span class="sxs-lookup"><span data-stu-id="d13d7-107">Counter</span></span>|<span data-ttu-id="d13d7-108">Description</span><span class="sxs-lookup"><span data-stu-id="d13d7-108">Description</span></span>|  
+|-------------|-----------------|  
+|<span data-ttu-id="d13d7-109">**Suppressions des curseurs par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-109">**Cursor deletes/sec**</span></span>|<span data-ttu-id="d13d7-110">Nombre de suppressions des curseurs (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-110">The number of cursor deletes (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-111">**Insertions des curseurs par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-111">**Cursor inserts/sec**</span></span>|<span data-ttu-id="d13d7-112">Nombre d'insertions des curseurs (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-112">The number of cursor inserts (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-113">**Analyses des curseurs démarrées par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-113">**Cursor scans started /sec**</span></span>|<span data-ttu-id="d13d7-114">Nombre d'analyses des curseurs démarrées (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-114">The number of cursor scans started (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-115">**Violations de contrainte unique des curseurs par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-115">**Cursor unique violations/sec**</span></span>|<span data-ttu-id="d13d7-116">Nombre de violations de contrainte unique (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-116">The number of unique-constraint violations (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-117">**Mises à jour des curseurs par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-117">**Cursor updates/sec**</span></span>|<span data-ttu-id="d13d7-118">Nombre de mises à jour des curseurs (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-118">The number of cursor updates (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-119">**Conflits d'écriture des curseurs par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-119">**Cursor write   conflicts/sec**</span></span>|<span data-ttu-id="d13d7-120">Nombre de conflits d'écriture-écriture vers la même version de ligne (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-120">The number of write-write conflicts to the same row version (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-121">**Nouvelles tentatives d'analyse d'angles inutilisés par seconde (sortie utilisateur)**</span><span class="sxs-lookup"><span data-stu-id="d13d7-121">**Dusty corner scan retries/sec (user-issued)**</span></span>|<span data-ttu-id="d13d7-122">Nombre de tentatives d'analyse dues à des conflits d'écriture lors des nettoyages d'angles inutilisés indiqué par une analyse de table complète de l'utilisateur (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-122">The number of scan retries due to write conflicts during dusty corner sweeps issued by a user's full-table scan (on average), per second.</span></span> <span data-ttu-id="d13d7-123">Il s'agit d'un compteur de très bas niveau, non destiné au client.</span><span class="sxs-lookup"><span data-stu-id="d13d7-123">This is a very low-level counter, not intended for customer use.</span></span>|  
+|<span data-ttu-id="d13d7-124">**Lignes expirées supprimées par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-124">**Expired rows removed/sec**</span></span>|<span data-ttu-id="d13d7-125">Nombre de lignes expirées supprimées par les curseurs (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-125">The number of expired rows removed by cursors (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-126">**Lignes expirées touchées par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-126">**Expired rows touched/sec**</span></span>|<span data-ttu-id="d13d7-127">Nombre de lignes expirées touchées par les curseurs (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-127">The number of expired rows touched by cursors (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-128">**Lignes retournées par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-128">**Rows returned/sec**</span></span>|<span data-ttu-id="d13d7-129">Nombre de lignes retournées par les curseurs (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-129">The number of rows returned by cursors (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-130">**Lignes touchées par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-130">**Rows touched/sec**</span></span>|<span data-ttu-id="d13d7-131">Nombre de lignes touchées par les curseurs (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-131">The number of rows touched by cursors (on average), per second.</span></span>|  
+|<span data-ttu-id="d13d7-132">**Lignes en cours de suppression, touchées par seconde**</span><span class="sxs-lookup"><span data-stu-id="d13d7-132">**Tentatively-deleted rows touched/sec**</span></span>|<span data-ttu-id="d13d7-133">Nombre de lignes expirant touchées par les curseurs (en moyenne), par seconde.</span><span class="sxs-lookup"><span data-stu-id="d13d7-133">The number of expiring rows touched by cursors (on average), per second.</span></span> <span data-ttu-id="d13d7-134">Une ligne expire si la transaction qui l’a supprimée est toujours active (c’est-à-dire qu’elle n’a pas encore été validée ou annulée.)</span><span class="sxs-lookup"><span data-stu-id="d13d7-134">A row is expiring if the transaction that deleted it is still active (i.e. has not yet committed or aborted.)</span></span>|  
+  
+## <a name="see-also"></a><span data-ttu-id="d13d7-135">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="d13d7-135">See Also</span></span>  
+ [<span data-ttu-id="d13d7-136">Les compteurs de performances de l’OLTP en mémoire &#40;de XTP&#41;</span><span class="sxs-lookup"><span data-stu-id="d13d7-136">XTP &#40;In-Memory OLTP&#41; Performance Counters</span></span>](../../integration-services/performance/performance-counters.md)  
+  
+  

@@ -1,0 +1,72 @@
+---
+title: Créer un abonnement piloté par les données (didacticiel SSRS) | Microsoft Docs
+ms.custom: ''
+ms.date: 05/24/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+helpviewer_keywords:
+- subscriptions [Reporting Services], tutorials
+- walkthroughs [Reporting Services]
+- data-driven subscriptions
+ms.assetid: 79ab0572-43e9-4dc4-9b5a-cd8b627b8274
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 53be7cf793d8fa38d177643c7f366115d4df8b7c
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87703939"
+---
+# <a name="create-a-data-driven-subscription-ssrs-tutorial"></a><span data-ttu-id="e9f71-102">Créer un abonnement piloté par les données (didacticiel SSRS)</span><span class="sxs-lookup"><span data-stu-id="e9f71-102">Create a Data-Driven Subscription (SSRS Tutorial)</span></span>
+  [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] <span data-ttu-id="e9f71-103">fournit des abonnements pilotés par les données qui permettent de personnaliser la distribution d'un rapport basé sur des données d'abonnés dynamiques.</span><span class="sxs-lookup"><span data-stu-id="e9f71-103">provides data-driven subscriptions so that you can customize the distribution of a report based on dynamic subscriber data.</span></span> <span data-ttu-id="e9f71-104">Les abonnements pilotés par les données s'utilisent dans les types de scénarios suivants :</span><span class="sxs-lookup"><span data-stu-id="e9f71-104">Data-driven subscriptions are intended for the following kinds of scenarios:</span></span>  
+  
+-   <span data-ttu-id="e9f71-105">Distribution de rapports à un large ensemble de destinataires dont les membres peuvent changer d'une distribution à l'autre.</span><span class="sxs-lookup"><span data-stu-id="e9f71-105">Distributing reports to a large recipient pool whose membership may change from one distribution to the next.</span></span> <span data-ttu-id="e9f71-106">Par exemple, distribution d'un rapport mensuel à l'ensemble des clients actuels.</span><span class="sxs-lookup"><span data-stu-id="e9f71-106">For example, distribute a monthly report to all current customers.</span></span>  
+  
+-   <span data-ttu-id="e9f71-107">Distribution de rapports à un groupe spécifique de destinataires sur la base de critères prédéfinis.</span><span class="sxs-lookup"><span data-stu-id="e9f71-107">Distributing reports to a specific group of recipients based on predefined criteria.</span></span> <span data-ttu-id="e9f71-108">Par exemple, envoi d'un rapport sur les résultats des ventes aux dix premiers directeurs commerciaux d'une organisation.</span><span class="sxs-lookup"><span data-stu-id="e9f71-108">For example, send a sales performance report to the top ten sales managers in an organization.</span></span>  
+  
+## <a name="what-you-will-learn"></a><span data-ttu-id="e9f71-109">Contenu du didacticiel</span><span class="sxs-lookup"><span data-stu-id="e9f71-109">What You Will Learn</span></span>  
+ <span data-ttu-id="e9f71-110">Ce didacticiel explique comment utiliser les abonnements pilotés par les données à l'aide d'un exemple simple qui illustre les concepts de base.</span><span class="sxs-lookup"><span data-stu-id="e9f71-110">This tutorial shows you how to use data-driven subscriptions using a simple example to illustrate the concepts.</span></span>  
+  
+ <span data-ttu-id="e9f71-111">Ce didacticiel est divisé en trois leçons :</span><span class="sxs-lookup"><span data-stu-id="e9f71-111">This tutorial is divided into three lessons:</span></span>  
+  
+ [<span data-ttu-id="e9f71-112">Leçon 1 : Création d’un exemple de base de données d’abonnés</span><span class="sxs-lookup"><span data-stu-id="e9f71-112">Lesson 1: Creating a Sample Subscriber Database</span></span>](lesson-1-creating-a-sample-subscriber-database.md)  
+ <span data-ttu-id="e9f71-113">Au cours de cette leçon, vous allez apprendre à créer une base de données [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] locale qui contient des informations sur les abonnés.</span><span class="sxs-lookup"><span data-stu-id="e9f71-113">In this lesson you will learn how to create a local [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] database that contains subscriber information.</span></span>  
+  
+ [<span data-ttu-id="e9f71-114">Leçon 2 : Modification des propriétés d’une source de données de rapport</span><span class="sxs-lookup"><span data-stu-id="e9f71-114">Lesson 2: Modifying the Report Data Source Properties</span></span>](lesson-2-modifying-the-report-data-source-properties.md)  
+ <span data-ttu-id="e9f71-115">Dans cette leçon, vous allez apprendre à modifier les propriétés d'une source de données afin que le rapport puisse s'exécuter sans assistance.</span><span class="sxs-lookup"><span data-stu-id="e9f71-115">In this lesson, you will learn how to modify report data source properties so that the report can run unattended.</span></span> <span data-ttu-id="e9f71-116">Les informations d'identification stockées sont nécessaires pour le traitement autonome.</span><span class="sxs-lookup"><span data-stu-id="e9f71-116">Unattended processing requires stored credentials.</span></span> <span data-ttu-id="e9f71-117">Vous allez également modifier le dataset du rapport afin d'inclure un paramètre fourni par les données d'abonné.</span><span class="sxs-lookup"><span data-stu-id="e9f71-117">You will also modify the report dataset to include a parameter that is supplied by the subscriber data.</span></span>  
+  
+ [<span data-ttu-id="e9f71-118">Leçon 3 : Définition d’un abonnement piloté par les données</span><span class="sxs-lookup"><span data-stu-id="e9f71-118">Lesson 3: Defining a Data-Driven Subscription</span></span>](lesson-3-defining-a-data-driven-subscription.md)  
+ <span data-ttu-id="e9f71-119">Dans cette leçon, vous allez apprendre à définir un abonnement piloté par les données.</span><span class="sxs-lookup"><span data-stu-id="e9f71-119">In this lesson you will learn how to define a data-driven subscription.</span></span> <span data-ttu-id="e9f71-120">Cette leçon vous guide à travers chaque page de l'Assistant Abonnement piloté par les données.</span><span class="sxs-lookup"><span data-stu-id="e9f71-120">This lesson guides you through each page in the Data-Driven Subscription Wizard.</span></span>  
+  
+## <a name="requirements"></a><span data-ttu-id="e9f71-121">Configuration requise</span><span class="sxs-lookup"><span data-stu-id="e9f71-121">Requirements</span></span>  
+ <span data-ttu-id="e9f71-122">Les abonnements pilotés par les données sont généralement créés par un administrateur de serveur de rapports, qui en assure également la mise à jour.</span><span class="sxs-lookup"><span data-stu-id="e9f71-122">Data-driven subscriptions are typically created and maintained by report server administrators.</span></span> <span data-ttu-id="e9f71-123">Pour créer des abonnements pilotés par les données, il est nécessaire de savoir créer des requêtes, de connaître les sources de données qui contiennent les données d'abonnés et de disposer d'autorisations élevées sur le serveur de rapports.</span><span class="sxs-lookup"><span data-stu-id="e9f71-123">The ability to create data-driven subscriptions requires expertise in building queries, knowledge of data sources that contain subscriber data, and elevated permissions on a report server.</span></span>  
+  
+ <span data-ttu-id="e9f71-124">Le didacticiel utilise le rapport créé dans le didacticiel [créer un rapport de tableau de base &#40;didacticiel SSRS&#41;](create-a-basic-table-report-ssrs-tutorial.md) et les données de[!INCLUDE[ssSampleDBobject](../includes/sssampledbobject-md.md)]</span><span class="sxs-lookup"><span data-stu-id="e9f71-124">The tutorial will use the report created in the tutorial [Create a Basic Table Report &#40;SSRS Tutorial&#41;](create-a-basic-table-report-ssrs-tutorial.md) and data from [!INCLUDE[ssSampleDBobject](../includes/sssampledbobject-md.md)]</span></span>  
+  
+ <span data-ttu-id="e9f71-125">Les éléments suivants doivent cependant être installés sur votre système :</span><span class="sxs-lookup"><span data-stu-id="e9f71-125">Your system must have the following installed to use this tutorial:</span></span>  
+  
+-   <span data-ttu-id="e9f71-126">Une édition de [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] qui prend en charge les abonnements pilotés par les données.</span><span class="sxs-lookup"><span data-stu-id="e9f71-126">An edition of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] that supports data-driven subscriptions.</span></span> <span data-ttu-id="e9f71-127">Pour plus d’informations, consultez [éditions et composants de SQL Server 2014](../sql-server/editions-and-components-of-sql-server-2016.md).</span><span class="sxs-lookup"><span data-stu-id="e9f71-127">For more information, see [Editions and Components of SQL Server 2014](../sql-server/editions-and-components-of-sql-server-2016.md).</span></span>  
+  
+-   <span data-ttu-id="e9f71-128">Le serveur de rapports doit être exécuté en mode natif.</span><span class="sxs-lookup"><span data-stu-id="e9f71-128">The report server must be running in native mode.</span></span> <span data-ttu-id="e9f71-129">L'interface utilisateur décrite dans ce didacticiel est basée sur un serveur de rapports en mode natif.</span><span class="sxs-lookup"><span data-stu-id="e9f71-129">The user interface described in this tutorial is based on a native mode report server.</span></span> <span data-ttu-id="e9f71-130">Les abonnements sont pris en charge sur les serveurs de rapports en mode SharePoint, mais l'interface utilisateur sera différente de ce qui est décrit dans ce didacticiel.</span><span class="sxs-lookup"><span data-stu-id="e9f71-130">Subscriptions are supported on SharePoint mode report servers but the user interface will be different than what is described in this tutorial.</span></span>  
+  
+-   <span data-ttu-id="e9f71-131">Le service Agent SQL Server doit être en cours d'exécution.</span><span class="sxs-lookup"><span data-stu-id="e9f71-131">SQL Server Agent service must be running.</span></span>  
+  
+-   <span data-ttu-id="e9f71-132">Rapport contenant des paramètres.</span><span class="sxs-lookup"><span data-stu-id="e9f71-132">A report that includes parameters.</span></span> <span data-ttu-id="e9f71-133">Ce didacticiel suppose l’utilisation de l’exemple de rapport `Sales Orders` que vous créez à l’aide du didacticiel [Créer un rapport de tableau de base &#40;didacticiel SSRS&#41;](create-a-basic-table-report-ssrs-tutorial.md).</span><span class="sxs-lookup"><span data-stu-id="e9f71-133">This tutorial assumes the sample report, `Sales Orders` you create using the tutorial [Create a Basic Table Report &#40;SSRS Tutorial&#41;](create-a-basic-table-report-ssrs-tutorial.md).</span></span>  
+  
+-   <span data-ttu-id="e9f71-134">Exemple de base de données [!INCLUDE[ssSampleDBobject](../includes/sssampledbobject-md.md)] contenant des données sur le rapport fourni en exemple.</span><span class="sxs-lookup"><span data-stu-id="e9f71-134">The [!INCLUDE[ssSampleDBobject](../includes/sssampledbobject-md.md)] sample database, which provides data to the sample report.</span></span>  
+  
+-   <span data-ttu-id="e9f71-135">Attribution de rôle incluant la tâche Gérer tous les abonnements dans le rapport fourni en exemple.</span><span class="sxs-lookup"><span data-stu-id="e9f71-135">A role assignment that includes the Manage all subscriptions task on the sample report.</span></span> <span data-ttu-id="e9f71-136">Cette tâche est obligatoire dans la définition des abonnements pilotés par les données.</span><span class="sxs-lookup"><span data-stu-id="e9f71-136">This task is required for defining a data-driven subscription.</span></span> <span data-ttu-id="e9f71-137">Si vous êtes l'administrateur de l'ordinateur, l'attribution de rôle par défaut pour les administrateurs locaux fournit les autorisations nécessaires à la création d'abonnements pilotés par les données.</span><span class="sxs-lookup"><span data-stu-id="e9f71-137">If you are an administrator on the computer, the default role assignment for local administrators provides the permissions necessary for creating data-driven subscriptions.</span></span> <span data-ttu-id="e9f71-138">Pour plus d’informations, consultez [Octroi d'autorisations sur un serveur de rapports en mode natif](security/granting-permissions-on-a-native-mode-report-server.md).</span><span class="sxs-lookup"><span data-stu-id="e9f71-138">For more information, see [Granting Permissions on a Native Mode Report Server](security/granting-permissions-on-a-native-mode-report-server.md).</span></span>  
+  
+-   <span data-ttu-id="e9f71-139">Dossier partagé pour lequel vous bénéficiez de droits d'accès en écriture.</span><span class="sxs-lookup"><span data-stu-id="e9f71-139">A shared folder for which you have write permissions.</span></span> <span data-ttu-id="e9f71-140">Le dossier partagé doit être accessible via une connexion réseau.</span><span class="sxs-lookup"><span data-stu-id="e9f71-140">The shared folder must be accessible over a network connection.</span></span>  
+  
+ <span data-ttu-id="e9f71-141">**Durée estimée pour effectuer ce didacticiel :** 30 minutes.</span><span class="sxs-lookup"><span data-stu-id="e9f71-141">**Estimated time to complete the tutorial:** 30 minutes.</span></span> <span data-ttu-id="e9f71-142">Trente minutes supplémentaires si vous n'avez pas étudié le didacticiel de création d'un rapport de base.</span><span class="sxs-lookup"><span data-stu-id="e9f71-142">An additional 30 minutes if you have not completed the basic report tutorial.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="e9f71-143">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="e9f71-143">See Also</span></span>  
+ <span data-ttu-id="e9f71-144">[Data-Driven Subscriptions](subscriptions/data-driven-subscriptions.md) </span><span class="sxs-lookup"><span data-stu-id="e9f71-144">[Data-Driven Subscriptions](subscriptions/data-driven-subscriptions.md) </span></span>  
+ [<span data-ttu-id="e9f71-145">Créer un rapport de tableau de base &#40;Didacticiel SSRS&#41;</span><span class="sxs-lookup"><span data-stu-id="e9f71-145">Create a Basic Table Report &#40;SSRS Tutorial&#41;</span></span>](create-a-basic-table-report-ssrs-tutorial.md)  
+  
+  

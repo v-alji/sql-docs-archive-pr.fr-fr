@@ -1,0 +1,40 @@
+---
+title: Restriction d’adresse IP détectée (conseiller de mise à niveau) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: database-engine
+ms.topic: conceptual
+helpviewer_keywords:
+- report servers [Reporting Services], upgrade issues
+ms.assetid: 9a154455-c68f-4403-a3a7-b90f4d35eecb
+author: maggiesMSFT
+ms.author: maggies
+ms.openlocfilehash: 2028e59e91d42bfdced2d18fa6ce129dfb108302
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87700631"
+---
+# <a name="ip-address-restriction-detected-upgrade-advisor"></a><span data-ttu-id="74127-102">Restriction par adresse IP détectée (Conseiller de mise à niveau)</span><span class="sxs-lookup"><span data-stu-id="74127-102">IP address restriction detected (Upgrade Advisor)</span></span>
+  <span data-ttu-id="74127-103">Le Conseiller de mise à niveau a détecté une ou plusieurs restrictions par adresse IP sur le site Web IIS qui héberge les répertoires virtuels du serveur de rapports ou du Gestionnaire de rapports.</span><span class="sxs-lookup"><span data-stu-id="74127-103">Upgrade Advisor detected one or more IP address restrictions on the IIS Web site that hosts the report server or Report Manager virtual directories.</span></span> [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] <span data-ttu-id="74127-104">ne fournit pas de prise en charge native pour les restrictions par adresse IP.</span><span class="sxs-lookup"><span data-stu-id="74127-104">does not provide native support for IP address restrictions.</span></span>  
+  
+||  
+|-|  
+|<span data-ttu-id="74127-105">**[!INCLUDE[applies](../../includes/applies-md.md)]**  [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)]Natif.</span><span class="sxs-lookup"><span data-stu-id="74127-105">**[!INCLUDE[applies](../../includes/applies-md.md)]**  [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] Native.</span></span>|  
+  
+## <a name="component"></a><span data-ttu-id="74127-106">Composant</span><span class="sxs-lookup"><span data-stu-id="74127-106">Component</span></span>  
+ [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)]  
+  
+## <a name="description"></a><span data-ttu-id="74127-107">Description</span><span class="sxs-lookup"><span data-stu-id="74127-107">Description</span></span>  
+ <span data-ttu-id="74127-108">Le programme d'installation ne peut pas définir de restrictions par adresse IP sur des URL créées pour un serveur de rapports mis à niveau.</span><span class="sxs-lookup"><span data-stu-id="74127-108">Setup cannot define IP address restrictions on URLs created for an upgraded report server.</span></span> <span data-ttu-id="74127-109">La mise à niveau peut continuer, mais les restrictions par adresse IP ne seront pas définies sur les URL de [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="74127-109">Upgrade can continue, but IP address restrictions will not be defined on the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] URLs.</span></span>  
+  
+## <a name="corrective-action"></a><span data-ttu-id="74127-110">Action corrective</span><span class="sxs-lookup"><span data-stu-id="74127-110">Corrective Action</span></span>  
+ <span data-ttu-id="74127-111">Après la mise à niveau, utilisez ISA Server, votre logiciel de pare-feu ou toute autre solution pour autoriser ou exclure les requêtes émanant d'adresses IP spécifiques et destinées au serveur de rapports.</span><span class="sxs-lookup"><span data-stu-id="74127-111">After upgrade, use ISA Server, your firewall software, or another solution to allow or exclude requests from specific IP addresses to the report server.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="74127-112">Voir aussi</span><span class="sxs-lookup"><span data-stu-id="74127-112">See Also</span></span>  
+ [<span data-ttu-id="74127-113">Problèmes de mise à niveau de Reporting Services &#40;conseiller de mise à niveau&#41;</span><span class="sxs-lookup"><span data-stu-id="74127-113">Reporting Services Upgrade Issues &#40;Upgrade Advisor&#41;</span></span>](../../../2014/sql-server/install/reporting-services-upgrade-issues-upgrade-advisor.md)  
+  
+  
